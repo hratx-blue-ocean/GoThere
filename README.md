@@ -1,2 +1,2 @@
 # GoThere
-All in one Travel application
+All in one travel application
