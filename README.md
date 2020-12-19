@@ -17,23 +17,23 @@ run npm install
 
 Before beginning any work on new features, pull from the main branch to update your local code to the most recent version:
 
-1. switch to the main branch
+1. Switch to the main branch
 ```sh
 git checkout main
 ```
 
-2. pull most recent commits
+2. Pull most recent commits
 ```sh
 git pull origin main
 ```
 
-create a new feature branch if needed
+ Create a new feature branch if needed
 ```sh
 git checkout -b <new branch name>
 ```
 otherwise
 
-3. switch to the feature branch
+ Switch to the feature branch
 ```sh
 git checkout <branch name>
 ```
@@ -48,8 +48,8 @@ git branch
 git rebase main <feature branch>
 ```
 
-6.Do all of your work on your feature branches
-7.When you are ready to save changes, commit and push to the branch.
+6. Do all of your work on your feature branches
+7. When you are ready to save changes, commit and push to the branch.
 ```sh
 git add
 git commit
@@ -59,10 +59,10 @@ git push origin <branch-name>
 1. When you are ready to merge your feature branch to the main branch, open a pull request
 2. Be sure to pull into the base repository/main branch from the correct feature branch
 > base : **pre-production** *from* compare : **feature-branch**
-* Include the ticket number in the pull request body
-* Tag a team member in a comment for review before merging
-3. When the pull request is approved, merge the pull request
-4. Then, add the new changes to your local repo:
+3. Include the ticket number in the pull request body
+4. Tag a team member in a comment for review before merging
+5. When the pull request is approved, merge the pull request
+6. Then, add the new changes to your local repo
 ```sh
  git checkout main
  git pull origin main
