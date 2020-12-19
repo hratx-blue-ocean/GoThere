@@ -4,8 +4,13 @@ A streamlined travel plan web application
 
 ## onboarding
 
+1. clone the project repo
 ```sh
 git clone https://github.com/hratx-blue-ocean/GoThere.git
+```
+2.Navigate to the GoThere/client
+```sh
+run npm install
 ```
 
 ## git-workflow
