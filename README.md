@@ -35,7 +35,7 @@ otherwise
 
 3. switch to the feature branch
 ```sh
-git checkout <branch name> 
+git checkout <branch name>
 ```
 
 4. Check the current branch you are on
@@ -58,8 +58,8 @@ git push origin <branch-name>
 ## pull requests
 1. When you are ready to merge your feature branch to the main branch, open a pull request
 2. Be sure to pull into the base repository/main branch from the correct feature branch
-> base : **main** *from* compare : **feature-branch**
-* Include the ticket number in the pull request body 
+> base : **pre-production** *from* compare : **feature-branch**
+* Include the ticket number in the pull request body
 * Tag a team member in a comment for review before merging
 3. When the pull request is approved, merge the pull request
 4. Then, add the new changes to your local repo:
