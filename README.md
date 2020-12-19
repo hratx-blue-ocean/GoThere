@@ -8,7 +8,7 @@ A streamlined travel plan web application
 ```sh
 git clone https://github.com/hratx-blue-ocean/GoThere.git
 ```
-2.Navigate to the GoThere/client
+2. Navigate to the GoThere/client
 ```sh
 run npm install
 ```
