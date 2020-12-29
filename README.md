@@ -15,16 +15,16 @@ run npm install
 
 ## git-workflow
 
-Before beginning any work on new features, pull from the main branch to update your local code to the most recent version:
+Before beginning any work on new features, pull from the pre-production branch to update your local code to the most recent version:
 
-1. switch to the main branch
+1. switch to the pre-production branch
 ```sh
-git checkout main
+git checkout pre-production
 ```
 
 2. pull most recent commits
 ```sh
-git pull origin main
+git pull origin pre-production
 ```
 
 create a new feature branch if needed
@@ -43,9 +43,9 @@ git checkout <branch name>
 git branch
 ```
 
-5. Merges any changes pulled from the master into the feature branch
+5. Merges any changes pulled from the pre-production into the feature branch
 ```sh
-git rebase main <feature branch>
+git rebase pre-production <feature branch>
 ```
 
 6.Do all of your work on your feature branches
@@ -56,21 +56,21 @@ git commit
 git push origin <branch-name>
 ```
 ## pull requests
-1. When you are ready to merge your feature branch to the main branch, open a pull request
-2. Be sure to pull into the base repository/main branch from the correct feature branch
-> base : **main** *from* compare : **feature-branch**
+1. When you are ready to merge your feature branch to the pre-production branch, open a pull request
+2. Be sure to pull into the base repository/pre-production branch from the correct feature branch
+> base : **pre-production** *from* compare : **feature-branch**
 * Include the ticket number in the pull request body 
 * Tag a team member in a comment for review before merging
 3. When the pull request is approved, merge the pull request
 4. Then, add the new changes to your local repo:
 ```sh
- git checkout main
- git pull origin main
+ git checkout pre-production
+ git pull origin pre-production
  ```
 5. witch back to whatever branch you were working on
 ```sh
 git checkout <branch name>
-git rebase main <branch name>
+git rebase pre-production <branch name>
 ```
 
 
