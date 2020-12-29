@@ -2,4 +2,8 @@
 	position: absolute;
 	bottom: 15px;
 	left: 15px;
+	display: flex;
+	margin: 15px;
+	align-items: bottom;
+	flex-direction: column-reverse;
 }
