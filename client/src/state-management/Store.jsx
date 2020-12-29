@@ -3,6 +3,7 @@ import Reducer from './Reducer'
 
 const initialState = {
   test: [],
+  test2: [],
   error: null
 };
 

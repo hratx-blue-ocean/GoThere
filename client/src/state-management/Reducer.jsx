@@ -5,6 +5,11 @@ const Reducer = (state, action) => {
         ...state,
         test: action.payload
       };
+      case 'TEST 2':
+        return {
+          ...state,
+          test2: action.payload
+        }
       case 'SET_ERROR':
         return {
           ...state,
