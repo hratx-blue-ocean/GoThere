@@ -2,10 +2,10 @@ import React from 'react';
 
 import './Attraction.css';
 
-export default function Attraction() {
+export default function Attraction({ onPress }) {
 	return (
 		<div>
-			<span className="Attraction"></span>
+			<span type="button" className="Attraction" onClick={onPress}></span>
 		</div>
 	);
 }
