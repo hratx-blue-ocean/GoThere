@@ -17,39 +17,39 @@ class UserCalendar extends React.Component {
   }
 
   //selecting a date on calendar
-  onSelect = value => {
+  onSelect = (value) => {
     this.setState({
       value,
       selectedValue: value,
     });
   };
 
-  onPanelChange = value => {
+  onPanelChange = (value) => {
     this.setState({ value });
   };
 
   //render into each day on calendar
-  dateCellRender = value => {
+  dateCellRender = (value) => {
     const dummyData = [{
-      tripId: 2,
-      startDate: '2020-12-04',
-      endDate: '2020-12-08',
-      location: 'Homer, Alaska',
-      type: 'Business'
+        tripId: 2,
+        startDate: '2020-12-04',
+        endDate: '2020-12-08',
+        location: 'Homer, Alaska',
+        type: 'Business'
       },
       {
-      tripId: 3,
-      startDate: '2020-12-14',
-      endDate: '2020-12-17',
-      location: 'Springfield, Nebraska',
-      type: 'Business'
+        tripId: 3,
+        startDate: '2020-12-14',
+        endDate: '2020-12-17',
+        location: 'Springfield, Nebraska',
+        type: 'Business'
       },
       {
-      tripId: 4,
-      startDate: '2020-12-24',
-      endDate: '2020-12-31',
-      location: 'Marfa, Texas',
-      type: 'Personal'
+        tripId: 4,
+        startDate: '2020-12-24',
+        endDate: '2020-12-31',
+        location: 'Marfa, Texas',
+        type: 'Personal'
       },
       {
         tripId: 5,
@@ -59,12 +59,16 @@ class UserCalendar extends React.Component {
         type: 'Business'
       }
     ]
-    console.log('value', value.month())
+    // console.log('value', value.month())
     return (
       <>
       {dummyData.map((trip) => {
+        let startDate = parseInt(trip.startDate.slice(8));
+        let endDate = parseInt(trip.endDate.slice(8));
+        let month = parseInt(trip.startDate.slice(5,7));
 
-        if (value.date() >= parseInt(trip.startDate.slice(8)) && value.date() <= parseInt(trip.endDate.slice(8)) && (value.month() + 1) === parseInt(trip.startDate.slice(5,7)) && trip.type === 'Personal') {
+        // render trips based off of trip data, data.type: Business or Personal
+        if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Personal') {
           return <div
             key={trip.tripId}
             className='tripBox'
@@ -74,7 +78,7 @@ class UserCalendar extends React.Component {
             >{trip.location}</div>
         }
 
-        if (value.date() >= parseInt(trip.startDate.slice(8)) && value.date() <= parseInt(trip.endDate.slice(8)) && (value.month() + 1) === parseInt(trip.startDate.slice(5,7)) && trip.type === 'Business') {
+        if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Business') {
           return <div
             key={trip.tripId}
             className='tripBox'
