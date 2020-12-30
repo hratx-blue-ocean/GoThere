@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Alert } from 'antd';
 import moment from 'moment';
+import './calendar.css'
 
 class UserCalendar extends React.Component {
   constructor (props) {
@@ -49,28 +50,39 @@ class UserCalendar extends React.Component {
       endDate: '2020-12-31',
       location: 'Marfa, Texas',
       type: 'Personal'
+      },
+      {
+        tripId: 5,
+        startDate: '2021-01-01',
+        endDate: '2020-01-02',
+        location: 'Austin, Texas',
+        type: 'Business'
       }
     ]
     console.log('value', value.month())
     return (
       <>
       {dummyData.map((trip) => {
-        if (value.date() >= parseInt(trip.startDate.slice(8)) && value.date() <= parseInt(trip.endDate.slice(8)) && (value.month() + 1) === parseInt(trip.startDate.slice(5,7))) {
-          // console.log('matchmatchmatch')
+
+        if (value.date() >= parseInt(trip.startDate.slice(8)) && value.date() <= parseInt(trip.endDate.slice(8)) && (value.month() + 1) === parseInt(trip.startDate.slice(5,7)) && trip.type === 'Personal') {
           return <div
             key={trip.tripId}
             className='tripBox'
             style={{
-              // TODO: background color cycle between business scheme or personal scheme
-              background: 'violet',
-              position: 'absolute',
-              // styles bar to span width of day element
-              width: 'calc(100% + 8px)',
-              left: '-4px'
+              background: 'violet'
             }}
-            // TODO: fill with trip name/info
             >{trip.location}</div>
-          }
+        }
+
+        if (value.date() >= parseInt(trip.startDate.slice(8)) && value.date() <= parseInt(trip.endDate.slice(8)) && (value.month() + 1) === parseInt(trip.startDate.slice(5,7)) && trip.type === 'Business') {
+          return <div
+            key={trip.tripId}
+            className='tripBox'
+            style={{
+              background: 'teal'
+            }}
+            >{trip.location}</div>
+        }
           })}
         </>
     )
