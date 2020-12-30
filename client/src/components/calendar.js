@@ -87,8 +87,8 @@ class UserCalendar extends React.Component {
             }}
             >{trip.location}</div>
         }
-          })}
-        </>
+      })}
+      </>
     )
   }
 
