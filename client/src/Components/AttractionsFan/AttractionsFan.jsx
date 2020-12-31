@@ -30,7 +30,11 @@ export default class AttractionsFan extends Component {
 		return (
 			<div className="container">
 				<Attraction className="RootAttraction" onPress={this.handleClick} />
+<<<<<<< HEAD
 				<div>{this.state.listIsOpen ? <AttractionList /> : <div> </div>}</div>
+=======
+				{this.state.listIsOpen ? <AttractionList /> : <div> </div>}
+>>>>>>> 06b4dd5b843cb9556d22ecbc4619569c9f350432
 			</div>
 		);
 	}
