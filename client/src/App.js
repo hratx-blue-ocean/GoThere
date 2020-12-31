@@ -1,15 +1,16 @@
+import AttractionsFan from './components/AttractionsFan/AttractionsFan';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-
 function App() {
-  return (
-    <div className="App">
-      <Header className="App-header" />
-      <Footer />
-    </div>
-  );
+	return (
+		<div className="App">
+			<Header className="App-header" />
+			<Footer />
+			<AttractionsFan />
+		</div>
+	);
 }
 
 export default App;

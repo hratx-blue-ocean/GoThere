@@ -1,0 +1,10 @@
+.Attraction {
+	height: 150px;
+	width: 150px;
+	background-color: rgb(44, 61, 63);
+	border-radius: 50%;
+	display: flex;
+	margin: 15px;
+	align-items: bottom;
+	flex-direction: column-reverse;
+}
