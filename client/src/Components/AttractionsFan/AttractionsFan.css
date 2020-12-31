@@ -1,9 +1,12 @@
 .RootAttraction {
-	position: absolute;
 	bottom: 15px;
 	left: 15px;
 	display: flex;
 	margin: 15px;
-	align-items: bottom;
+}
+
+.container {
+	display: flex;
 	flex-direction: column-reverse;
+	min-height: 700px;
 }
