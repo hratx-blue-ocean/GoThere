@@ -1,8 +1,8 @@
 import React, {createContext, useReducer} from "react";
 import Reducer from './Reducer'
 
-const initialState = {
-  test: [],
+var initialState = {
+  tripInfo: {},
   test2: [],
   error: null
 };

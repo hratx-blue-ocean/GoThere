@@ -1,0 +1,9 @@
+@import '~antd/dist/antd.css';
+
+#location {
+  width: 20%,
+
+}
+.date {
+  width: 20%
+}

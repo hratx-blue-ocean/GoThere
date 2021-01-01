@@ -1,6 +1,7 @@
 class TripInfoObject {
   constructor () {
    this.TripInfo = {
+     id: null,
      location: {
       city: undefined,
       state: undefined,
@@ -17,6 +18,7 @@ class TripInfoObject {
         month: undefined,
         year: undefined
       },
+      type: undefined
     }
   }
 };
