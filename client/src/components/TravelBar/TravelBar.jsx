@@ -13,14 +13,17 @@ const TravelBar = () => {
   var [state, dispatch] = useContext(Context);
   var [tripInfo, setTripInfo] = useState({...TripInfoObject})
 
-  function disabledDate(current) {
-
-    let customDate = state.tripInfo.endDate;
-    if (customDate) {
-      return (current && current > moment(customDate, "YYYY-MM-DD")) || (current && current < moment().endOf('day'));
+  const disabledStartDate = (current) => {
+    let endDate = state.tripInfo.endDate;
+    if (endDate || current) {
+       return (current && current > moment(endDate, "YYYY-MM-DD")) || (current && current < moment().endOf('day'))
     }
-    // if (state.tripInfo.endDate) {console.log('endDate', state.tripInfo.endDate)}
-    // return current && current < moment().endOf('day');
+  }
+  const disabledEndDate = (current) => {
+    let startDate = state.tripInfo.startDate;
+    if (startDate || current) {
+       return (current && current < moment(startDate, "YYYY-MM-DD")) || (current && current < moment().endOf('day'))
+    }
   }
 
   const handleTripInfoChange = (date, dateString, name ) => {
@@ -42,9 +45,10 @@ const TravelBar = () => {
     <div >
       <DatePicker format="YYYY-MM-DD" name="startDate" placeholder="Start"
         onChange={(date, dateSting) => handleTripInfoChange(date, dateSting, 'startDate')}
-        disabledDate={disabledDate}/>
+        disabledDate={disabledStartDate}/>
       <DatePicker format="YYYY-MM-DD" name="endDate" placeholder="End"
-        onChange={(date, dateSting) => handleTripInfoChange(date, dateSting, 'endDate')}/>
+        onChange={(date, dateSting) => handleTripInfoChange(date, dateSting, 'endDate')}
+        disabledDate={disabledEndDate}/>
       <SaveTrip/>
     </div>
   )
