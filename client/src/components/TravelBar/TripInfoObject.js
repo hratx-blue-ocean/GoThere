@@ -1,26 +1,18 @@
-class TripInfoObject {
-  constructor () {
-   this.TripInfo = {
+const TripInfoObject = {
+
      id: null,
+     valid: false,
      location: {
       city: undefined,
       state: undefined,
       adress: undefined,
       zip: undefined
     },
-      startDate: {
-        day: undefined,
-        month: undefined,
-        year: undefined
-      },
-      endDate: {
-        day: undefined,
-        month: undefined,
-        year: undefined
-      },
+      startDate:undefined,
+      endDate:undefined,
       type: undefined
-    }
   }
-};
+
+
 
 export default TripInfoObject;
