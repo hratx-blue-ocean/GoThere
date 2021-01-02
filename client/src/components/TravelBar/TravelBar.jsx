@@ -5,6 +5,7 @@ import TripInfoObject from './TripInfoObject.js';
 import './TravelBar.css';
 import SaveTrip from './SaveTrip';
 import {DatePicker} from 'antd';
+import SearchLocationInput from './SearchLocationInput.js'
 
 //should select buisness
 
@@ -13,7 +14,7 @@ const TravelBar = () => {
   var [state, dispatch] = useContext(Context);
   var [tripInfo, setTripInfo] = useState({...TripInfoObject})
 
-  const disabledStartDate = (current) => {
+    const disabledStartDate = (current) => {
     let endDate = state.tripInfo.endDate;
     if (endDate || current) {
        return (current && current > moment(endDate, "YYYY-MM-DD")) || (current && current < moment().endOf('day'))
@@ -43,6 +44,7 @@ const TravelBar = () => {
 
    return (
     <div >
+      <SearchLocationInput/>
       <DatePicker format="YYYY-MM-DD" name="startDate" placeholder="Start"
         onChange={(date, dateSting) => handleTripInfoChange(date, dateSting, 'startDate')}
         disabledDate={disabledStartDate}/>
