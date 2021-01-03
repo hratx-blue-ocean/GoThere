@@ -7,4 +7,11 @@
 	margin: 15px;
 	align-items: bottom;
 	flex-direction: column-reverse;
+	position: relative;
+}
+
+.Text {
+	z-index: 10;
+	position: absolute;
+	align-items: center;
 }
