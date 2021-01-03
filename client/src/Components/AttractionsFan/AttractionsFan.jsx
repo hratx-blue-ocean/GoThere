@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Attraction from '../Attraction/Attraction.jsx';
 import AttractionList from '../AttractionList/AttractionList.jsx';
+import SelectedAttraction from '../Attraction/SelectedAttraction.jsx';
 import './AttractionsFan.css';
 
 export default class AttractionsFan extends Component {
@@ -29,7 +30,10 @@ export default class AttractionsFan extends Component {
 	render() {
 		return (
 			<div className="container">
-				<Attraction className="RootAttraction" onPress={this.handleClick} />
+				<SelectedAttraction
+					className="RootAttraction"
+					onPress={this.handleClick}
+				/>
 				<div>{this.state.listIsOpen ? <AttractionList /> : <div> </div>}</div>
 			</div>
 		);
