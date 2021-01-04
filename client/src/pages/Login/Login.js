@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Login.css';
 
 import { Row, Col } from 'antd';
-import SignUp from '../../components/SignUp';
+import SignUp from '../../components/SignUp/SignUp';
 
 async function loginUser(credentials) {
   return fetch('http://localhost:8080/login', {
