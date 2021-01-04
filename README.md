@@ -17,7 +17,7 @@ run npm install
 
 Before beginning any work on new features, pull from the pre-production branch to update your local code to the most recent version:
 
-1. Switch to the main branch
+1. switch to the pre-production branch
 ```sh
 git checkout pre-production
 ```
@@ -56,13 +56,13 @@ git commit
 git push origin <branch-name>
 ```
 ## pull requests
-1. When you are ready to merge your feature branch to the main branch, open a pull request
-2. Be sure to pull into the base repository/main branch from the correct feature branch
+1. When you are ready to merge your feature branch to the pre-production branch, open a pull request
+2. Be sure to pull into the base repository/pre-production branch from the correct feature branch
 > base : **pre-production** *from* compare : **feature-branch**
-3. Include the ticket number in the pull request body
-4. Tag a team member in a comment for review before merging
-5. When the pull request is approved, merge the pull request
-6. Then, add the new changes to your local repo
+* Include the ticket number in the pull request body
+* Tag a team member in a comment for review before merging
+3. When the pull request is approved, merge the pull request
+4. Then, add the new changes to your local repo:
 ```sh
  git checkout pre-production
  git pull origin pre-production
