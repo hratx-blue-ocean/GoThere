@@ -8,7 +8,11 @@ import Preferences from './pages/Preferences/Preferences';
 import useToken from './useToken';
 
 // import logo from './logo.svg';
+import AttractionsFan from './components/AttractionsFan/AttractionsFan';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Store from './state-management/Store';
 
 function App() {
   const { token, setToken } = useToken();
@@ -18,23 +22,26 @@ function App() {
   // }
 
   return (
-    <div className="wrapper">
-      <h1>Application</h1>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-          <Route path="/preferences">
-            <Preferences />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <Store>
+      <div className="App">
+        <Header className="App-header" />
+        <BrowserRouter>
+          <Switch>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/preferences">
+              <Preferences />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+        <Footer />
+      </div>
+    </Store>
   );
-}
+
 
 export default App;

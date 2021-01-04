@@ -1,7 +1,5 @@
-/*
-.App {
-  text-align: center;
-}
+
+@import '~antd/dist/antd.css';
 
 .App-logo {
   height: 40vmin;
@@ -37,7 +35,6 @@
     transform: rotate(360deg);
   }
 }
-*/
 
 .wrapper {
   padding: 20px;
