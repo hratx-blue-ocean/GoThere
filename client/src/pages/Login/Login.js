@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import './Login.css';
 
+import { Row, Col } from 'antd';
+import SignUp from '../../components/SignUp';
+
 async function loginUser(credentials) {
   return fetch('http://localhost:8080/login', {
     method: 'POST',
@@ -28,22 +31,28 @@ export default function Login({ setToken }) {
   }
 
   return (
-    <div className="login-wrapper">
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Username</p>
-          <input type="text" onChange={e => setUserName(e.target.value)} />
-        </label>
-        <label>
-          <p>Password</p>
-          <input type="password" onChange={e => setPassword(e.target.value)} />
-        </label>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+    // <Row className="login-wrapper">
+    <Row>
+        <Col span={15}>
+          <h1>Log In</h1>
+          <form onSubmit={handleSubmit}>
+            <label>
+              <p>Username</p>
+              <input type="text" onChange={e => setUserName(e.target.value)} />
+            </label>
+            <label>
+              <p>Password</p>
+              <input type="password" onChange={e => setPassword(e.target.value)} />
+            </label>
+            <div>
+              <button type="submit">Sign In</button>
+            </div>
+          </form>
+        </Col>
+        <Col>
+          <SignUp />
+        </Col>
+    </Row>
   );
 }
 
