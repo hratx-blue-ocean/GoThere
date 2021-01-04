@@ -31,6 +31,8 @@ export default function Login({ setToken }) {
     // check if token is defined
     if (token) {
       setToken(token);
+    } else {
+      console.log('Incorrect information submitted. Retry or sign up for an account.');
     }
   }
 
