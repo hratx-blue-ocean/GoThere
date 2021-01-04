@@ -9,8 +9,8 @@ function App() {
 		<Store>
 			<div className="App">
 				<Header className="App-header" />
-				<Footer />
 				<AttractionsFan />
+				<Footer />
 			</div>
 		</Store>
 	);
