@@ -1,0 +1,104 @@
+<mxfile host="65bd71144e" modified="2020-12-31T18:07:12.259Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.1 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="rglsIjgNPAndXqR1xn1F" version="13.10.0" type="embed">
+    <diagram id="GJ0aDoJZiNTeBog7jIG4" name="Page-1">
+        <mxGraphModel dx="1907" dy="1129" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="16" value="Global State" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="-20" y="240" width="240" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="User Profile" style="whiteSpace=wrap;html=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="590" width="500" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Attractions Widget" style="whiteSpace=wrap;html=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="440" width="500" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Travel Bar Widget" style="whiteSpace=wrap;html=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="220" width="500" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" target="16">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="300" y="285" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Location" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="End Date" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Start Date" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Filters" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="670" y="270" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="attractions" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="570" y="470" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="hotels" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="470" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="resteraunts" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="470" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="attractions" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="470" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.018;entryY=0.65;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="24">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-40" y="750" as="targetPoint"/>
+                        <mxPoint x="-20" y="320" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="-50" y="320"/>
+                            <mxPoint x="-50" y="760"/>
+                            <mxPoint x="-40" y="760"/>
+                            <mxPoint x="-40" y="761"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="16">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="300" y="510" as="targetPoint"/>
+                        <mxPoint x="-60" y="290" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="-70" y="285"/>
+                            <mxPoint x="-70" y="510"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="CurrentPlan : {location, dates...}&lt;br&gt;&lt;br&gt;Trips: [{trip 1}, {trip 2}]" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="275" width="180" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="18">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="200" y="100" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="260" y="390"/>
+                            <mxPoint x="260" y="100"/>
+                            <mxPoint x="200" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="Save Trip" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="305" y="360" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="Calendar" style="whiteSpace=wrap;html=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="670" width="310" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Favorites&lt;br&gt;&lt;br&gt;Upcoming&lt;br&gt;&lt;br&gt;Padt trips" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="670" width="120" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Travel Bar" style="whiteSpace=wrap;html=1;horizontal=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="630" width="460" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="28" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="DataBase" style="whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry y="70" width="200" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
