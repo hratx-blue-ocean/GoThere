@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+// import {Context} from '../state-management/Store';
 import { Calendar, Alert } from 'antd';
 import moment from 'moment';
 import './calendar.css'
 
 class UserCalendar extends React.Component {
+  // const [state, dispatch] = useContext(Context);
   constructor (props) {
     super (props);
     this.state = {
