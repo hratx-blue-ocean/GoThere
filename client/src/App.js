@@ -30,7 +30,7 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/duserpage">
+            <Route path="/userpage">
               <UserPage />
             </Route>
             <Route path="/preferences">
