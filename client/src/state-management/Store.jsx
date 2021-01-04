@@ -1,17 +1,10 @@
 import React, { createContext, useReducer } from 'react';
 import Reducer from './Reducer';
 
-<<<<<<< HEAD
-const initialState = {
-	test: [],
+var initialState = {
+	tripInfo: {},
 	test2: [],
 	error: null,
-=======
-var initialState = {
-  tripInfo: {},
-  test2: [],
-  error: null
->>>>>>> pre-production
 };
 
 const Store = ({ children }) => {
