@@ -1,0 +1,12 @@
+.usertabs {
+  width: 50%;
+}
+
+.userPage {
+  width: 100%;
+  display: flex;
+}
+
+.calendar {
+  width: 50%;
+}
