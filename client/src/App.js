@@ -10,8 +10,8 @@ import useToken from './useToken';
 // import logo from './logo.svg';
 import AttractionsFan from './components/AttractionsFan/AttractionsFan';
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Store from './state-management/Store';
 
 function App() {
@@ -42,6 +42,6 @@ function App() {
       </div>
     </Store>
   );
-
+}
 
 export default App;
