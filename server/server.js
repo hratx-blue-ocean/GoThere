@@ -1,14 +1,25 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const PORT = 8080;
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.use('/login', (req, res) => {
-  res.send({
-    token: 'test123',
-  });
+app.post('/login', (req, res) => {
+  console.log("REQ.BODY:", req.body);
+  let username = req.body.username;
+  let password = req.body.password;
+
+  if (username === 'admin' && password === 'password') {
+    res.send({
+      token: 'test123',
+    });
+  } else {
+    res.status(400).end();
+  }
 });
 
 app.listen(PORT, () =>

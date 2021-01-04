@@ -17,9 +17,9 @@ import Store from './state-management/Store';
 function App() {
 	const { token, setToken } = useToken();
 
-	// if (!token) {
-	// 	return <Login setToken={setToken} />;
-	// }
+	//if (!token) {
+	//return <Login setToken={setToken} />;
+	//}
 
 	return (
 		<Store>
@@ -29,6 +29,9 @@ function App() {
 					<Switch>
 						<Route path="/home">
 							<Home />
+						</Route>
+						<Route path="/login">
+							<Login setToken={setToken} />
 						</Route>
 						<Route path="/dashboard">
 							<Dashboard />
