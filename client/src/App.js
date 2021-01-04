@@ -45,5 +45,5 @@ function App() {
     </Store>
   );
 
-
+  }
 export default App;
