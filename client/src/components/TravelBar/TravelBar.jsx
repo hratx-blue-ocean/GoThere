@@ -5,7 +5,8 @@ import TripInfoObject from './TripInfoObject.js';
 import './TravelBar.css';
 import SaveTrip from './SaveTrip';
 import {DatePicker} from 'antd';
-import SearchLocationInput from './SearchLocationInput.js'
+import SearchLocationInput from './SearchLocationInput.js';
+import TravelBarOptions from './TravelBarOptions.jsx';
 
 //should select buisness
 
@@ -43,7 +44,7 @@ const TravelBar = () => {
   },[tripInfo]);
 
    return (
-    <div >
+    <div className="search-location-input">
       <SearchLocationInput/>
       <DatePicker format="YYYY-MM-DD" name="startDate" placeholder="Start"
         onChange={(date, dateSting) => handleTripInfoChange(date, dateSting, 'startDate')}
@@ -51,6 +52,7 @@ const TravelBar = () => {
       <DatePicker format="YYYY-MM-DD" name="endDate" placeholder="End"
         onChange={(date, dateSting) => handleTripInfoChange(date, dateSting, 'endDate')}
         disabledDate={disabledEndDate}/>
+      <TravelBarOptions/>
       <SaveTrip/>
     </div>
   )

@@ -7,3 +7,8 @@
 .date {
   width: 20%
 }
+
+.search-location-input{
+  display: flex;
+  flex-direction: row;
+}
