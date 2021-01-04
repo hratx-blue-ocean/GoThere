@@ -15,33 +15,33 @@ import Footer from './components/Footer/Footer';
 import Store from './state-management/Store';
 
 function App() {
-  const { token, setToken } = useToken();
+	const { token, setToken } = useToken();
 
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+	//if (!token) {
+		//return <Login setToken={setToken} />;
+	//}
 
-  return (
-    <Store>
-      <div className="App">
-        <Header className="App-header" />
-        <BrowserRouter>
-          <Switch>
-            <Route path="/home">
-              <Home />
-            </Route>
-            <Route path="/dashboard">
-              <Dashboard />
-            </Route>
-            <Route path="/preferences">
-              <Preferences />
-            </Route>
-          </Switch>
-        </BrowserRouter>
-        <Footer />
-      </div>
-    </Store>
-  );
+	return (
+		<Store>
+			<div className="App">
+				<Header className="App-header" />
+				<BrowserRouter>
+					<Switch>
+						<Route path="/home">
+							<Home />
+						</Route>
+						<Route path="/dashboard">
+							<Dashboard />
+						</Route>
+						<Route path="/preferences">
+							<Preferences />
+						</Route>
+					</Switch>
+				</BrowserRouter>
+				<Footer />
+			</div>
+		</Store>
+	);
 }
 
 export default App;
