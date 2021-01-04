@@ -21,27 +21,30 @@ function App() {
 		//return <Login setToken={setToken} />;
 	//}
 
-	return (
-		<Store>
-			<div className="App">
-				<Header className="App-header" />
-				<BrowserRouter>
-					<Switch>
-						<Route path="/home">
-							<Home />
-						</Route>
-						<Route path="/dashboard">
-							<Dashboard />
-						</Route>
-						<Route path="/preferences">
-							<Preferences />
-						</Route>
-					</Switch>
-				</BrowserRouter>
-				<Footer />
-			</div>
-		</Store>
-	);
+  return (
+    <Store>
+      <div className="App">
+        <Header className="App-header" />
+        <BrowserRouter>
+          <Switch>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/login">
+              <Login setToken={setToken} />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/preferences">
+              <Preferences />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+        <Footer />
+      </div>
+    </Store>
+  );
 }
 
 export default App;
