@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = 4000;
 // graphql stuff
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
@@ -26,4 +26,4 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 app.listen(PORT);
-console.log('Running a GraphQL API server at http://localhost:3000/graphql');
+console.log('Running a GraphQL API server at http://localhost:4000/graphql');
