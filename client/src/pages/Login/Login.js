@@ -14,7 +14,8 @@ async function loginUser(credentials) {
     },
     body: JSON.stringify(credentials),
   })
-    .then(data => data.json());
+    .then(data => data.json())
+    .catch(err => console.log('Error:', err));
 }
 
 export default function Login({ setToken }) {
@@ -27,7 +28,10 @@ export default function Login({ setToken }) {
       username,
       password,
     });
-    setToken(token);
+    // check if token is defined
+    if (token) {
+      setToken(token);
+    }
   }
 
   return (

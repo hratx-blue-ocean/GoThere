@@ -30,6 +30,9 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
+            <Route path="/login">
+              <Login setToken={setToken} />
+            </Route>
             <Route path="/dashboard">
               <Dashboard />
             </Route>
