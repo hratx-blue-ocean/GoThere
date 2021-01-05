@@ -43,7 +43,7 @@ const contentList = {
   ),
 };
 
-class TabsCard extends React.Component {
+class UpcomingTrips extends React.Component {
   state = {
     key: "Seattle",
   };
@@ -72,4 +72,4 @@ class TabsCard extends React.Component {
   }
 }
 
-export default TabsCard;
+export default UpcomingTrips;

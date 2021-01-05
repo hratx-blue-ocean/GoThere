@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Alert } from 'antd';
-import './userPage.css';
-import UserCalendar from '../../components/Calendar/calendar.js';
-import TabsCard from '../../components/TabsCard.js';
-import Favorites from '../../components/Favorites.js';
-import PastTrips from '../../components/PastTrips';
+import "./userPage.css";
+import UserCalendar from "../../components/Calendar/calendar.js";
+import UpcomingTrips from "../../components/ProfileLists/UpcomingTrips.js";
+import Favorites from "../../components/ProfileLists/Favorites.js";
+import PastTrips from "../../components/ProfileLists/PastTrips";
 
 export default function UserPage() {
 
@@ -27,12 +27,12 @@ export default function UserPage() {
     </div>
     <div className="userPage">
       <div className="calendar">
-        <UserCalendar/>
+        <UserCalendar />
       </div>
       <div className="usertabs">
-        <TabsCard/>
-        <Favorites/>
-        <PastTrips/>
+        <UpcomingTrips />
+        <Favorites />
+        <PastTrips />
       </div>
     </div>
     </>
