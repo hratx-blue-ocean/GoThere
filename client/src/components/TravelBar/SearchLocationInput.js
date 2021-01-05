@@ -47,13 +47,11 @@ function SearchLocationInput() {
     const addressObject = autoComplete.getPlace();
     const query = addressObject.formatted_address;
     updateQuery(query);
-    var tripInfoClone = {...tripInfo}
+    console.log('state', state.tripInfo)
+    var tripInfoClone = {...state.tripInfo}
+    console.log('tripInfoClone', tripInfoClone)
     tripInfoClone.location = query;
-    console.log('clone', tripInfoClone)
-    setTripInfo(tripInfoClone);
-
-    console.log('InfoClone', {...state.tripInfo})
-    console.log(addressObject.formatted_address);
+    dispatch({type: 'SET_TRIP_INFO', payload: tripInfo});
   }
 
 
@@ -62,7 +60,7 @@ function SearchLocationInput() {
       `https://maps.googleapis.com/maps/api/js?key=${keys.GOOGLE_API_KEY}&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
-    console.log('Search re-render')
+
   }, [state]);
 
   return (
