@@ -3,7 +3,7 @@ CREATE DATABASE gothere;
 \c gothere;
 
 CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
+  userid SERIAL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   address VARCHAR,
   city VARCHAR,

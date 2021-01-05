@@ -19,7 +19,11 @@ const checkUsernamePassword = (username, password) => {
 }
 
 const createNewUser = (req, res) => {
-
+  pool.query(`SELECT * FROM users` , (error, results) => {
+    if (error) {
+      res.status(400)
+    } res.status(200).send(`User added with ID: ${result.userid}`)
+  })
 }
 
 

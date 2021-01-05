@@ -14,8 +14,7 @@ app.post('/login', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
 
-
-db.checkUsernamePassword(username, password).then( (isCorrectPassword)=> {
+db.checkUsernamePassword(username, password).then((isCorrectPassword)=> {
     if (isCorrectPassword) {
     res.send({
       token: 'test123',
@@ -24,13 +23,15 @@ db.checkUsernamePassword(username, password).then( (isCorrectPassword)=> {
     res.status(400).end();
   }
 })
-
-
 });
 
 // created new endpoint /newuser - creating new user
 app.post('/newuser', (req, res) => {
-
+  console.log('hitting the new user endpoint!', req.query)
+  res.send('hit new user')
+  // db.createNewUser(req.body).then((data) => {
+  //   res.send('user added')
+  // })
 })
 
 app.listen(PORT, () =>
