@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import keys from './API.js';
+//import keys from './API.js';
 
 let autoComplete;
 
@@ -45,8 +45,9 @@ function SearchLocationInput() {
   const autoCompleteRef = useRef(null);
 
   useEffect(() => {
+    //replace undefined with Google API key
     loadScript(
-      `https://maps.googleapis.com/maps/api/js?key=${keys.GOOGLE_API_KEY}&libraries=places`,
+      `https://maps.googleapis.com/maps/api/js?key=${undefined}&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
   }, []);
