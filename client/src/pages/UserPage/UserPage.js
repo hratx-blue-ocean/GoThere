@@ -29,7 +29,8 @@ export default function UserPage() {
         <Alert
           message={tripMessage}
           type="info"
-          closable afterClose={handleClose}
+          closable
+          afterClose={handleClose}
         />
       ) : null}
     </div>
