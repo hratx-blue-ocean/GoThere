@@ -16,20 +16,22 @@ app.post('/login', (req, res) => {
 
 
 db.checkUsernamePassword(username, password).then( (isCorrectPassword)=> {
-  console.log('is correct? ', isCorrectPassword);
+    if (isCorrectPassword) {
+    res.send({
+      token: 'test123',
+    });
+  } else {
+    res.status(400).end();
+  }
 })
 
 
-
-  // if (username === 'admin' && password === 'password') {
-  //   res.send({
-  //     token: 'test123',
-  //   });
-  // } else {
-  //   res.status(400).end();
-  // }
-  res.end();
 });
+
+// created new endpoint /newuser - creating new user
+app.post('/newuser', (req, res) => {
+
+})
 
 app.listen(PORT, () =>
   console.log(`API is running on http://localhost:${PORT}/login`)

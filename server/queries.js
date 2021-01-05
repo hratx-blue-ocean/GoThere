@@ -8,7 +8,6 @@ const pool = new Pool({
 })
 
 const checkUsernamePassword = (username, password) => {
-  console.log('checking password..')
   return pool.query(`SELECT email, password FROM users WHERE email = '${username}'`).then((results) => {
     if (password === results.rows[0].password) {
       console.log('CORRECT PASSWORD!')
@@ -19,7 +18,12 @@ const checkUsernamePassword = (username, password) => {
   })
 }
 
+const createNewUser = (req, res) => {
+
+}
+
 
 module.exports = {
   checkUsernamePassword,
+  createNewUser,
 }
