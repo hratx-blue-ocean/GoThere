@@ -14,13 +14,21 @@ app.post('/login', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
 
-  if (username === 'admin' && password === 'password') {
-    res.send({
-      token: 'test123',
-    });
-  } else {
-    res.status(400).end();
-  }
+
+db.checkUsernamePassword(username, password).then( (isCorrectPassword)=> {
+  console.log('is correct? ', isCorrectPassword);
+})
+
+
+
+  // if (username === 'admin' && password === 'password') {
+  //   res.send({
+  //     token: 'test123',
+  //   });
+  // } else {
+  //   res.status(400).end();
+  // }
+  res.end();
 });
 
 app.listen(PORT, () =>
