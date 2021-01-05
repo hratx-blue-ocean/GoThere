@@ -30,7 +30,6 @@ function SearchLocationInput() {
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
   var [state, dispatch] = useContext(Context);
-  var [tripInfo, setTripInfo] = useState({...state.tripInfo})
 
   function handleScriptLoad(updateQuery, autoCompleteRef) {
     autoComplete = new window.google.maps.places.Autocomplete(
@@ -51,7 +50,7 @@ function SearchLocationInput() {
     var tripInfoClone = {...state.tripInfo}
     console.log('tripInfoClone', tripInfoClone)
     tripInfoClone.location = query;
-    dispatch({type: 'SET_TRIP_INFO', payload: tripInfo});
+    dispatch({type: 'SET_TRIP_INFO', payload: tripInfoClone});
   }
 
 

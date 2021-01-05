@@ -4,19 +4,14 @@ import TripInfoObject from './TripInfoObject.js';
 import {Rate, Dropdown, Button, Menu, Radio } from 'antd';
 
 
-
-
 const TravelBarOptions = () => {
 
   var [state, dispatch] = useContext(Context);
-  var [tripInfo, setTripInfo] = useState()
+  const [tripType, setTripType] = useState('Buisness')
 
-  const handleTripInfoChange = (date, dateString, name ) => {
-
-    var tripInfoClone = {...state.tripInfo};
-    console.log('tripInfoClone', tripInfoClone)
-    tripInfoClone[name] = dateString;
-    setTripInfo(tripInfoClone);
+  const handleTripInfoChange = (event) => {
+    var selectedType = event.target.value;
+    setTripType(selectedType);
   }
 
   const menu = (
@@ -25,9 +20,9 @@ const TravelBarOptions = () => {
         <div>preferrd hotel rating<Rate/></div>
       </Menu.Item>
       <Menu.Item>
-        <Radio.Group>
-          <Radio>Buisness</Radio>
-          <Radio>Personal</Radio>
+        <Radio.Group onChange={handleTripInfoChange} value={tripType}>
+          <Radio value={"Buisness"}>Buisness</Radio>
+          <Radio value={"Personal"}>Personal</Radio>
         </Radio.Group>
       </Menu.Item>
     </Menu>

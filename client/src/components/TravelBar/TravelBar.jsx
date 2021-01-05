@@ -35,7 +35,6 @@ const TravelBar = () => {
   }
 
   const updateGlobalState = () => {
-
     dispatch({type: 'SET_TRIP_INFO', payload: tripInfo});
   };
 
