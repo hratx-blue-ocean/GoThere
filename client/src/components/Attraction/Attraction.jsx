@@ -59,7 +59,7 @@ export default class Attraction extends Component {
 							visible={this.state.clicked}
 							onVisibleChange={this.handleClickChange}
 						>
-							{/* <Button>Hover and click / </Button> */}
+							<Button>Hover and click / </Button>
 						</Popover>
 					</Popover>
 					<div className="Text"> </div>

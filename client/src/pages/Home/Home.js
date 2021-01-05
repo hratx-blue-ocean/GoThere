@@ -1,6 +1,6 @@
 import React from 'react';
 import TravelBar from '../../components/TravelBar/TravelBar.jsx';
-import AttractionsFan from '../../components/AttractionsFan/AttractionsFan';
+import AttractionsBar from '../../components/AttractionsBar/AttractionsBar';
 import './Home.css';
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
 		<div className="wrapper">
 			<h2>Home (placeholder)</h2>
 			<TravelBar />
-			<AttractionsFan />
+			<AttractionsBar />
 		</div>
 	);
 }
