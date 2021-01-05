@@ -8,18 +8,26 @@ import PastTrips from "../../components/ProfileLists/PastTrips";
 
 export default function UserPage() {
 
+  const trip = {
+    location: "Jot 'Em Down, TX",
+    startDate: "01-09-2021",
+    weather: "Sunny, 52 degrees"
+  }
+
   const [visible, setVisible] = useState(true);
 
   const handleClose = () => {
     setVisible(false);
   };
 
+  const tripMessage = `You have a trip in the next few days to ${trip.location} on ${trip.startDate}, the weather will be a ${trip.weather}`
+
   return (
     <>
     <div className='eminent trip'>
       {visible ? (
         <Alert
-          message="You have a trip soon!"
+          message={tripMessage}
           type="info"
           closable afterClose={handleClose}
         />
