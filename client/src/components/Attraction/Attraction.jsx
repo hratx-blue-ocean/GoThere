@@ -34,10 +34,20 @@ export default class Attraction extends Component {
 	};
 
 	render() {
-		const hoverContent = <div>Attraction details.</div>;
-		const clickContent = <div>Save {this.props.name}</div>;
+		const hoverContent = (
+			<>
+				<div>
+					Address: {this.props.address[0]}, {this.props.address[1]}{' '}
+				</div>
+
+				<div>Price: {this.props.price}</div>
+				<div>Rating: {this.props.rating}</div>
+			</>
+		);
+		const clickContent = <div>Save {this.props.name}?</div>;
 		return (
 			<div>
+				{/* <img src={this.props.imageUrl} /> */}
 				<div className="Attraction">
 					<Popover
 						placement="right"
@@ -51,15 +61,15 @@ export default class Attraction extends Component {
 							content={
 								<div>
 									{clickContent}
-									<a onClick={this.hide}>Close</a>
+									<button onClick={this.hide}>Save</button>
 								</div>
 							}
-							title="Click title"
+							title=""
 							trigger="click"
 							visible={this.state.clicked}
 							onVisibleChange={this.handleClickChange}
 						>
-							<Button>Hover and click / </Button>
+							<Button>Details</Button>
 						</Popover>
 					</Popover>
 					<div className="Text"> </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AttractionList from '../AttractionList/AttractionList.jsx';
 import SelectedAttraction from '../Attraction/SelectedAttraction.jsx';
+import hotels from '../../dummy-data/dummyHotels.js';
 import './AttractionsFan.css';
 
 export default class AttractionsFan extends Component {
@@ -11,13 +12,6 @@ export default class AttractionsFan extends Component {
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}
-
-	// showList = () => {
-	// 	this.setState({ listIsOpen: true });
-	// };
-	// closeList = () => {
-	// 	this.setState({ listIsOpen: false });
-	// };
 
 	handleClick() {
 		console.log('clicked');
@@ -33,7 +27,13 @@ export default class AttractionsFan extends Component {
 					className="RootAttraction"
 					onPress={this.handleClick}
 				/>
-				<div>{this.state.listIsOpen ? <AttractionList /> : <div> </div>}</div>
+				<div>
+					{this.state.listIsOpen ? (
+						<AttractionList attractions={hotels} />
+					) : (
+						<div> </div>
+					)}
+				</div>
 			</div>
 		);
 	}
