@@ -8,7 +8,6 @@ import Preferences from './pages/Preferences/Preferences';
 import useToken from './useToken';
 
 // import logo from './logo.svg';
-import AttractionsFan from './components/AttractionsFan/AttractionsFan';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
