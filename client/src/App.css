@@ -1,6 +1,4 @@
-
-@import '~antd/dist/antd.css';
-
+@import "~antd/dist/antd.css";
 
 .App-header {
   background-color: #282c34;
@@ -28,4 +26,19 @@
 
 .wrapper {
   padding: 20px;
+}
+
+/* NAVIGATION BAR */
+nav {
+  border-bottom: 1px solid black;
+}
+
+li {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+ul {
+  list-style-type: none;
+  text-align: right;
 }
