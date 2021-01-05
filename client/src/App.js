@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -28,12 +28,22 @@ function App() {
       <div className="App">
         <Header className="App-header" />
         <BrowserRouter>
+          <nav>
+            <ul>
+              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/dashboard">Dashboard</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </ul>
+          </nav>
           <Switch>
             <Route exact path="/">
               {loggedIn
                 ? <Redirect to="/dashboard" />
                 : <Home />
               }
+            </Route>
+            <Route path="/home">
+              <Home />
             </Route>
             <Route path="/login">
               <Login setToken={setToken} />
