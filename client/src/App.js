@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -15,6 +15,8 @@ import Footer from './components/Footer/Footer';
 import Store from './state-management/Store';
 
 function App() {
+  let loggedIn = true;
+
   const { token, setToken } = useToken();
 
   if(!token) {
@@ -27,8 +29,11 @@ function App() {
         <Header className="App-header" />
         <BrowserRouter>
           <Switch>
-            <Route path="/home">
-              <Home />
+            <Route exact path="/">
+              {loggedIn
+                ? <Redirect to="/dashboard" />
+                : <Home />
+              }
             </Route>
             <Route path="/login">
               <Login setToken={setToken} />
