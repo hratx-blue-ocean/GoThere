@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const PORT = 8080;
+const db = require('./queries.js')
+
+app.use(express.static(__dirname + '/../client/src'));
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -13,14 +16,35 @@ app.post('/login', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
 
-  if (username === 'admin' && password === 'password') {
+db.checkUsernamePassword(username, password).then((isCorrectPassword)=> {
+    if (isCorrectPassword) {
     res.send({
       token: 'test123',
     });
   } else {
     res.status(400).end();
   }
+})
 });
+
+// created new endpoint /newuser - creating new user
+app.post('/newuser', (req, res) => {
+  console.log('hitting the new user endpoint!', req.query)
+
+  db.createNewUser(req.query).then((data) => {
+    res.send('user added')
+  })
+})
+
+//using trips for now
+app.post('/trips', (req, res) => {
+  console.log('hitting the newtrip endpoint!', req.query)
+
+  db.createNewTrip(req.query).then((data) => {
+    res.send('user added')
+  })
+})
+
 
 app.listen(PORT, () =>
   console.log(`API is running on http://localhost:${PORT}/login`)
