@@ -5,7 +5,7 @@ const app = express();
 const PORT = 8080;
 const db = require('./queries.js')
 // needed for yelp API calls
-import API_KEY from './API.js';
+const API_KEY = require('./API.js');
 const yelp = require('yelp-fusion');
 const client = yelp.client(API_KEY);
 const axios = require('axios');
@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.get('/attractions', (req, res) => {
 
     const yelp = require('yelp-fusion');
-    const client = yelp.client(API_KEY);
+    const client = yelp.client(API_KEY.API_KEY);
 
     client.search({
       term: req.query.term,
@@ -31,7 +31,6 @@ app.get('/attractions', (req, res) => {
     }).catch(e => {
       console.log(e);
     });
-
 });
 
 
