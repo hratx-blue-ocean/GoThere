@@ -1,7 +1,8 @@
 .Attraction {
 	height: 150px;
 	width: 150px;
-	background-color: rgb(44, 61, 63);
+	background-color: rgb(141, 166, 168);
+	opacity: 0.8;
 	border-radius: 50%;
 	display: flex;
 	margin: 15px;
@@ -14,4 +15,13 @@
 	z-index: 10;
 	position: absolute;
 	align-items: center;
+}
+
+.Attraction:hover {
+	transform: scale(1.1);
+	transition: all ease 500ms;
+}
+
+.ant-popover-content p {
+	margin: 0;
 }

@@ -1,9 +1,9 @@
 const Reducer = (state, action) => {
   switch (action.type) {
-    case 'TEST 1':
+    case 'SET_TRIP_INFO':
       return {
         ...state,
-        test: action.payload
+        tripInfo: action.payload
       };
       case 'TEST 2':
         return {

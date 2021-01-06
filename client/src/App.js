@@ -15,11 +15,11 @@ import Footer from './components/Footer/Footer';
 import Store from './state-management/Store';
 
 function App() {
-  const { token, setToken } = useToken();
+	const { token, setToken } = useToken();
 
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
+	//if (!token) {
+		//return <Login setToken={setToken} />;
+	//}
 
   return (
     <Store>
@@ -30,7 +30,10 @@ function App() {
             <Route path="/home">
               <Home />
             </Route>
-            <Route path="/userpage">
+            <Route path="/login">
+              <Login setToken={setToken} />
+            </Route>
+            <Route path="/userPage">
               <UserPage />
             </Route>
             <Route path="/preferences">
