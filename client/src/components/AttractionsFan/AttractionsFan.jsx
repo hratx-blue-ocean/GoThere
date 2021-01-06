@@ -3,11 +3,11 @@ import AttractionList from '../AttractionList/AttractionList.jsx';
 import SelectedAttraction from '../Attraction/SelectedAttraction.jsx';
 import hotels from '../../dummy-data/dummyHotels.js';
 import './AttractionsFan.css';
-import API_KEY from '../../API.js';
+import keys from '../../API.js';
 const axios = require('axios');
 
 const yelp = require('yelp-fusion');
-const client = yelp.client(API_KEY);
+const client = yelp.client(keys.API_KEY);
 
 export default class AttractionsFan extends Component {
 	constructor(props) {
@@ -39,7 +39,7 @@ export default class AttractionsFan extends Component {
 			method: 'get',
 			url: 'https://api.yelp.com/v3/businesses/search',
 			headers: {
-				Authorization: `Bearer ${API_KEY}`,
+				Authorization: `Bearer ${keys.YELP_API_KEY}`,
 			},
 			params: {
 				mode: 'no-cors',
