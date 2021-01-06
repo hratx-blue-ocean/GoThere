@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -8,17 +8,18 @@ import Preferences from './pages/Preferences/Preferences';
 import useToken from './useToken';
 
 // import logo from './logo.svg';
-import AttractionsFan from './components/AttractionsFan/AttractionsFan';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Store from './state-management/Store';
 
 function App() {
-	const { token, setToken } = useToken();
+  let loggedIn = true;
+
+  const { token, setToken } = useToken();
 
 	//if (!token) {
-		//return <Login setToken={setToken} />;
+	//return <Login setToken={setToken} />;
 	//}
 
   return (
@@ -26,7 +27,20 @@ function App() {
       <div className="App">
         <Header className="App-header" />
         <BrowserRouter>
+          <nav>
+            <ul>
+              <li><Link to="/home">Home</Link></li>
+              <li><Link to="/dashboard">Dashboard</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </ul>
+          </nav>
           <Switch>
+            <Route exact path="/">
+              {loggedIn
+                ? <Redirect to="/dashboard" />
+                : <Home />
+              }
+            </Route>
             <Route path="/home">
               <Home />
             </Route>

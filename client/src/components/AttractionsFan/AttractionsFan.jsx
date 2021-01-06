@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Attraction from '../Attraction/Attraction.jsx';
 import AttractionList from '../AttractionList/AttractionList.jsx';
 import SelectedAttraction from '../Attraction/SelectedAttraction.jsx';
 import './AttractionsFan.css';
