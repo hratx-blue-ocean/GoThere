@@ -34,8 +34,8 @@ app.post('/newuser', (req, res) => {
   })
 })
 
-//using newtrip for now
-app.post('/newtrip', (req, res) => {
+//using trips for now
+app.post('/trips', (req, res) => {
   console.log('hitting the newtrip endpoint!', req.query)
 
   db.createNewTrip(req.query).then((data) => {

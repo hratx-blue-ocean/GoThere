@@ -42,9 +42,21 @@ const createNewTrip = (userData) => {
   })
 }
 
+//query database for user trips by userID
+const getUserTrips = (userId) => {
+
+}
+
+
+// query database for favorites by userID
+const getUserFavorites = (userId) => {
+
+}
 
 module.exports = {
   checkUsernamePassword,
   createNewUser,
   createNewTrip,
+  getUserTrips,
+  getUserFavorites,
 }
