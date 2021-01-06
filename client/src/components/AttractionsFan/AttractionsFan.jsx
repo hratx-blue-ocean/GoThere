@@ -21,6 +21,7 @@ export default class AttractionsFan extends Component {
 
 	componentDidMount() {
 		this.getHotels();
+
 		// client
 		// 	.search({
 		// 		term: 'restaurants',
@@ -37,13 +38,11 @@ export default class AttractionsFan extends Component {
 	getHotels = () => {
 		const config = {
 			method: 'get',
-			url: 'https://api.yelp.com/v3/businesses/search',
+			url: 'http://localhost:8080/attractions',
 			headers: {
 				Authorization: `Bearer ${API_KEY}`,
 			},
-			params: {
-				mode: 'no-cors',
-			},
+			params: {},
 		};
 
 		axios(config)
