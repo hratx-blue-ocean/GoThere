@@ -51,7 +51,7 @@ class PastTrips extends React.Component {
     return (
       <>
         <Card
-          style={{ maxWidth: "50%" }}
+          className="profileCard"
           title="Past Trips"
           tabList={tabList}
           activeTabKey={this.state.key}

@@ -50,7 +50,7 @@ class Favorites extends React.Component {
     return (
       <>
         <Card
-          style={{ maxWidth: "50%" }}
+          className="profileCard"
           title="Favorites"
           tabList={tabList}
           activeTabKey={this.state.key}
