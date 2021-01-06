@@ -3,19 +3,20 @@ import { Card, List } from "antd";
 
 const tabList = [
   {
-    key: "Hotels",
-    tab: "Hotels",
+    key: "Seattle",
+    tab: "Seattle",
   },
   {
-    key: "Restaurants",
-    tab: "Restaurants",
+    key: "Orlando",
+    tab: "Orlando",
   },
 ];
 
 const data = [
-  "Holiday Inn Express, Austin TX",
-  "Marriot City Center, Seattle WA",
-  "Comfort Inn, Orlando FL",
+  "Date: 12 Jan - 15 Jan 2021",
+  "Hotel: Marriot City Center",
+  "Weather: Sunny 84",
+  "Attractions: Escape Room",
 ];
 
 // const data = [{
@@ -26,19 +27,25 @@ const data = [
 // }];
 
 const contentList = {
-  Hotels: (
+  Seattle: (
     <List
       size="small"
       dataSource={data}
       renderItem={(item) => <List.Item>{item}</List.Item>}
     />
   ),
-  Restaurants: <p>content2</p>,
+  Orlando: (
+    <List
+      size="small"
+      dataSource={data}
+      renderItem={(item) => <List.Item>{item}</List.Item>}
+    />
+  ),
 };
 
-class Favorites extends React.Component {
+class UpcomingTrips extends React.Component {
   state = {
-    key: "Hotels",
+    key: "Seattle",
   };
 
   onTabChange = (key, type) => {
@@ -50,8 +57,8 @@ class Favorites extends React.Component {
     return (
       <>
         <Card
-          style={{ maxWidth: "50%" }}
-          title="Favorites"
+          className="profileCard"
+          title="Upcoming Trips"
           tabList={tabList}
           activeTabKey={this.state.key}
           onTabChange={(key) => {
@@ -65,4 +72,4 @@ class Favorites extends React.Component {
   }
 }
 
-export default Favorites;
+export default UpcomingTrips;
