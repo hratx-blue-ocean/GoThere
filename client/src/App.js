@@ -30,14 +30,14 @@ function App() {
           <nav>
             <ul>
               <li><Link to="/home">Home</Link></li>
-              <li><Link to="/dashboard">Dashboard</Link></li>
+              <li><Link to="/userPage">User Page</Link></li>
               <li><Link to="/login">Login</Link></li>
             </ul>
           </nav>
           <Switch>
             <Route exact path="/">
               {loggedIn
-                ? <Redirect to="/dashboard" />
+                ? <Redirect to="/userPage" />
                 : <Home />
               }
             </Route>
