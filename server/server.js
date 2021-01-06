@@ -5,6 +5,8 @@ const app = express();
 const PORT = 8080;
 const db = require('./queries.js')
 
+app.use(express.static(__dirname + '/../client/src'));
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
