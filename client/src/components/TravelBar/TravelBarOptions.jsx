@@ -7,13 +7,20 @@ const TravelBarOptions = () => {
 
   var [state, dispatch] = useContext(Context);
   const [tripType, setTripType] = useState('Buisness')
+  const [hotelRating, setHotelRating] = useState(undefined)
 
   const handleTripInfoChange = (event) => {
-    var selectedType = event.target.value;
     var tripInfoClone = {...state.tripInfo}
-    tripInfoClone.type = selectedType;
+    if (typeof event === 'number') {
+      tripInfoClone.filter.rating = event
+      setHotelRating(event);
+    } else {
+      var selectedType = event.target.value;
+      tripInfoClone.type = selectedType;
+      setTripType(selectedType);
+    }
+
     dispatch({type: 'SET_TRIP_INFO', payload: tripInfoClone});
-    setTripType(selectedType);
 
   }
 

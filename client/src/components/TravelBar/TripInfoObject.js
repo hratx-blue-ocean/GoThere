@@ -6,6 +6,10 @@ const dummyTripInfoObject = {
     startDate: undefined,
     endDate: undefined,
     type: undefined,
+    filter: {
+      rating: undefined,
+      price: undefined
+    },
     hotel: undefined,
     attractions: []
   }

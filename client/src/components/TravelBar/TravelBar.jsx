@@ -13,7 +13,7 @@ import TravelBarOptions from './TravelBarOptions.jsx';
 const TravelBar = () => {
 
   var [state, dispatch] = useContext(Context);
-  var [tripInfo, setTripInfo] = useState({...TripInfoObject})
+  var [tripInfo, setTripInfo] = useState({...state.tripInfo})
 
     const disabledStartDate = (current) => {
     let endDate = state.tripInfo.endDate;
