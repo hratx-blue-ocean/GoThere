@@ -34,15 +34,15 @@ export default class Attraction extends Component {
 	};
 
 	render() {
-		const hoverContent = <div>This is hover content.</div>;
-		const clickContent = <div>This is click content.</div>;
+		const hoverContent = <div>Attraction details.</div>;
+		const clickContent = <div>Save {this.props.name}</div>;
 		return (
 			<div>
 				<div className="Attraction">
 					<Popover
-						style={{ width: 500 }}
+						placement="right"
 						content={hoverContent}
-						title="Hover title"
+						title={this.props.name}
 						trigger="hover"
 						visible={this.state.hovered}
 						onVisibleChange={this.handleHoverChange}
@@ -62,7 +62,7 @@ export default class Attraction extends Component {
 							<Button>Hover and click / </Button>
 						</Popover>
 					</Popover>
-					<div className="Text"> {this.props.name} </div>
+					<div className="Text"> </div>
 				</div>
 			</div>
 		);
