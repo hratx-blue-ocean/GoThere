@@ -5,30 +5,6 @@ import moment from 'moment';
 import './calendar.css'
 
 class UserCalendar extends React.Component {
-  // const [state, dispatch] = useContext(Context);
-  constructor (props) {
-    super (props);
-    this.state = {
-      value: moment(),
-      selectedValue: moment(),
-    };
-    //binding
-    this.onSelect = this.onSelect.bind(this);
-    this.onPanelChange = this.onPanelChange.bind(this);
-    this.dateCellRender = this.dateCellRender.bind(this);
-  }
-
-  //selecting a date on calendar
-  onSelect = (value) => {
-    this.setState({
-      value,
-      selectedValue: value,
-    });
-  };
-
-  onPanelChange = (value) => {
-    this.setState({ value });
-  };
 
   //render into each day on calendar
   dateCellRender = (value) => {
@@ -98,11 +74,7 @@ class UserCalendar extends React.Component {
     const { value, selectedValue } = this.state;
     return (
       <>
-        <Alert
-        // TODO: add trip info or redirect to trip planning?
-          message={`Upcoming trips on this date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`}
-        />
-        <Calendar value={value} onSelect={this.onSelect} onPanelChange={this.onPanelChange} dateCellRender={this.dateCellRender}/>
+        <Calendar dateCellRender={this.dateCellRender}/>
       </>
     );
   }
