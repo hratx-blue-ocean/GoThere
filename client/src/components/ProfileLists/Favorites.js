@@ -3,20 +3,19 @@ import { Card, List } from "antd";
 
 const tabList = [
   {
-    key: "Seattle",
-    tab: "Seattle",
+    key: "Hotels",
+    tab: "Hotels",
   },
   {
-    key: "Orlando",
-    tab: "Orlando",
+    key: "Restaurants",
+    tab: "Restaurants",
   },
 ];
 
 const data = [
-  "Date: 12 Dec - 22 Dec 2020",
-  "Hotel: Marriot City Center",
-  "Weather: Sunny 84",
-  "Attractions: Escape Room",
+  "Holiday Inn Express, Austin TX",
+  "Marriot City Center, Seattle WA",
+  "Comfort Inn, Orlando FL",
 ];
 
 // const data = [{
@@ -27,19 +26,19 @@ const data = [
 // }];
 
 const contentList = {
-  Seattle: (
+  Hotels: (
     <List
       size="small"
       dataSource={data}
       renderItem={(item) => <List.Item>{item}</List.Item>}
     />
   ),
-  Orlando: <p>content2</p>,
+  Restaurants: <p>content2</p>,
 };
 
-class PastTrips extends React.Component {
+class Favorites extends React.Component {
   state = {
-    key: "Seattle",
+    key: "Hotels",
   };
 
   onTabChange = (key, type) => {
@@ -51,8 +50,8 @@ class PastTrips extends React.Component {
     return (
       <>
         <Card
-          style={{ maxWidth: "50%" }}
-          title="Past Trips"
+          className="profileCard"
+          title="Favorites"
           tabList={tabList}
           activeTabKey={this.state.key}
           onTabChange={(key) => {
@@ -66,4 +65,4 @@ class PastTrips extends React.Component {
   }
 }
 
-export default PastTrips;
+export default Favorites;
