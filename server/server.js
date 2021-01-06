@@ -4,12 +4,40 @@ const cors = require('cors');
 const app = express();
 const PORT = 8080;
 const db = require('./queries.js')
+// needed for yelp API calls
+import API_KEY from './API.js';
+const yelp = require('yelp-fusion');
+const client = yelp.client(API_KEY);
+const axios = require('axios');
 
 app.use(express.static(__dirname + '/../client/src'));
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// yelp api calls
+app.get('/attractions', (req, res) => {
+
+    const yelp = require('yelp-fusion');
+    const client = yelp.client(API_KEY);
+
+    client.search({
+      term: req.query.term,
+      location: req.query.location,
+    }).then(response => {
+      console.log(req)
+      res.send(response.jsonBody.businesses)
+    }).catch(e => {
+      console.log(e);
+    });
+
+});
+
+
+
+
+//  database query calls
 
 app.post('/login', (req, res) => {
   console.log("REQ.BODY:", req.body);
