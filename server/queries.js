@@ -18,8 +18,24 @@ const checkUsernamePassword = (username, password) => {
   })
 }
 
-const createNewUser = (req, res) => {
-  pool.query(`SELECT * FROM users` , (error, results) => {
+const createNewUser = (userData) => {
+  pool.query(
+    `INSERT INTO users(name, address, city, state, email, password, favorites)
+    VALUES (${userData.name}, ${userData.address}, ${userData.city}, ${userData.state}, ${userData.email}, ${userData.password}, 2);` ,
+    (error, results) => {
+    if (error) {
+      res.status(400)
+    } res.status(200).send(`User added with ID: ${result.userid}`)
+  })
+}
+
+
+// for a new trip, needs changing
+const createNewTrip = (userData) => {
+  pool.query(
+    `INSERT INTO users(name, address, city, state, email, password, favorites)
+    VALUES (${userData.name}, ${userData.address}, ${userData.city}, ${userData.state}, ${userData.email}, ${userData.password}, 2);` ,
+    (error, results) => {
     if (error) {
       res.status(400)
     } res.status(200).send(`User added with ID: ${result.userid}`)
@@ -30,4 +46,5 @@ const createNewUser = (req, res) => {
 module.exports = {
   checkUsernamePassword,
   createNewUser,
+  createNewTrip,
 }

@@ -28,11 +28,21 @@ db.checkUsernamePassword(username, password).then((isCorrectPassword)=> {
 // created new endpoint /newuser - creating new user
 app.post('/newuser', (req, res) => {
   console.log('hitting the new user endpoint!', req.query)
-  res.send('hit new user')
-  // db.createNewUser(req.body).then((data) => {
-  //   res.send('user added')
-  // })
+
+  db.createNewUser(req.query).then((data) => {
+    res.send('user added')
+  })
 })
+
+//using newtrip for now
+app.post('/newtrip', (req, res) => {
+  console.log('hitting the newtrip endpoint!', req.query)
+
+  db.createNewTrip(req.query).then((data) => {
+    res.send('user added')
+  })
+})
+
 
 app.listen(PORT, () =>
   console.log(`API is running on http://localhost:${PORT}/login`)
