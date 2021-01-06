@@ -14,7 +14,7 @@ export default class AttractionsFan extends Component {
 		super(props);
 		this.state = {
 			listIsOpen: false,
-			attractions: [],
+			attractions: [hotels],
 		};
 		this.handleClick = this.handleClick.bind(this);
 		this.getHotels = this.getHotels.bind(this);
@@ -35,8 +35,8 @@ export default class AttractionsFan extends Component {
 		};
 
 		axios(config)
-			.then(function (response) {
-				console.log(JSON.stringify(response.data));
+			.then((response) => {
+				// console.log(JSON.stringify(response.data));
 				this.setState({
 					attractions: response.data,
 				});
@@ -47,13 +47,13 @@ export default class AttractionsFan extends Component {
 	}
 
 	handleClick() {
-		console.log('clicked');
 		this.setState((state) => ({
 			listIsOpen: !state.listIsOpen,
 		}));
 	}
 
 	render() {
+		// console.log('attractions in state:', this.state.attractions);
 		return (
 			<div className="container">
 				<SelectedAttraction
