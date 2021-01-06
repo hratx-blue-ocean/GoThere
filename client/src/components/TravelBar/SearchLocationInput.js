@@ -74,4 +74,4 @@ function SearchLocationInput() {
   );
 }
 
-export default SearchLocationInput;t
+export default SearchLocationInput;
