@@ -13,7 +13,7 @@ const tabList = [
 ];
 
 const data = [
-  "Date: 12 Jan - 15 Jan 2021",
+  "Date: 12 Dec - 22 Dec 2020",
   "Hotel: Marriot City Center",
   "Weather: Sunny 84",
   "Attractions: Escape Room",
@@ -34,16 +34,10 @@ const contentList = {
       renderItem={(item) => <List.Item>{item}</List.Item>}
     />
   ),
-  Orlando: (
-    <List
-      size="small"
-      dataSource={data}
-      renderItem={(item) => <List.Item>{item}</List.Item>}
-    />
-  ),
+  Orlando: <p>content2</p>,
 };
 
-class TabsCard extends React.Component {
+class PastTrips extends React.Component {
   state = {
     key: "Seattle",
   };
@@ -57,8 +51,8 @@ class TabsCard extends React.Component {
     return (
       <>
         <Card
-          style={{ maxWidth: "50%" }}
-          title="Upcoming Trips"
+          className="profileCard"
+          title="Past Trips"
           tabList={tabList}
           activeTabKey={this.state.key}
           onTabChange={(key) => {
@@ -72,4 +66,4 @@ class TabsCard extends React.Component {
   }
 }
 
-export default TabsCard;
+export default PastTrips;

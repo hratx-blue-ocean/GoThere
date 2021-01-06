@@ -1,0 +1,18 @@
+.userPage {
+  width: 100%;
+  display: flex;
+}
+
+.calendar {
+  width: 50%;
+  margin: 4em;
+}
+
+.usertabs {
+  width: 50%;
+  margin: 4em;
+}
+
+.profileCard {
+  margin-bottom: 2em;
+}
