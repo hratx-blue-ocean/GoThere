@@ -8,6 +8,31 @@
   margin: 4em;
 }
 
+/* head of calendar color */
+.ant-picker-calendar-header {
+  background-color: #474d66;
+}
+
+/* calendar selection boxes
+.ant-select-selector {
+
+} */
+
+/* body of calendar */
+.ant-picker-calendar-full .ant-picker-panel {
+  background-color: #474d66;
+}
+
+/* card level */
+.ant-card {
+  background: #474d66;
+}
+
+/* card border */
+.ant-card-bordered {
+  border: 1px solid #363b4e;
+}
+
 .usertabs {
   width: 50%;
   margin: 4em;
@@ -15,4 +40,37 @@
 
 .profileCard {
   margin-bottom: 2em;
+}
+
+/* card header area */
+.ant-card-head {
+  color: #edd3c4;
+  border-bottom: 1px solid #363b4e;
+}
+
+/* !selected tab title color */
+.ant-tabs-tab-btn {
+  color: #d6c2d0;
+}
+
+/* selected tab title text color */
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #49d2cd;
+}
+
+/* selected tab bottom border color */
+.ant-tabs-ink-bar {
+  background-color: #49d2cd;
+}
+
+/* !selected tab color of title when tab is clicked */
+.ant-tabs-tab-btn:focus,
+.ant-tabs-tab-btn:active {
+  color: #d6c2d0;
+}
+
+/* card list item border */
+.ant-list-split .ant-list-item {
+  color: #edd3c4;
+  border-bottom: 1px solid #363b4e;
 }
