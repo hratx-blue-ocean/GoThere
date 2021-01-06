@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { Context } from "../../state-management/Store";
+
 import { Card, List } from "antd";
 
 const tabList = [
@@ -19,13 +21,6 @@ const data = [
   "Attractions: Escape Room",
 ];
 
-// const data = [{
-//   Date: "12 Jan - 15 Jan 2021",
-//   Hotel: "Marriot City Center",
-//   Weather: "Sunny 84",
-//   Attractions: "Escape Room",
-// }];
-
 const contentList = {
   Seattle: (
     <List
@@ -43,33 +38,35 @@ const contentList = {
   ),
 };
 
-class UpcomingTrips extends React.Component {
-  state = {
-    key: "Seattle",
+const UpcomingTrips = () => {
+  const [state, dispatch] = useContext(Context);
+  const [userTrips, updateTrip] = useState("blank");
+  const [tabKey, setTabKey] = useState("Seattle");
+
+  const onTabChange = (key, type) => {
+    console.log(state.tripInfo);
+    updateTrip("example trip data"); // updates local trip state
+    console.log(userTrips);
+    dispatch({ type: "tripInfo", payload: "UPDATE STORE" }); // how to update Store tripInfo state?
+    console.log(state.tripInfo);
+    setTabKey(key);
   };
 
-  onTabChange = (key, type) => {
-    console.log(key, type);
-    this.setState({ [type]: key });
-  };
-
-  render() {
-    return (
-      <>
-        <Card
-          className="profileCard"
-          title="Upcoming Trips"
-          tabList={tabList}
-          activeTabKey={this.state.key}
-          onTabChange={(key) => {
-            this.onTabChange(key, "key");
-          }}
-        >
-          {contentList[this.state.key]}
-        </Card>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Card
+        className="profileCard"
+        title="Upcoming Trips"
+        tabList={tabList}
+        activeTabKey={tabKey}
+        onTabChange={(key) => {
+          onTabChange(key, "key");
+        }}
+      >
+        {contentList[tabKey]}
+      </Card>
+    </>
+  );
+};
 
 export default UpcomingTrips;
