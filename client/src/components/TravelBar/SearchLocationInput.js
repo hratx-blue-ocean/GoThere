@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
+import {Context} from '../../state-management/Store';
+
 import keys from '../../API.js';
 
 let autoComplete;
@@ -22,35 +24,46 @@ const loadScript = (url, callback) => {
   document.getElementsByTagName("head")[0].appendChild(script);
 };
 
-function handleScriptLoad(updateQuery, autoCompleteRef) {
-  autoComplete = new window.google.maps.places.Autocomplete(
-    autoCompleteRef.current,
-    { types: ["(cities)"], componentRestrictions: { country: "us" } }
-  );
-  autoComplete.setFields(["address_components", "formatted_address"]);
-  autoComplete.addListener("place_changed", () =>
-    handlePlaceSelect(updateQuery)
-  );
-}
-
-async function handlePlaceSelect(updateQuery) {
-  const addressObject = autoComplete.getPlace();
-  const query = addressObject.formatted_address;
-  updateQuery(query);
-  console.log(addressObject);
-}
 
 function SearchLocationInput() {
+
   const [query, setQuery] = useState("");
   const autoCompleteRef = useRef(null);
+  var [state, dispatch] = useContext(Context);
+  var [tripInfo, setTripInfo] = useState({...state.tripInfo})
+
+  function handleScriptLoad(updateQuery, autoCompleteRef) {
+    autoComplete = new window.google.maps.places.Autocomplete(
+      autoCompleteRef.current,
+      { types: ["(cities)"], componentRestrictions: { country: "us" } }
+    );
+    autoComplete.setFields(["address_components", "formatted_address"]);
+    autoComplete.addListener("place_changed", () =>
+      handlePlaceSelect(updateQuery)
+    );
+  }
+
+  async function handlePlaceSelect(updateQuery) {
+    const addressObject = autoComplete.getPlace();
+    const query = addressObject.formatted_address;
+    updateQuery(query);
+    var tripInfoClone = {...tripInfo}
+    tripInfoClone.location = query;
+    console.log('clone', tripInfoClone)
+    setTripInfo(tripInfoClone);
+
+    console.log('InfoClone', {...state.tripInfo})
+    console.log(addressObject.formatted_address);
+  }
+
 
   useEffect(() => {
-    //replace undefined with Google API key
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${keys.GOOGLE_API_KEY}&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
-  }, []);
+    console.log('Search re-render')
+  }, [state]);
 
   return (
     <div className="search-location-input">
@@ -64,4 +77,4 @@ function SearchLocationInput() {
   );
 }
 
-export default SearchLocationInput;
+export default SearchLocationInput;t

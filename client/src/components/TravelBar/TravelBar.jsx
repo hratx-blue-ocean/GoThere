@@ -35,12 +35,13 @@ const TravelBar = () => {
   }
 
   const updateGlobalState = () => {
+    console.log('state', state)
     dispatch({type: 'SET_TRIP_INFO', payload: tripInfo});
   };
 
  useEffect(() => {
    updateGlobalState()
-   console.log('re-render')
+   console.log('TravelBat re-render')
   },[tripInfo]);
 
    return (
