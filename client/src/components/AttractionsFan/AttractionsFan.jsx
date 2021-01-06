@@ -7,9 +7,7 @@ import API_KEY from '../../API.js';
 const axios = require('axios');
 
 const yelp = require('yelp-fusion');
-const client = yelp.client(
-	'DYfdWeATWZ-vzgZLSAz0Eq3dl4HA0Ib5VaseBVNujhk1Hi6umktgd1jn14Vzl1oFy0d_CNrABrpiZdIf2HUrGLq0DwgKnl2iqgXauQX7ETMmpbyI0n1WVmNmsTLzX3Yx'
-);
+const client = yelp.client(API_KEY);
 
 export default class AttractionsFan extends Component {
 	constructor(props) {
