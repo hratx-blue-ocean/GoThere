@@ -62,6 +62,7 @@ export default class Attraction extends Component {
 								<div>
 									{clickContent}
 									<button onClick={this.hide}>Save</button>
+									<button onClick={this.hide}>Favorite</button>
 								</div>
 							}
 							title=""
