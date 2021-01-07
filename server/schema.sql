@@ -5,16 +5,38 @@ CREATE DATABASE gothere;
 CREATE TABLE users (
   userid SERIAL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
-  address VARCHAR,
-  city VARCHAR,
-  state VARCHAR,
   email VARCHAR,
-  password VARCHAR,
-  favorites VARCHAR
+  phoneNumber VARCHAR,
+  password VARCHAR
 );
 
-INSERT INTO users(name, address, city, state, email, password, favorites)
-VALUES ('Test User', '1234 gothere St', 'Austin', 'TX', 'gothere@fake.com', 'password123', 2);
+CREATE TABLE usertrips (
+  tripid SERIAL PRIMARY KEY,
+  userid INT,
+  startdate VARCHAR,
+  enddate VARCHAR,
+  destination VARCHAR,
+  businesstrip BOOLEAN,
+  CONSTRAINT fk_userid
+  FOREIGN KEY(userid)
+  REFERENCES users(userid)
+);
 
-INSERT INTO users(name, address, city, state, email, password, favorites)
-VALUES ('Jesse Perez', '4321 gothere St', 'Austin', 'TX', 'jessep@fake.com', 'password123', 2);
+CREATE TABLE attractions (
+  attractionid SERIAL PRIMARY KEY,
+  tripid INT,
+  name VARCHAR,
+  citystate VARCHAR,
+  attractionType VARCHAR,
+  CONSTRAINT fk_tripid
+  FOREIGN KEY(tripid)
+  REFERENCES usertrips(tripid)
+);
+
+
+
+INSERT INTO users(name, email, phoneNumber, password)
+VALUES ('Test User', 'gothere@fake.com', '2104145466', 'password123');
+
+INSERT INTO users(name, email, phoneNumber, password)
+VALUES ('Jesse Perez', 'jesse@fake.com', '2104145466', 'password123');
