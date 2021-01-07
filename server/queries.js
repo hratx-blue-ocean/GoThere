@@ -32,7 +32,6 @@ const createNewUser = (userData, callback) => {
 
 // for a new trip, needs changing WORK ON THIS JESSE
 const createNewTrip = (tripData, callback) => {
-  console.log(tripData)
   pool.query(
     `INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
     VALUES ('${tripData.email}', '${tripData.startdate}', '${tripData.enddate}', '${tripData.destination}', '${tripData.businesstrip}');` ,(error, results) => {
@@ -44,20 +43,32 @@ const createNewTrip = (tripData, callback) => {
 }
 
 //query database for user trips by userID
-const getUserTrips = (userId) => {
+const getTrip = (userId, callback) => {
+  pool.query(
+    `SELECT * FROM usertrips WHERE email = '${userId.email}'` ,(error, results) => {
+    if (error) {
+      callback(error)
+    }
+    callback(null, results)
+  })
+}
 
+const getFavorites = (userId, callback) => {
+  pool.query(
+    `SELECT * FROM favorites WHERE email = '${userId.email}'` ,(error, results) => {
+    if (error) {
+      callback(error)
+    }
+    callback(null, results)
+  })
 }
 
 
-// query database for favorites by userID
-const getUserFavorites = (userId) => {
-
-}
 
 module.exports = {
   checkUsernamePassword,
   createNewUser,
   createNewTrip,
-  getUserTrips,
-  getUserFavorites,
+  getTrip,
+  getFavorites,
 }

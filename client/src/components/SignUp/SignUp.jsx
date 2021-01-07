@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import { Button, Modal } from 'antd';
+import SignUpModal from './SignUpModal';
 
 const SignUp = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -8,9 +9,9 @@ const SignUp = () => {
         setIsModalVisible(true);
       };
 
-    const handleOk = () => {
-    setIsModalVisible(false);
-    };
+    // const handleOk = () => {
+    // setIsModalVisible(false);
+    // };
 
     const handleCancel = () => {
     setIsModalVisible(false);
@@ -18,7 +19,6 @@ const SignUp = () => {
 
     return (
         <div className="signup-component">
-            <p>Sign-Up Component</p>
             <Button
                 className="signup-button"
                 type="primary"
@@ -27,14 +27,13 @@ const SignUp = () => {
                 Create an Account
             </Button>
             <Modal
-                title="Account Information"
+                title="Create a New Account"
+                footer={null}
                 visible={isModalVisible}
-                onOk={handleOk}
+                // onOk={handleOk}
                 onCancel={handleCancel}
             >
-                <p>Name</p>
-                <p>Email</p>
-                <p>Password</p>
+                <SignUpModal />
             </Modal>
         </div>
     );
