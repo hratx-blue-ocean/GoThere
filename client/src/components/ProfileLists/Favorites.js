@@ -49,6 +49,7 @@ class Favorites extends React.Component {
   render() {
     return (
       <>
+        <h2 style={{ marginTop: "1em" }}>Favorites</h2>
         <Card
           className="profileCard"
           title="Favorites"
