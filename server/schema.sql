@@ -50,3 +50,6 @@ VALUES ('Test User', 'gothere@fake.com', '2104145466', 'password123');
 
 INSERT INTO users(name, email, phoneNumber, password)
 VALUES ('Jesse Perez', 'imsleepy@gmail.com', '2104145466', 'password123');
+
+INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
+VALUES ('imsleepy@gmail.com', '11302020', '11302021', 'Tokyo', true);
