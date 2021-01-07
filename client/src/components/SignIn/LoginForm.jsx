@@ -10,9 +10,14 @@ const LoginForm = ({ setToken }) => {
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
-        axios.post('http://localhost:8080/login', {
-            email,
-            password
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/login',
+            data: {
+                email,
+                password
+            },
+              withCredentials: true,
         }).then((res) => {
             console.log("Axios POST response:", res);
         }).catch((err) => {
