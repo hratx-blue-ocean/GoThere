@@ -26,7 +26,7 @@ app.use(cookieParser());
 // yelp api calls
 app.get('/attractions', (req, res) => {
 	const yelp = require('yelp-fusion');
-	const client = yelp.client(YELP_API_KEY.YELP_API_KEY);
+	const client = yelp.client(YELP_API_KEY);
 
 	client
 		.search({
