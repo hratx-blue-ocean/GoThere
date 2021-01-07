@@ -76,10 +76,20 @@ app.post('/trips', (req, res) => {
       res.json('Trip has been added to the database!');
     }
   })
+
 })
 
 // get user trips
+app.get('/trips' , (req, res) => {
+  db.getTrip(req.query, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  })
 
+})
 // get user favorites
 
 
