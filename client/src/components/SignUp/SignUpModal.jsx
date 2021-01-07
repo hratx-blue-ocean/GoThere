@@ -3,10 +3,10 @@ import axios from 'axios';
 import { Button, Form, Input } from 'antd';
 
 const SignUpModal = () => {
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [phone, setPhone] = useState();
-    const [password, setPassword] = useState();
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
