@@ -33,6 +33,12 @@ h3 {
   border-color: #49d2cd;
 }
 
+/* table headers */
+.ant-picker-content th {
+  color: #edd3c4;
+  font-weight: bold;
+}
+
 /* --- end theme styles --- */
 
 .wrapper {
