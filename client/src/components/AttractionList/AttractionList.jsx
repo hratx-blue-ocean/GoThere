@@ -3,7 +3,6 @@ import Attraction from '../Attraction/Attraction.jsx';
 import './AttractionList.css';
 
 export default function AttractionList(props) {
-	console.log('props from fan:', props.attractions);
 	return (
 		<div className="ListOpenContainer">
 			<div className="ListOpen">
