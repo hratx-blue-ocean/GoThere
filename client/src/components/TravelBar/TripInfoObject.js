@@ -1,16 +1,15 @@
-const dummyTripInfoObject = {
-
-    id: null,
-    valid: false,
-    location: undefined,
-    startDate: undefined,
-    endDate: undefined,
-    type: undefined,
-    filter: {
-      rating: undefined,
-      price: undefined
-    },
-    hotel: undefined,
-    attractions: []
-  }
-export default dummyTripInfoObject;
+const TripInfoObject = {
+	id: null,
+	valid: false,
+	location: undefined,
+	city: undefined,
+	state: undefined,
+	address: undefined,
+	zip: undefined,
+	filter: {rating: undefined, price: undefined},
+	startDate: undefined,
+	endDate: undefined,
+	type: undefined,
+	attractions: [],
+};
+export default TripInfoObject;

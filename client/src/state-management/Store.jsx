@@ -1,9 +1,9 @@
 import React, { createContext, useReducer } from 'react';
-import TripInfoObject from '../components/TravelBar/TripInfoObject.js'
 import Reducer from './Reducer';
+import tripInfoObject from '../components/TravelBar/TripInfoObject.js';
 
 var initialState = {
-	tripInfo: TripInfoObject,
+	tripInfo: tripInfoObject,
 	test2: [],
 	error: null,
 };
