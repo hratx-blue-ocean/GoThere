@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import AttractionList from '../AttractionList/AttractionList.jsx';
 import SelectedAttraction from '../Attraction/SelectedAttraction.jsx';
-import hotels from '../../dummy-data/dummyHotels.js';
 import './AttractionsFan.css';
-// import API_KEY from '../../API.js';
-const axios = require('axios');
+// const axios = require('axios');
 
 // const yelp = require('yelp-fusion');
 // const client = yelp.client(API_KEY);
@@ -14,36 +12,13 @@ export default class AttractionsFan extends Component {
 		super(props);
 		this.state = {
 			listIsOpen: false,
-			attractions: [hotels],
+			// attractions: [],
 		};
 		this.handleClick = this.handleClick.bind(this);
-		this.getHotels = this.getHotels.bind(this);
-	}
 
-	componentDidMount() {
-		this.getHotels();
-	}
-
-	getHotels() {
-		const config = {
-			method: 'get',
-			url: 'http://localhost:8080/attractions',
-			params: {
-				location: 'austin, tx',
-				term: 'restaurants',
-			},
-		};
-
-		axios(config)
-			.then((response) => {
-				// console.log(JSON.stringify(response.data));
-				this.setState({
-					attractions: response.data,
-				});
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		// this.getHotels = this.getHotels.bind(this);
+		// this.getRestaurants = this.getRestaurants.bind(this);
+		// this.getBars = this.getBars.bind(this);
 	}
 
 	handleClick() {
@@ -53,7 +28,7 @@ export default class AttractionsFan extends Component {
 	}
 
 	render() {
-		// console.log('attractions in state:', this.state.attractions);
+		// console.log('attractions in state:', this.props.attractions);
 		return (
 			<div className="container">
 				<SelectedAttraction
@@ -62,7 +37,7 @@ export default class AttractionsFan extends Component {
 				/>
 				<div>
 					{this.state.listIsOpen ? (
-						<AttractionList attractions={this.state.attractions} />
+						<AttractionList attractions={this.props.attractions} />
 					) : (
 						<div> </div>
 					)}

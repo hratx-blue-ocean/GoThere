@@ -9,9 +9,14 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
 
     const login = () => {
-        axios.post('http://localhost:8080/login', {
-            email: email,
-            password: password
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/login',
+            data: {
+                email: email,
+                password: password
+            },
+            withCredentials: true,
         }).then((res) => {
             console.log("Axios POST response:", res);
         }).catch((err) => {
