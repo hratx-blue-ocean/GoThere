@@ -85,13 +85,24 @@ app.get('/trips' , (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.json(data);
+      console.log('results!', data)
+      res.json(data.rows[0]);
     }
   })
 
 })
 // get user favorites
+app.get('/favorites' , (req, res) => {
+  db.getFavorites(req.query, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('results!', data)
+      res.json(data.rows[0]);
+    }
+  })
 
+})
 
 
 app.listen(PORT, () =>
