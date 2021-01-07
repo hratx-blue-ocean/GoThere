@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../../state-management/Store";
 
 import { Card, List } from "antd";
