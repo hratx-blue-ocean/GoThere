@@ -7,7 +7,7 @@ const db = require('./queries.js');
 // needed for yelp API calls
 const YELP_API_KEY = require('./API.js');
 const yelp = require('yelp-fusion');
-const client = yelp.client(YELP_API_KEY);
+const client = yelp.client(YELP_API_KEY.YELP_API_Key);
 const axios = require('axios');
 
 app.use(express.static(__dirname + '/../client/src'));
@@ -27,7 +27,7 @@ app.get('/attractions', (req, res) => {
 			location: req.query.location,
 		})
 		.then((response) => {
-			console.log('RQUEST', req);
+			console.log(req);
 			res.send(response.jsonBody.businesses);
 		})
 		.catch((e) => {
@@ -39,10 +39,10 @@ app.get('/attractions', (req, res) => {
 
 app.post('/login', (req, res) => {
 	console.log('REQ.BODY:', req.body);
-	let username = req.body.username;
+	let email = req.body.email;
 	let password = req.body.password;
 
-	db.checkUsernamePassword(username, password).then((isCorrectPassword) => {
+	db.checkUsernamePassword(email, password).then((isCorrectPassword) => {
 		if (isCorrectPassword) {
 			res.send({
 				token: 'test123',
@@ -78,6 +78,10 @@ app.post('/trips', (req, res) => {
 		}
 	});
 });
+
+// get user trips
+
+// get user favorites
 
 // db.createNewTrip(req.query).then((data) => {
 // 	res.send('user added');
