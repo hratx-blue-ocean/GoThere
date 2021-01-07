@@ -14,7 +14,7 @@ export default function Attraction(props) {
 		setIsClicked(false);
 		setIsHovered(false);
 	};
-	console.log('state:', state.tripInfo);
+	// console.log('state:', state.tripInfo);
 
 	const handleHoverChange = (visible) => {
 		setIsClicked(false);
