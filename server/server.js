@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const app = express();
 const PORT = 8080;
@@ -12,9 +13,15 @@ const axios = require('axios');
 
 app.use(express.static(__dirname + '/../client/src'));
 
-app.use(cors());
+// TODO: check to see if this works on production!
+//       that is, on a url other than localhost...
+// See this stackoverflow comment:
+// https://stackoverflow.com/questions/43002444/make-axios-send-cookies-in-its-requests-automatically
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // yelp api calls
 app.get('/attractions', (req, res) => {
@@ -37,15 +44,19 @@ app.get('/attractions', (req, res) => {
 
 app.post('/login', (req, res) => {
 	console.log('REQ.BODY:', req.body);
+	console.log('req.cookies:', req.cookies);
 	let email = req.body.email;
 	let password = req.body.password;
 
 	db.checkUsernamePassword(email, password).then((isCorrectPassword) => {
 		if (isCorrectPassword) {
-			res.send({
-				token: 'test123',
-			});
+		// if (email === 'admin' && password === 'password') {
+      console.log('Correct Password entered');
+      res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
+      res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
+      res.send('cookie set');
 		} else {
+      console.log('no matching email/password found in database')
 			res.status(400).end();
 		}
 	});
@@ -106,5 +117,5 @@ app.get('/favorites' , (req, res) => {
 
 
 app.listen(PORT, () =>
-	console.log(`API is running on http://localhost:${PORT}/login`)
+	console.log(`API is running on http://localhost:${PORT}/`)
 );
