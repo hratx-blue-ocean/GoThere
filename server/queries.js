@@ -18,14 +18,14 @@ const checkUsernamePassword = (username, password) => {
   })
 }
 
-const createNewUser = (userData) => {
+const createNewUser = (userData, callback) => {
   pool.query(
-    `INSERT INTO users(name, address, city, state, email, password, favorites)
-    VALUES (${userData.name}, ${userData.address}, ${userData.city}, ${userData.state}, ${userData.email}, ${userData.password}, 2);` ,
-    (error, results) => {
+    `INSERT INTO users(name, email, phoneNumber, password)
+    VALUES ('${userData.name}', '${userData.email}', '${userData.phoneNumber}', '${userData.password}');` ,(error, results) => {
     if (error) {
-      res.status(400)
-    } res.status(200).send(`User added with ID: ${result.userid}`)
+      callback(error)
+    }
+    callback(null, results)
   })
 }
 

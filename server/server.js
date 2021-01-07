@@ -58,8 +58,12 @@ db.checkUsernamePassword(username, password).then((isCorrectPassword)=> {
 app.post('/newuser', (req, res) => {
   console.log('hitting the new user endpoint!', req.query)
 
-  db.createNewUser(req.query).then((data) => {
-    res.send('user added')
+  db.createNewUser(req.query, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json('User has been added to the database!');
+    }
   })
 })
 
@@ -71,6 +75,9 @@ app.post('/trips', (req, res) => {
     res.send('user added')
   })
 })
+
+
+
 
 
 app.listen(PORT, () =>
