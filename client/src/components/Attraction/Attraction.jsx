@@ -29,48 +29,47 @@ export default function Attraction(props) {
 	const hoverContent = (
 		<>
 			<div>
-				Address: {this.props.address[0]}, {this.props.address[1]}{' '}
+				Address: {props.address[0]}, {props.address[1]}{' '}
 			</div>
 
-			<div>Price: {this.props.price}</div>
-			<div>Rating: {this.props.rating}</div>
+			<div>Price: {props.price}</div>
+			<div>Rating: {props.rating}</div>
 		</>
 	);
-
 	//content displayed during click animation
-	const clickContent = <div>Save {this.props.name}?</div>;
+	const clickContent = <div>Save {props.name}?</div>;
 
 	return (
 		<div>
 			<div
 				className="ImageContainer"
 				style={{
-					backgroundImage: `url(${this.props.imageUrl})`,
+					backgroundImage: `url(${props.imageUrl})`,
 					backgroundSize: '150px',
 				}}
 			>
 				<Popover
 					placement="right"
 					content={hoverContent}
-					title={this.props.name}
+					title={props.name}
 					trigger="hover"
 					visible={isHovered}
-					onVisibleChange={this.handleHoverChange}
+					onVisibleChange={handleHoverChange}
 				>
 					<Popover
 						content={
 							<div>
 								{clickContent}
-								<button onClick={this.hide}>Save</button>
-								<button onClick={this.hide}>Favorite</button>
+								<button onClick={hide}>Save</button>
+								<button onClick={hide}>Favorite</button>
 							</div>
 						}
 						title=""
 						trigger="click"
 						visible={isClicked}
-						onVisibleChange={this.handleClickChange}
+						onVisibleChange={handleClickChange}
 					>
-						<button>{this.props.name}</button>
+						<button>{props.name}</button>
 					</Popover>
 				</Popover>
 			</div>

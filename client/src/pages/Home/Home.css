@@ -1,5 +1,16 @@
 .wrapper {
-	padding: 20px;
-	background-image: url('./backgroundPencilDrawing.png');
-	background-size: 100%;
+	background: url('./backgroundPencilDrawing.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+	/* Alternative:
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	/* Preserve aspet ratio */
+	/* min-width: 100%;
+	min-height: 100%;  */
 }
