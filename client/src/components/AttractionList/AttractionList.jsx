@@ -3,47 +3,23 @@ import Attraction from '../Attraction/Attraction.jsx';
 import './AttractionList.css';
 
 export default function AttractionList(props) {
-	// const cssClasses = ['List', props.show ? 'ListOpen' : 'ListClosed'];
-
-	const DummyData = [
-		{
-			id: 1,
-			name: 'Grand Luxor',
-			price: 'expensive',
-		},
-		{
-			id: 2,
-			name: 'Sofitel',
-			price: 'expensive',
-		},
-		{
-			id: 3,
-			name: 'Grand Luxor',
-			price: 'expensive',
-		},
-		{
-			id: 4,
-			name: 'Best Western',
-			price: 'reasonable',
-		},
-		{
-			id: 5,
-			name: 'Days Inn',
-			price: 'expensive',
-		},
-	];
-
+	console.log('props from fan:', props.attractions);
 	return (
-		<div className="ListOpen">
-			{DummyData.map((attraction) => {
-				return (
-					<Attraction
-						id={attraction.id}
-						name={attraction.name}
-						price={attraction.price}
-					/>
-				);
-			})}
+		<div className="ListOpenContainer">
+			<div className="ListOpen">
+				{props.attractions.map((attraction) => {
+					return (
+						<Attraction
+							id={attraction.id}
+							name={attraction.name}
+							price={attraction.price}
+							rating={attraction.rating}
+							address={attraction.location.display_address}
+							imageUrl={attraction.image_url}
+						/>
+					);
+				})}
+			</div>
 		</div>
 	);
 }
