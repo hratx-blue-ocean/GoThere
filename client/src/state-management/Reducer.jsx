@@ -16,8 +16,13 @@ const Reducer = (state, action) => {
           error: action.payload
         }
       default:
-        return state;
-  }
+      return state;
+  //   case 'ADD_ATTRACTION':
+  //     return {
+  //       ...state,
+  //       tripInfo: action.payload
+  //     };
+  // }
 }
 
 export default Reducer;
