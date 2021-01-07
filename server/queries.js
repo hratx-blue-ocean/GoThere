@@ -32,9 +32,10 @@ const createNewUser = (userData, callback) => {
 
 // for a new trip, needs changing WORK ON THIS JESSE
 const createNewTrip = (tripData, callback) => {
+  console.log(tripData)
   pool.query(
-    `INSERT INTO usertrips(name, email, phoneNumber, password)
-    VALUES ('${tripData.name}', '${tripData.email}', '${tripData.phoneNumber}', '${tripData.password}');` ,(error, results) => {
+    `INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
+    VALUES ('${tripData.email}', '${tripData.startdate}', '${tripData.enddate}', '${tripData.destination}', '${tripData.businesstrip}');` ,(error, results) => {
     if (error) {
       callback(error)
     }
