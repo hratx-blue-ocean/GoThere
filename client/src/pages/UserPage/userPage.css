@@ -50,7 +50,7 @@
 
 /* !selected tab title color */
 .ant-tabs-tab-btn {
-  color: #d6c2d0;
+  color: #edd3c4;
 }
 
 /* selected tab title text color */
@@ -66,7 +66,7 @@
 /* !selected tab color of title when tab is clicked */
 .ant-tabs-tab-btn:focus,
 .ant-tabs-tab-btn:active {
-  color: #d6c2d0;
+  color: #edd3c4;
 }
 
 /* card list item border */
