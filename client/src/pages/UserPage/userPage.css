@@ -23,6 +23,37 @@
   background-color: #474d66;
 }
 
+/* date nums on each cal day */
+.ant-picker-calendar-date-value {
+  color: #edd3c4;
+}
+
+/* date num of today's date when not currently selected */
+.ant-picker-calendar-full
+  .ant-picker-panel
+  .ant-picker-calendar-date-today
+  .ant-picker-calendar-date-value {
+  color: #edd3c4;
+}
+
+/* date nums of today's date */
+.ant-picker-calendar-full
+  .ant-picker-panel
+  .ant-picker-cell-selected
+  .ant-picker-calendar-date
+  .ant-picker-calendar-date-value,
+.ant-picker-calendar-full
+  .ant-picker-panel
+  .ant-picker-cell-selected:hover
+  .ant-picker-calendar-date
+  .ant-picker-calendar-date-value {
+  color: #363b4e;
+}
+
+.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-today {
+  border-color: #49d2cd;
+}
+
 /* card level */
 .ant-card {
   background: #474d66;
