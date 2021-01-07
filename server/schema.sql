@@ -12,14 +12,14 @@ CREATE TABLE users (
 
 CREATE TABLE usertrips (
   tripid SERIAL PRIMARY KEY,
-  userid INT,
+  email VARCHAR,
   startdate VARCHAR,
   enddate VARCHAR,
   destination VARCHAR,
   businesstrip BOOLEAN,
-  CONSTRAINT fk_userid
-  FOREIGN KEY(userid)
-  REFERENCES users(userid)
+  CONSTRAINT fk_tripemail
+  FOREIGN KEY(email)
+  REFERENCES users(email)
 );
 
 CREATE TABLE attractions (
