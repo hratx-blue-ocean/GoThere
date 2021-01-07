@@ -50,16 +50,18 @@ app.post('/login', (req, res) => {
 	let email = req.body.email;
 	let password = req.body.password;
 
-	// db.checkUsernamePassword(username, password).then((isCorrectPassword) => {
-		// if (isCorrectPassword) {
-		if (email === 'admin' && password === 'password') {
+	db.checkUsernamePassword(username, password).then((isCorrectPassword) => {
+		if (isCorrectPassword) {
+		// if (email === 'admin' && password === 'password') {
       console.log('Correct Password entered');
-      res.cookie('loggedIn', 'true', {maxAge: 360000, secure: false}).send('cookie set');
+      res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
+      res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
+      res.send('cookie set');
 		} else {
       console.log('no matching email/password found in database')
 			res.status(400).end();
 		}
-	// });
+	});
 });
 
 // created new endpoint /newuser - creating new user
