@@ -9,18 +9,21 @@ const SignUpModal = () => {
     const [password, setPassword] = useState('');
     const [form] = Form.useForm();
 
-    const onFinish = (values) => {
-        console.log('Values of form for sign-up: ', values);
-        axios.post('http://localhost:8080/register', {
-            name,
-            email,
-            phone,
-            password
+    const register =() => {
+        axios.post('http://localhost:8080/newuser', {
+            name: name,
+            email: email,
+            phone: phone,
+            password: password
         }).then((res) => {
             console.log("Axios POST response:", res);
         }).catch((err) => {
             console.log("Error with post request:", err);
         })
+    }
+
+    const onFinish = (values) => {
+        console.log('Values of form for sign-up: ', values);
     };
 
     return (
@@ -67,7 +70,7 @@ const SignUpModal = () => {
             <Form.Item
                 name="phone"
                 label="Phone Number"
-                rules={[{ required: true, message: 'Please input your phone number!' }]}
+                rules={[{ required: true, message: 'Phone number required' }]}
             >
                 <Input onChange={e => setPhone(e.target.value)} />
             </Form.Item>
@@ -82,38 +85,19 @@ const SignUpModal = () => {
                     message: 'Password required',
                 },
                 ]}
-                hasFeedback
             >
                 <Input.Password onChange={e => setPassword(e.target.value)} />
             </Form.Item>
 
-            {/* Input to confirm password */}
-            <Form.Item
-                name="confirm"
-                label="Confirm Password"
-                dependencies={['password']}
-                hasFeedback
-                rules={[
-                {
-                    required: true,
-                    message: 'Please confirm your password',
-                },
-                ({ getFieldValue }) => ({
-                    validator(_, value) {
-                    if (!value || getFieldValue('password') === value) {
-                        return Promise.resolve();
-                    }
-                    return Promise.reject('Passwords do not match');
-                    },
-                }),
-                ]}
-            >
-                <Input.Password />
-            </Form.Item>
-
             {/* Button to register for an account */}
             <Form.Item>
-                <Button type="primary" htmlType="submit">Sign Up</Button>
+                <Button
+                    type="primary"
+                    htmlType="submit"
+                    onClick={register}
+                >
+                    Sign Up
+                </Button>
             </Form.Item>
         </Form>
     );

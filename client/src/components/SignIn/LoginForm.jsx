@@ -10,8 +10,8 @@ const LoginForm = () => {
 
     const login = () => {
         axios.post('http://localhost:8080/login', {
-            email,
-            password
+            email: email,
+            password: password
         }).then((res) => {
             console.log("Axios POST response:", res);
         }).catch((err) => {
