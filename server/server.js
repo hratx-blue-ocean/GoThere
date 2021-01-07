@@ -7,14 +7,7 @@ const db = require('./queries.js');
 // needed for yelp API calls
 const YELP_API_KEY = require('./API.js');
 const yelp = require('yelp-fusion');
-<<<<<<< HEAD
-console.log('============================')
-console.log(YELP_API_KEY.YELP_API_KEY)
-console.log('===========================')
-const client = yelp.client(YELP_API_KEY.YELP_API_KEY);
-=======
 const client = yelp.client(YELP_API_KEY);
->>>>>>> 8378fa90f8f1f4f74afb6198b65709f6b17b4265
 const axios = require('axios');
 
 app.use(express.static(__dirname + '/../client/src'));
@@ -25,7 +18,6 @@ app.use(bodyParser.json());
 
 // yelp api calls
 app.get('/attractions', (req, res) => {
-
 	const yelp = require('yelp-fusion');
 	const client = yelp.client(YELP_API_KEY.YELP_API_KEY);
 
@@ -84,9 +76,8 @@ app.post('/trips', (req, res) => {
 		} else {
 			res.json('Trip has been added to the database!');
 		}
-	})
+	});
 });
-
 
 // 	db.createNewTrip(req.query).then((data) => {
 // 		res.send('user added');
