@@ -57,19 +57,37 @@ app.post('/login', (req, res) => {
 app.post('/newuser', (req, res) => {
 	console.log('hitting the new user endpoint!', req.query);
 
-	db.createNewUser(req.query).then((data) => {
-		res.send('user added');
-	});
+
+  db.createNewUser(req.query, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json('User has been added to the database!');
+    }
+  })
+})
+
+
+//for adding a new trip to the database
+app.post('/trips', (req, res) => {
+
+	console.log('hitting the new user endpoint!', req.query)
+
+	db.createNewTrip(req.query, (err, data) => {
+		if (err) {
+			console.log(err);
+		} else {
+			res.json('Trip has been added to the database!');
+		}
+	})
 });
 
-//using trips for now
-app.post('/trips', (req, res) => {
-	console.log('hitting the newtrip endpoint!', req.query);
 
 	db.createNewTrip(req.query).then((data) => {
 		res.send('user added');
 	});
 });
+
 
 app.listen(PORT, () =>
 	console.log(`API is running on http://localhost:${PORT}/login`)
