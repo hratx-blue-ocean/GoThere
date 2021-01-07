@@ -18,13 +18,6 @@ const data = [
   "Comfort Inn, Orlando FL",
 ];
 
-// const data = [{
-//   Date: "12 Jan - 15 Jan 2021",
-//   Hotel: "Marriot City Center",
-//   Weather: "Sunny 84",
-//   Attractions: "Escape Room",
-// }];
-
 const contentList = {
   Hotels: (
     <List
@@ -49,9 +42,9 @@ class Favorites extends React.Component {
   render() {
     return (
       <>
+        <h2 style={{ marginTop: "1em" }}>Favorites</h2>
         <Card
           className="profileCard"
-          title="Favorites"
           tabList={tabList}
           activeTabKey={this.state.key}
           onTabChange={(key) => {
