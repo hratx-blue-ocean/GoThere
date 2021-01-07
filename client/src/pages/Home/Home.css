@@ -1,5 +1,22 @@
 .wrapper {
-	padding: 20px;
-	background-image: url('./backgroundPhoto.jpg');
-	background-size: 100%;
+	background: url('./BackgroundTDNColor2.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity: 80%;
+	/* min-height: 600px; */
+	/* Alternative:
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	/* Preserve aspet ratio */
+	/* min-width: 100%;
+	min-height: 100%;  */
+}
+
+.center {
+	margin: auto;
+	width: 50%;
 }
