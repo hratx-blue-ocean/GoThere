@@ -88,6 +88,6 @@ app.post('/trips', (req, res) => {
 // 	res.send('user added');
 // });
 
-// app.listen(PORT, () =>
-// 	console.log(`API is running on http://localhost:${PORT}/login`)
-// );
+app.listen(PORT, () =>
+	console.log(`API is running on http://localhost:${PORT}/login`)
+);
