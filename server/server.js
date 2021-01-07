@@ -5,9 +5,9 @@ const app = express();
 const PORT = 8080;
 const db = require('./queries.js');
 // needed for yelp API calls
-const API_KEYS = require('./API.js');
+const YELP_API_KEY = require('./API.js');
 const yelp = require('yelp-fusion');
-const client = yelp.client(API_KEY);
+const client = yelp.client(YELP_API_KEY);
 const axios = require('axios');
 
 app.use(express.static(__dirname + '/../client/src'));
@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 // yelp api calls
 app.get('/attractions', (req, res) => {
 	const yelp = require('yelp-fusion');
-	const client = yelp.client(API_KEYS.YELP_API_KEY);
+	const client = yelp.client(YELP_API_KEY.YELP_API_KEY);
 
 	client
 		.search({
@@ -79,10 +79,10 @@ app.post('/trips', (req, res) => {
 	});
 });
 
-db.createNewTrip(req.query).then((data) => {
-	res.send('user added');
-});
+// db.createNewTrip(req.query).then((data) => {
+// 	res.send('user added');
+// });
 
-app.listen(PORT, () =>
-	console.log(`API is running on http://localhost:${PORT}/login`)
-);
+// app.listen(PORT, () =>
+// 	console.log(`API is running on http://localhost:${PORT}/login`)
+// );
