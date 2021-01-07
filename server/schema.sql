@@ -3,23 +3,22 @@ CREATE DATABASE gothere;
 \c gothere;
 
 CREATE TABLE users (
-  userid SERIAL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
-  email VARCHAR,
+  email VARCHAR PRIMARY KEY,
   phoneNumber VARCHAR,
   password VARCHAR
 );
 
 CREATE TABLE usertrips (
   tripid SERIAL PRIMARY KEY,
-  userid INT,
+  email VARCHAR,
   startdate VARCHAR,
   enddate VARCHAR,
   destination VARCHAR,
   businesstrip BOOLEAN,
-  CONSTRAINT fk_userid
-  FOREIGN KEY(userid)
-  REFERENCES users(userid)
+  CONSTRAINT fk_tripemail
+  FOREIGN KEY(email)
+  REFERENCES users(email)
 );
 
 CREATE TABLE attractions (
@@ -33,10 +32,21 @@ CREATE TABLE attractions (
   REFERENCES usertrips(tripid)
 );
 
+CREATE TABLE favorites (
+  favoritesid SERIAL PRIMARY KEY,
+  email VARCHAR,
+  name VARCHAR,
+  citystate VARCHAR,
+  favoritestype VARCHAR,
+  CONSTRAINT fk_fav
+  FOREIGN KEY(email)
+  REFERENCES users(email)
+);
+
 
 
 INSERT INTO users(name, email, phoneNumber, password)
 VALUES ('Test User', 'gothere@fake.com', '2104145466', 'password123');
 
 INSERT INTO users(name, email, phoneNumber, password)
-VALUES ('Jesse Perez', 'jesse@fake.com', '2104145466', 'password123');
+VALUES ('Jesse Perez', 'imsleepy@gmail.com', '2104145466', 'password123');

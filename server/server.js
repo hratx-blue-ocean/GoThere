@@ -84,7 +84,6 @@ app.post('/trips', (req, res) => {
 		} else {
 			res.json('Trip has been added to the database!');
 		}
-<<<<<<< HEAD
 	})
 });
 
@@ -93,10 +92,6 @@ app.post('/trips', (req, res) => {
 // 		res.send('user added');
 // 	});
 // });
-=======
-	});
-});
->>>>>>> 8378fa90f8f1f4f74afb6198b65709f6b17b4265
 
 // db.createNewTrip(req.query).then((data) => {
 // 	res.send('user added');
