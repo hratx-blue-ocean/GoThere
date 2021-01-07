@@ -21,74 +21,6 @@ export default class AttractionsFan extends Component {
 		// this.getBars = this.getBars.bind(this);
 	}
 
-	// 	componentDidMount() {
-	// 		this.getHotels();
-	// 	}
-
-	// 	getHotels() {
-	// 		const config = {
-	// 			method: 'get',
-	// 			url: 'http://localhost:8080/attractions',
-	// 			params: {
-	// 				location: 'austin, tx',
-	// 				term: 'hotels',
-	// 			},
-	// 		};
-	// 		axios(config)
-	// 		.then((response) => {
-	// 			// console.log(JSON.stringify(response.data));
-	// 			this.setState({
-	// 				attractions: response.data,
-	// 			});
-	// 		})
-	// 		.catch(function (error) {
-	// 			console.log(error);
-	// 		});
-	// }
-
-	// 		getRestaurants() {
-	// 			const config = {
-	// 				method: 'get',
-	// 				url: 'http://localhost:8080/attractions',
-	// 				params: {
-	// 					location: 'austin, tx',
-	// 					term: 'restaurants',
-	// 				},
-	// 			};
-	// 			axios(config)
-	// 			.then((response) => {
-	// 				// console.log(JSON.stringify(response.data));
-	// 				this.setState({
-	// 					attractions: response.data,
-	// 				});
-	// 			})
-	// 			.catch(function (error) {
-	// 				console.log(error);
-	// 			});
-	// 	}
-
-	// 			getBars() {
-	// 				const config = {
-	// 					method: 'get',
-	// 					url: 'http://localhost:8080/attractions',
-	// 					params: {
-	// 						location: 'austin, tx',
-	// 						term: 'bars',
-	// 					},
-	// 				};
-
-	// 		axios(config)
-	// 			.then((response) => {
-	// 				// console.log(JSON.stringify(response.data));
-	// 				this.setState({
-	// 					attractions: response.data,
-	// 				});
-	// 			})
-	// 			.catch(function (error) {
-	// 				console.log(error);
-	// 			});
-	// 	}
-
 	handleClick() {
 		this.setState((state) => ({
 			listIsOpen: !state.listIsOpen,
@@ -96,7 +28,7 @@ export default class AttractionsFan extends Component {
 	}
 
 	render() {
-		console.log('attractions in state:', this.props.attractions);
+		// console.log('attractions in state:', this.props.attractions);
 		return (
 			<div className="container">
 				<SelectedAttraction
@@ -105,7 +37,7 @@ export default class AttractionsFan extends Component {
 				/>
 				<div>
 					{this.state.listIsOpen ? (
-						<AttractionList attractions={props.attractions} />
+						<AttractionList attractions={this.props.attractions} />
 					) : (
 						<div> </div>
 					)}

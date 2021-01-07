@@ -9,12 +9,10 @@ export default class AttractionsBar extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			listIsOpen: false,
 			hotels: [],
 			restaurants: [],
 			bars: [],
 		};
-		this.handleClick = this.handleClick.bind(this);
 
 		this.getHotels = this.getHotels.bind(this);
 		this.getRestaurants = this.getRestaurants.bind(this);
@@ -23,6 +21,8 @@ export default class AttractionsBar extends Component {
 
 	componentDidMount() {
 		this.getHotels();
+		this.getBars();
+		this.getRestaurants();
 	}
 
 	getHotels() {
@@ -38,7 +38,7 @@ export default class AttractionsBar extends Component {
 			.then((response) => {
 				// console.log(JSON.stringify(response.data));
 				this.setState({
-					attractions: response.data,
+					hotels: response.data,
 				});
 			})
 			.catch(function (error) {
@@ -59,7 +59,7 @@ export default class AttractionsBar extends Component {
 			.then((response) => {
 				// console.log(JSON.stringify(response.data));
 				this.setState({
-					attractions: response.data,
+					restaurants: response.data,
 				});
 			})
 			.catch(function (error) {
@@ -81,7 +81,7 @@ export default class AttractionsBar extends Component {
 			.then((response) => {
 				// console.log(JSON.stringify(response.data));
 				this.setState({
-					attractions: response.data,
+					bars: response.data,
 				});
 			})
 			.catch(function (error) {
@@ -91,25 +91,31 @@ export default class AttractionsBar extends Component {
 
 	render() {
 		return (
-			<div className="BarContainer">
-				<Row>
-					<Col span={6}>
-						<AttractionsFan attractions={this.state.hotels} />
-						Hotels
-					</Col>
-					<Col span={6}>
-						<AttractionsFan attractions={this.state.restaurants} />
-						Restaurants
-					</Col>
-					<Col span={6}>
-						<AttractionsFan attractions={this.state.bars} />
-						Bars
-					</Col>
-					{/* <Col span={6}>
-						<AttractionsFan />
-						Shops
-					</Col> */}
-				</Row>
+			<div>
+				{this.state.hotels.length > 0 ? (
+					<div className="BarContainer">
+						<Row>
+							<Col span={6}>
+								<AttractionsFan attractions={this.state.hotels} />
+								Hotels
+							</Col>
+							<Col span={6}>
+								<AttractionsFan attractions={this.state.restaurants} />
+								Restaurants
+							</Col>
+							<Col span={6}>
+								<AttractionsFan attractions={this.state.bars} />
+								Bars
+							</Col>
+							{/* <Col span={6}>
+							<AttractionsFan />
+							Shops
+						</Col> */}
+						</Row>
+					</div>
+				) : (
+					<div></div>
+				)}
 			</div>
 		);
 	}
