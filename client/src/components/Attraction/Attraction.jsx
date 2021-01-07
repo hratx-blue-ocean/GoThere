@@ -47,8 +47,14 @@ export default class Attraction extends Component {
 		const clickContent = <div>Save {this.props.name}?</div>;
 		return (
 			<div>
-				{/* <img src={this.props.imageUrl} /> */}
-				<div className="Attraction">
+				<div
+					className="ImageContainer"
+					style={{
+						backgroundImage: `url(${this.props.imageUrl})`,
+						backgroundSize: '150px',
+					}}
+				>
+					{/* <img src={this.props.imageUrl} className="AttractionImage" /> */}
 					<Popover
 						placement="right"
 						content={hoverContent}
@@ -70,11 +76,13 @@ export default class Attraction extends Component {
 							visible={this.state.clicked}
 							onVisibleChange={this.handleClickChange}
 						>
-							<Button>Details</Button>
+							<button>{this.props.name}</button>
 						</Popover>
 					</Popover>
-					<div className="Text"> </div>
 				</div>
+				{/* <div className="Attraction">
+					<div className="Text"> </div>
+				</div> */}
 			</div>
 		);
 	}
