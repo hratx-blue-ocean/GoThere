@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Button, Form, Input } from 'antd';
 
 const SignUpModal = () => {
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [phone, setPhone] = useState();
+    const [password, setPassword] = useState();
     const [form] = Form.useForm();
 
-    const onFinish = (values: any) => {
+    const onFinish = (values) => {
         console.log('Values of form for sign-up: ', values);
+        axios.post('http://localhost:8080/register', {
+            name,
+            email,
+            phone,
+            password
+        }).then((res) => {
+            console.log("Axios POST response:", res);
+        }).catch((err) => {
+            console.log("Error with post request:", err);
+        })
     };
 
     return (
@@ -27,7 +42,7 @@ const SignUpModal = () => {
                 }
                 ]}
             >
-                <Input />
+                <Input onChange={e => setName(e.target.value)} />
             </Form.Item>
 
             {/* Input for user's email address */}
@@ -45,7 +60,16 @@ const SignUpModal = () => {
                 },
                 ]}
             >
-                <Input />
+                <Input onChange={e => setEmail(e.target.value)} />
+            </Form.Item>
+
+            {/* Input for user's phone number */}
+            <Form.Item
+                name="phone"
+                label="Phone Number"
+                rules={[{ required: true, message: 'Please input your phone number!' }]}
+            >
+                <Input onChange={e => setPhone(e.target.value)} />
             </Form.Item>
 
             {/* Input to create a password */}
@@ -60,7 +84,7 @@ const SignUpModal = () => {
                 ]}
                 hasFeedback
             >
-                <Input.Password />
+                <Input.Password onChange={e => setPassword(e.target.value)} />
             </Form.Item>
 
             {/* Input to confirm password */}
