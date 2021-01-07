@@ -14,6 +14,7 @@ export default function Attraction(props) {
 		setIsClicked(false);
 		setIsHovered(false);
 	};
+	console.log('state:', state.tripInfo);
 
 	const handleHoverChange = (visible) => {
 		setIsClicked(false);
@@ -23,6 +24,14 @@ export default function Attraction(props) {
 	const handleClickChange = (visible) => {
 		setIsClicked(visible);
 		setIsHovered(false);
+	};
+
+	const handleFavoriteClick = () => {
+		var tripInfoClone = { ...state.tripInfo };
+		tripInfoClone.attractions.push(props);
+		dispatch({ type: 'SET_TRIP_INFO', payload: tripInfoClone });
+		console.log('tripinfoClone', tripInfoClone);
+		console.log('Attractions in state:');
 	};
 
 	//content displayed during hover animation
@@ -69,96 +78,10 @@ export default function Attraction(props) {
 						visible={isClicked}
 						onVisibleChange={handleClickChange}
 					>
-						<button>{props.name}</button>
+						<button onClick={handleFavoriteClick}>{props.name}</button>
 					</Popover>
 				</Popover>
 			</div>
 		</div>
 	);
 }
-
-//OLD CODE:
-// export default class Attraction extends Component {
-// 	constructor(props) {
-// 		super(props);
-// 		this.state = {
-// 			clicked: false,
-// 			hovered: false,
-// 		};
-// 	}
-
-// 	hide = () => {
-// 		this.setState({
-// 			clicked: false,
-// 			hovered: false,
-// 		});
-// 	};
-
-// 	handleHoverChange = (visible) => {
-// 		this.setState({
-// 			hovered: visible,
-// 			clicked: false,
-// 		});
-// 	};
-
-// 	handleClickChange = (visible) => {
-// 		this.setState({
-// 			clicked: visible,
-// 			hovered: false,
-// 		});
-// 	};
-
-// 	render() {
-// 		const hoverContent = (
-// 			<>
-// 				<div>
-// 					Address: {this.props.address[0]}, {this.props.address[1]}{' '}
-// 				</div>
-
-// 				<div>Price: {this.props.price}</div>
-// 				<div>Rating: {this.props.rating}</div>
-// 			</>
-// 		);
-// 		const clickContent = <div>Save {this.props.name}?</div>;
-// 		return (
-// 			<div>
-// 				<div
-// 					className="ImageContainer"
-// 					style={{
-// 						backgroundImage: `url(${this.props.imageUrl})`,
-// 						backgroundSize: '150px',
-// 					}}
-// 				>
-// 					{/* <img src={this.props.imageUrl} className="AttractionImage" /> */}
-// 					<Popover
-// 						placement="right"
-// 						content={hoverContent}
-// 						title={this.props.name}
-// 						trigger="hover"
-// 						visible={this.state.hovered}
-// 						onVisibleChange={this.handleHoverChange}
-// 					>
-// 						<Popover
-// 							content={
-// 								<div>
-// 									{clickContent}
-// 									<button onClick={this.hide}>Save</button>
-// 									<button onClick={this.hide}>Favorite</button>
-// 								</div>
-// 							}
-// 							title=""
-// 							trigger="click"
-// 							visible={this.state.clicked}
-// 							onVisibleChange={this.handleClickChange}
-// 						>
-// 							<button>{this.props.name}</button>
-// 						</Popover>
-// 					</Popover>
-// 				</div>
-// 				{/* <div className="Attraction">
-// 					<div className="Text"> </div>
-// 				</div> */}
-// 			</div>
-// 		);
-// 	}
-// }
