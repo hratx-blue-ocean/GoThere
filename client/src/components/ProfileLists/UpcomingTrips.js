@@ -57,7 +57,7 @@ class UpcomingTrips extends React.Component {
     return (
       <>
         <Card
-          style={{ maxWidth: "50%" }}
+          className="profileCard"
           title="Upcoming Trips"
           tabList={tabList}
           activeTabKey={this.state.key}
