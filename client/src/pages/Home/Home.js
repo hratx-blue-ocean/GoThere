@@ -5,11 +5,11 @@ import './Home.css';
 
 export default function Home() {
 	return (
-		<div className="wrapper">
-			<h2>Home (placeholder)</h2>
-
-			<TravelBar />
-			<AttractionsBar />
+		<div>
+			<div className="wrapper">
+				<TravelBar className="center" />
+				<AttractionsBar />
+			</div>
 		</div>
 	);
 }
