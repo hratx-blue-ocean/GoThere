@@ -1,28 +1,45 @@
 @import "~antd/dist/antd.css";
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Dark theme styles */
+
+.ant-page-header-heading-title {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h1,
+h2,
+h3 {
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App {
+  background-color: #363b4e;
+  color: white;
 }
+
+.App a {
+  color: white;
+}
+
+.App a:hover {
+  color: #49d2cd;
+}
+
+.App button {
+  color: #474d66;
+}
+.App button:hover {
+  color: #49d2cd;
+  border-color: #49d2cd;
+}
+
+/* table headers */
+.ant-picker-content th {
+  color: #edd3c4;
+  font-weight: bold;
+}
+
+/* --- end theme styles --- */
 
 .wrapper {
   padding: 20px;

@@ -18,10 +18,8 @@ app.use(bodyParser.json());
 
 // yelp api calls
 app.get('/attractions', (req, res) => {
-
-
     const yelp = require('yelp-fusion');
-    const client = yelp.client(API_KEY.API_KEY);
+    const client = yelp.client(YELP_API_KEY);
 
     client.search({
       term: req.query.term,
@@ -39,10 +37,10 @@ app.get('/attractions', (req, res) => {
 
 app.post('/login', (req, res) => {
 	console.log('REQ.BODY:', req.body);
-	let username = req.body.username;
+	let email = req.body.email;
 	let password = req.body.password;
 
-	db.checkUsernamePassword(username, password).then((isCorrectPassword) => {
+	db.checkUsernamePassword(email, password).then((isCorrectPassword) => {
 		if (isCorrectPassword) {
 			res.send({
 				token: 'test123',
@@ -57,7 +55,6 @@ app.post('/login', (req, res) => {
 app.post('/newuser', (req, res) => {
 	console.log('hitting the new user endpoint!', req.query);
 
-
   db.createNewUser(req.query, (err, data) => {
     if (err) {
       console.log(err);
@@ -70,7 +67,6 @@ app.post('/newuser', (req, res) => {
 
 //for adding a new trip to the database
 app.post('/trips', (req, res) => {
-
   console.log('hitting the new user endpoint!', req.query)
 
   db.createNewTrip(req.query, (err, data) => {
@@ -82,11 +78,10 @@ app.post('/trips', (req, res) => {
   })
 })
 
+// get user trips
 
-	db.createNewTrip(req.query).then((data) => {
-		res.send('user added');
-	});
-});
+// get user favorites
+
 
 
 app.listen(PORT, () =>
