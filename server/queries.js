@@ -34,7 +34,7 @@ const createNewUser = (userData, callback) => {
 const createNewTrip = (tripData, callback) => {
   pool.query(
     `INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
-    VALUES ('${tripData.cookie.email}', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}');` ,(error, results) => {
+    VALUES ('${tripData.userId.userId}', '${tripData.tripData.startdate}', '${tripData.tripData.enddate}', '${tripData.tripData.destination}', '${tripData.tripData.businesstrip}');` ,(error, results) => {
     if (error) {
       callback(error)
     }
