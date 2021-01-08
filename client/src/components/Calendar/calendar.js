@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 // import {Context} from '../state-management/Store';
 import { Calendar, Alert } from 'antd';
 import moment from 'moment';
+import dummyTrips from "../../dummy-data/dummyTripsArray";
 import './calendar.css'
 
 class UserCalendar extends React.Component {
@@ -64,11 +65,11 @@ class UserCalendar extends React.Component {
     // console.log('value', value.month())
     return (
       <>
-      {dummyData.map((trip) => {
+      {dummyTrips.map((trip) => {
         let startDate = parseInt(trip.startDate.slice(8));
         let endDate = parseInt(trip.endDate.slice(8));
         let month = parseInt(trip.startDate.slice(5,7));
-
+        // console.log(value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month)
         // render trips based off of trip data, data.type: Business or Personal
         if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Personal') {
           return <div

@@ -17,6 +17,11 @@ const Reducer = (state, action) => {
 			};
 		default:
 			return state;
+			case 'SET_TRIP_INFO':
+			return {
+				...state,
+				tripInfo: action.payload,
+			};
 	}
 };
 
