@@ -9,6 +9,8 @@ export default function AttractionList(props) {
 				{props.attractions.map((attraction) => {
 					return (
 						<Attraction
+							attractionType={props.attractionType}
+							attraction={attraction}
 							id={attraction.id}
 							name={attraction.name}
 							price={attraction.price}
