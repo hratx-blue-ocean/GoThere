@@ -10,6 +10,7 @@ var initialState = {
 	favoriteShopping: [],
 	trips: [],
 	error: null,
+	userID: "",
 };
 
 const Store = ({ children }) => {
