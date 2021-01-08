@@ -4,7 +4,10 @@ import tripInfoObject from '../components/TravelBar/TripInfoObject.js';
 
 var initialState = {
 	tripInfo: tripInfoObject,
-	userFavorites: userFavoritesObject,
+	favoriteHotels: [],
+	favoriteRestaurants: [],
+	favoriteBars: [],
+	favoriteShopping: [],
 	trips: [],
 	error: null,
 };
