@@ -15,7 +15,7 @@ const Reducer = (state, action) => {
 				...state,
 				error: action.payload,
 			};
-		default:got
+		default:
 			return state;
 	}
 };

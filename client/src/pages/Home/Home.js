@@ -12,11 +12,10 @@ export default function Home() {
 				<div className="image">
 					<TravelBar className="center" />
 					{/* <img src={backgroundPhoto} className="image" /> */}
+					<AttractionsBar />
 				</div>
 			</div>
-			<div>
-				<AttractionsBar />
-			</div>
+			<div></div>
 		</div>
 	);
 }
