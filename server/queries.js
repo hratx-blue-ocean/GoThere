@@ -34,7 +34,7 @@ const createNewUser = (userData, callback) => {
 const createNewTrip = (tripData, callback) => {
   pool.query(
     `INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
-    VALUES ('${tripData.email}', '${tripData.startdate}', '${tripData.enddate}', '${tripData.destination}', '${tripData.businesstrip}');` ,(error, results) => {
+    VALUES ('${tripData.cookie.email}', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}');` ,(error, results) => {
     if (error) {
       callback(error)
     }
@@ -45,7 +45,7 @@ const createNewTrip = (tripData, callback) => {
 //query database for user trips by userID
 const getTrip = (userId, callback) => {
   pool.query(
-    `SELECT * FROM usertrips WHERE email = '${userId.email}'` ,(error, results) => {
+    `SELECT * FROM usertrips WHERE email = '${userId.cookie.email}'` ,(error, results) => {
     if (error) {
       callback(error)
     }
@@ -55,7 +55,7 @@ const getTrip = (userId, callback) => {
 
 const getFavorites = (userId, callback) => {
   pool.query(
-    `SELECT * FROM favorites WHERE email = '${userId.email}'` ,(error, results) => {
+    `SELECT * FROM favorites WHERE email = '${userId.cookie.email}'` ,(error, results) => {
     if (error) {
       callback(error)
     }
