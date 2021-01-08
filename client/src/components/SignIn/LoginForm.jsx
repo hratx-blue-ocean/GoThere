@@ -4,25 +4,28 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import SignUp from '../SignUp/SignUp';
 
-const LoginForm = ({ setToken }) => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+const LoginForm = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const login = () => {
         axios({
             method: 'post',
             url: 'http://localhost:8080/login',
             data: {
-                email,
-                password
+                email: email,
+                password: password
             },
-              withCredentials: true,
+            withCredentials: true,
         }).then((res) => {
             console.log("Axios POST response:", res);
         }).catch((err) => {
             console.log("Error with post request:", err);
         })
+    }
+
+    const onFinish = (values) => {
+        console.log('Received values of form: ', values);
     };
 
     return (
@@ -63,7 +66,7 @@ const LoginForm = ({ setToken }) => {
                         },
                     ]}
                 >
-                    <Input
+                    <Input.Password
                         prefix={<LockOutlined className="site-form-item-icon" />}
                         type="password"
                         placeholder="Password"
@@ -78,7 +81,14 @@ const LoginForm = ({ setToken }) => {
 
                 {/* Login Button */}
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button">Log in</Button>
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        className="login-form-button"
+                        onClick={login}
+                    >
+                        Log in
+                    </Button>
                     <br></br>
                     <br></br>
                     <p>New? Register for an account:</p>
