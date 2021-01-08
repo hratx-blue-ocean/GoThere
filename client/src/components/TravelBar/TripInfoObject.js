@@ -6,6 +6,7 @@ const TripInfoObject = {
 	state: undefined,
 	address: undefined,
 	zip: undefined,
+	filter: {rating: undefined, price: undefined},
 	startDate: undefined,
 	endDate: undefined,
 	type: undefined,
