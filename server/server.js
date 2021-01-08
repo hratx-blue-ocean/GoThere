@@ -51,7 +51,7 @@ app.post('/login', (req, res) => {
 
 	let password = req.body.password;
 
-	db.checkUsernamePassword(username, password).then((isCorrectPassword) => {
+	db.checkUsernamePassword(email, password).then((isCorrectPassword) => {
 		if (isCorrectPassword) {
       console.log('Correct Password entered');
       res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
