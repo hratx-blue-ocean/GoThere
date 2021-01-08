@@ -2,23 +2,14 @@ import React, { Component } from 'react';
 import AttractionList from '../AttractionList/AttractionList.jsx';
 import SelectedAttraction from '../Attraction/SelectedAttraction.jsx';
 import './AttractionsFan.css';
-// const axios = require('axios');
-
-// const yelp = require('yelp-fusion');
-// const client = yelp.client(API_KEY);
 
 export default class AttractionsFan extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			listIsOpen: false,
-			// attractions: [],
 		};
 		this.handleClick = this.handleClick.bind(this);
-
-		// this.getHotels = this.getHotels.bind(this);
-		// this.getRestaurants = this.getRestaurants.bind(this);
-		// this.getBars = this.getBars.bind(this);
 	}
 
 	handleClick() {
@@ -34,6 +25,7 @@ export default class AttractionsFan extends Component {
 				<SelectedAttraction
 					className="RootAttraction"
 					onPress={this.handleClick}
+					attractionType={this.props.attractionType}
 				/>
 				<div>
 					{this.state.listIsOpen ? (
