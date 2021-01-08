@@ -14,7 +14,7 @@ const saveTrip = (tripData, userId) => {
   const options = {
     method: 'POST',
     url: '/trips',
-    body: {userId: userId, tripData: tripData}
+    body: {tripData: tripData}
   }
   return axios.request(options)
 }
