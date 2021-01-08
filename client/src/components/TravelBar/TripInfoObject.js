@@ -12,8 +12,8 @@ const TripInfoObject = {
 	endDate: undefined,
 	type: undefined,
 	savedHotel: [],
-	savedRestaurant: {},
-	savedShopping: {},
-	savedBar: {},
+	savedRestaurant: [],
+	savedShopping: [],
+	savedBar: [],
 };
 export default TripInfoObject;
