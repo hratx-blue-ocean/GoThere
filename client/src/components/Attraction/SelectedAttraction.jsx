@@ -5,7 +5,7 @@ import './Attraction.css';
 export default function SelectedAttraction({ onPress }) {
 	// const { name, price } = this.props;
 	return (
-		<div>
+		<div >
 			<span type="button" className="Attraction" onClick={onPress}></span>
 		</div>
 	);
