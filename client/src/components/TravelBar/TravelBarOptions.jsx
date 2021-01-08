@@ -36,11 +36,11 @@ const TravelBarOptions = () => {
     <Menu style={{width: 400}}>
       <Menu.Item>
         <div>preferrd hotel rating
-          <Rate allowHalf defaultValue={2.5}
+          <Rate allowHalf defaultValue={undefined}
           onChange={(event, name) => handleTripInfoChange( event, 'rating')}/></div>
       </Menu.Item>
       <Menu.Item>
-       Preferrd hotel pricing <Rate defaultValue={2} character={"$"} onChange={(event, name) => handleTripInfoChange( event, 'price')} /></Menu.Item>
+       Preferrd hotel pricing <Rate defaultValue={undefined} character={"$"} onChange={(event, name) => handleTripInfoChange( event, 'price')} /></Menu.Item>
       <Menu.Item>
         <Radio.Group onChange={handleTripInfoChange} value={tripType}>
           <Radio value={"Buisness"}>Buisness</Radio>
