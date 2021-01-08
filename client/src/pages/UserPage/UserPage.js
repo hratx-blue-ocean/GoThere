@@ -4,6 +4,7 @@ import { SmileTwoTone } from '@ant-design/icons';
 import moment from 'moment';
 import axios from 'axios';
 import "./userPage.css";
+import { WEATHER_API_KEY } from '../../API.js';
 import dummyTrips from "../../dummy-data/dummyTripsArray";
 import UserCalendar from "../../components/Calendar/calendar.js";
 import UpcomingTrips from "../../components/ProfileLists/UpcomingTrips.js";
