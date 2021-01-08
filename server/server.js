@@ -83,7 +83,12 @@ app.post('/trips', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.json('Trip has been added to the database!');
+			res.json(data);
+      // db.createNewAttraction(req, data.tripid, (err2, result) => {
+			// 	if (err2) {
+			// 		console.log(err2)
+			// 	} res.json(data, result);
+			// })
     }
   })
 
@@ -96,7 +101,7 @@ app.get('/trips' , (req, res) => {
       console.log(err);
     } else {
       console.log('results!', data)
-      res.json(data.rows[0]);
+      res.json(data.rows);
     }
   })
 
@@ -108,7 +113,7 @@ app.get('/favorites' , (req, res) => {
       console.log(err);
     } else {
       console.log('results!', data)
-      res.json(data.rows[0]);
+      res.json(data.rows);
     }
   })
 })

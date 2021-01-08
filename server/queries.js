@@ -30,15 +30,28 @@ const createNewUser = (userData, callback) => {
 }
 
 
-// for a new trip, needs changing WORK ON THIS JESSE
+// for a new trip, needs changing !!!! DONT FORGET TO ADD IN userId.cookie.email after testing!!!!
 const createNewTrip = (tripData, callback) => {
   pool.query(
     `INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
-    VALUES ('${tripData.cookie.email}', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}');` ,(error, results) => {
+    VALUES ('imsleepy@gmail.com', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}');` ,(error, results) => {
     if (error) {
       callback(error)
     }
+    console.log('RESULTS!!', results)
     callback(null, results)
+  })
+}
+
+// creates new attraction - to be used with createNewTrip above ^
+const createNewAttraction = (attractionData, tripId, callback) => {
+  console.log('HERE IS TRIP ID!', tripId)
+  pool.query(
+    `INSERT INTO attractions(tripid, name, citystate, attractionType)
+    VALUES ('${tripId}', '${attractionData.query.name}', '${attractionData.query.citystate}', '${attractionData.query.attractionType}');` ,(error, results) => {
+    if (error) {
+      callback(error)
+    } callback(null, results)
   })
 }
 
@@ -71,4 +84,5 @@ module.exports = {
   createNewTrip,
   getTrip,
   getFavorites,
+  createNewAttraction,
 }
