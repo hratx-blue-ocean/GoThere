@@ -1,7 +1,8 @@
 const TripInfoObject = {
 	id: null,
 	valid: false,
-	location: undefined,
+	//default location
+	location: 'Austin, TX',
 	city: undefined,
 	state: undefined,
 	address: undefined,

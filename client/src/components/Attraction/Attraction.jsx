@@ -26,13 +26,13 @@ export default function Attraction(props) {
 		setIsHovered(false);
 	};
 
-	const handleFavoriteClick = () => {
-		var tripInfoClone = { ...state.tripInfo };
-		tripInfoClone.attractions.push(props);
-		dispatch({ type: 'SET_TRIP_INFO', payload: tripInfoClone });
-		console.log('tripinfoClone', tripInfoClone);
-		console.log('Attractions in state:');
-	};
+	// const handleFavoriteClick = () => {
+	// 	var tripInfoClone = { ...state.tripInfo };
+	// 	tripInfoClone.attractions.push(props);
+	// 	dispatch({ type: 'SET_TRIP_INFO', payload: tripInfoClone });
+	// 	// console.log('tripinfoClone', tripInfoClone);
+	// 	// console.log('Attractions in state:');
+	// };
 
 	//content displayed during hover animation
 	const hoverContent = (
@@ -78,7 +78,9 @@ export default function Attraction(props) {
 						visible={isClicked}
 						onVisibleChange={handleClickChange}
 					>
-						<button onClick={handleFavoriteClick}>{props.name}</button>
+						<button
+							// onClick={handleFavoriteClick}
+						>{props.name}</button>
 					</Popover>
 				</Popover>
 			</div>
