@@ -5,10 +5,10 @@ const Reducer = (state, action) => {
 				...state,
 				tripInfo: action.payload,
 			};
-		case 'TEST 2':
+		case 'ADD_TRIP':
 			return {
 				...state,
-				test2: action.payload,
+				trips: action.payload,
 			};
 		case 'SET_ERROR':
 			return {
@@ -17,6 +17,11 @@ const Reducer = (state, action) => {
 			};
 		default:
 			return state;
+			case 'SET_TRIP_INFO':
+			return {
+				...state,
+				tripInfo: action.payload,
+			};
 	}
 };
 

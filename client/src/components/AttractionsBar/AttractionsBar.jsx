@@ -12,20 +12,21 @@ export default class AttractionsBar extends Component {
 			hotels: [],
 			restaurants: [],
 			bars: [],
-			escapeRooms: [],
+			shopping: [],
 		};
 
 		this.getHotels = this.getHotels.bind(this);
 		this.getRestaurants = this.getRestaurants.bind(this);
 		this.getBars = this.getBars.bind(this);
-		this.getEscapeRooms = this.getEscapeRooms.bind(this);
+		this.getshopping = this.getshopping.bind(this);
 	}
 
+
 	componentDidMount() {
-		this.getHotels();
 		this.getBars();
+		this.getHotels();
 		this.getRestaurants();
-		this.getEscapeRooms();
+		this.getshopping();
 	}
 
 	getHotels() {
@@ -33,7 +34,7 @@ export default class AttractionsBar extends Component {
 			method: 'get',
 			url: 'http://localhost:8080/attractions',
 			params: {
-				location: 'austin, tx',
+				location: this.props.location,
 				term: 'hotels',
 			},
 		};
@@ -54,7 +55,7 @@ export default class AttractionsBar extends Component {
 			method: 'get',
 			url: 'http://localhost:8080/attractions',
 			params: {
-				location: 'austin, tx',
+				location: this.props.location,
 				term: 'restaurants',
 			},
 		};
@@ -75,7 +76,7 @@ export default class AttractionsBar extends Component {
 			method: 'get',
 			url: 'http://localhost:8080/attractions',
 			params: {
-				location: 'austin, tx',
+				location: this.props.location,
 				term: 'bars',
 			},
 		};
@@ -92,20 +93,20 @@ export default class AttractionsBar extends Component {
 			});
 	}
 
-	getEscapeRooms() {
+	getshopping() {
 		const config = {
 			method: 'get',
 			url: 'http://localhost:8080/attractions',
 			params: {
-				location: 'austin, tx',
-				term: 'escape rooms',
+				location: this.props.location,
+				term: 'shopping',
 			},
 		};
 		axios(config)
 			.then((response) => {
 				// console.log(JSON.stringify(response.data));
 				this.setState({
-					escapeRooms: response.data,
+					shopping: response.data,
 				});
 			})
 			.catch(function (error) {
@@ -114,26 +115,27 @@ export default class AttractionsBar extends Component {
 	}
 
 	render() {
+		console.log('attractions bar props:', this.props)
 		return (
 			<div>
-				{this.state.hotels.length > 0 ? (
+				{(this.state.bars.length & this.state.shopping.length)   > 0 ? (
 					<div className="BarContainer">
 						<Row>
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.hotels} />
+								<AttractionsFan attractions={this.state.hotels} attractionType={'hotel'}/>
 								Hotels
 							</Col>
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.restaurants} />
+								<AttractionsFan attractions={this.state.restaurants} attractionType={'restaurants'}/>
 								Restaurants
 							</Col>
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.bars} />
+								<AttractionsFan attractions={this.state.bars} attractionType={'bars'}/>
 								Bars
 							</Col>
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.escapeRooms} />
-								EscapeRooms
+								<AttractionsFan attractions={this.state.shopping} attractionType={'shopping'}/>
+								Shopping
 							</Col>
 						</Row>
 					</div>
