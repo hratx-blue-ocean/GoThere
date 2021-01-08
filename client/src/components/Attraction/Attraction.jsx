@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../../state-management/Store';
 import { Popover } from 'antd';
 // import { useToggle } from "ahooks";
@@ -26,9 +26,30 @@ export default function Attraction(props) {
 		setIsHovered(false);
 	};
 
+	const handleSaveClick = () => {
+		var tripInfoClone = { ...state.tripInfo };
+		//depending on the attraction type, add the attraction to the correct category in the global state
+		if (props.attractionType === 'hotels') {
+			tripInfoClone.savedHotel = props.attraction
+		}
+		if (props.attractionType === 'bars') {
+			tripInfoClone.savedBar = props.attraction
+		}
+		if (props.attractionType === 'restaurants') {
+			tripInfoClone.savedRestaurant = props.attraction
+		}
+		if (props.attractionType === 'shopping') {
+			tripInfoClone.savedShopping = props.attraction
+		}
+
+		dispatch({ type: 'SET_SAVED_ATTRACTION', payload: tripInfoClone });
+		// console.log('tripinfoClone', tripInfoClone);
+		// console.log('Attractions in state:');
+	};
+
 	// const handleFavoriteClick = () => {
 	// 	var tripInfoClone = { ...state.tripInfo };
-	// 	tripInfoClone.attractions.push(props);
+	// 	tripInfoClone.saved.push(props);
 	// 	dispatch({ type: 'SET_TRIP_INFO', payload: tripInfoClone });
 	// 	// console.log('tripinfoClone', tripInfoClone);
 	// 	// console.log('Attractions in state:');
@@ -69,7 +90,7 @@ export default function Attraction(props) {
 						content={
 							<div>
 								{clickContent}
-								<button onClick={hide}>Save</button>
+								<button onClick={hide} onClick={handleSaveClick}>Save</button>
 								<button onClick={hide}>Favorite</button>
 							</div>
 						}

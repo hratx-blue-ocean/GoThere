@@ -122,19 +122,19 @@ export default class AttractionsBar extends Component {
 					<div className="BarContainer">
 						<Row>
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.hotels} />
+								<AttractionsFan attractions={this.state.hotels} attractionType={'hotel'}/>
 								Hotels
 							</Col>
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.restaurants} />
+								<AttractionsFan attractions={this.state.restaurants} attractionType={'restaurants'}/>
 								Restaurants
 							</Col>
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.bars} />
+								<AttractionsFan attractions={this.state.bars} attractionType={'bars'}/>
 								Bars
 							</Col>
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.shopping} />
+								<AttractionsFan attractions={this.state.shopping} attractionType={'shopping'}/>
 								Shopping
 							</Col>
 						</Row>

@@ -37,7 +37,7 @@ export default class AttractionsFan extends Component {
 				/>
 				<div>
 					{this.state.listIsOpen ? (
-						<AttractionList attractions={this.props.attractions} />
+						<AttractionList attractions={this.props.attractions} attractionType={this.props.attractionType}/>
 					) : (
 						<div> </div>
 					)}
