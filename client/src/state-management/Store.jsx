@@ -4,8 +4,13 @@ import tripInfoObject from '../components/TravelBar/TripInfoObject.js';
 
 var initialState = {
 	tripInfo: tripInfoObject,
-	test2: [],
+	favoriteHotels: [],
+	favoriteRestaurants: [],
+	favoriteBars: [],
+	favoriteShopping: [],
+	trips: [],
 	error: null,
+	userID: "",
 };
 
 const Store = ({ children }) => {
