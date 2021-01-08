@@ -12,7 +12,7 @@ export default class AttractionsBar extends Component {
 			hotels: [],
 			restaurants: [],
 			bars: [],
-			escapeRooms: [],
+			shopping: [],
 		};
 
 		this.getHotels = this.getHotels.bind(this);
@@ -33,7 +33,7 @@ export default class AttractionsBar extends Component {
 			method: 'get',
 			url: 'http://localhost:8080/attractions',
 			params: {
-				location: 'austin, tx',
+				location: 'austin',
 				term: 'hotels',
 			},
 		};

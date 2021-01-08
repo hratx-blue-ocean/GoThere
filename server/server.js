@@ -26,7 +26,7 @@ app.use(cookieParser());
 // yelp api calls
 app.get('/attractions', (req, res) => {
 	const yelp = require('yelp-fusion');
-	const client = yelp.client(YELP_API_KEY.YELP_API_KEY);
+	const client = yelp.client(YELP_API_KEY);
 
 	client
 		.search({
@@ -83,9 +83,7 @@ app.post('/newuser', (req, res) => {
 //for adding a new trip to the database
 app.post('/trips', (req, res) => {
 
-  console.log('hitting the new user endpoint!', req.query)
-
-  db.createNewTrip(req.query, (err, data) => {
+  db.createNewTrip(req, (err, data) => {
     if (err) {
       console.log(err);
     } else {
@@ -117,13 +115,8 @@ app.get('/favorites' , (req, res) => {
       res.json(data.rows[0]);
     }
   })
-
 })
 
-
-// db.createNewTrip(req.query).then((data) => {
-// 	res.send('user added');
-// });
 
 app.listen(PORT, () =>
 	console.log(`API is running on http://localhost:${PORT}/`)

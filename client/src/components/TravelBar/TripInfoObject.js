@@ -6,9 +6,13 @@ const TripInfoObject = {
 	state: undefined,
 	address: undefined,
 	zip: undefined,
+	filter: {rating: undefined, price: undefined},
 	startDate: undefined,
 	endDate: undefined,
 	type: undefined,
-	attractions: [],
+	savedHotel: {},
+	savedRestaurant: {},
+	savedShopping: {},
+	savedBar: {},
 };
 export default TripInfoObject;
