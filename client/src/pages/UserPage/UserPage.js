@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Alert } from 'antd';
+import { Alert, PageHeader } from 'antd';
+import { SmileTwoTone } from '@ant-design/icons';
 import moment from 'moment';
 import "./userPage.css";
 import dummyTrips from "../../dummy-data/dummyTripsArray";
@@ -22,13 +23,25 @@ export default function UserPage() {
         return trips;
       }
     }
-
   const nextTrip = dummyTrips.find(isNext);
+  //message populating alert
   const weather = 'Sunny, 52 degrees';
   const tripMessage = nextTrip ? (`You have a trip in the next few days to ${nextTrip.location} on ${nextTrip.startDate}, the weather will be a ${weather}`) : null;
 
+  //welcome user profile headers
+  let username = 'Slarti Bartfast';
+  const welcomeMessage = `Welcome ${username}!`;
+  //user avatar
+  const colorScheme = ['teal', 'olive', 'purple', 'orange'];
+  const avatarColor = colorScheme[Math.floor(Math.random() * colorScheme.length)];
+
   return (
     <>
+    <PageHeader
+    avatar={{size:"large", icon:<SmileTwoTone spin twoToneColor={avatarColor}/>}}
+    title={welcomeMessage}
+    subTitle="here are your upcoming trips and favorites!"
+    />
     <div className='eminent trip'>
       {visible && nextTrip !== undefined ? (
         <Alert

@@ -1,25 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const app = express();
 const PORT = 8080;
 const db = require('./queries.js');
 // needed for yelp API calls
-const API_KEY = require('./API.js');
+const YELP_API_KEY = require('./API.js');
 const yelp = require('yelp-fusion');
-const client = yelp.client(API_KEY);
+const client = yelp.client(YELP_API_KEY);
 const axios = require('axios');
 
 app.use(express.static(__dirname + '/../client/src'));
 
-app.use(cors());
+// TODO: check to see if this works on production!
+//       that is, on a url other than localhost...
+// See this stackoverflow comment:
+// https://stackoverflow.com/questions/43002444/make-axios-send-cookies-in-its-requests-automatically
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // yelp api calls
 app.get('/attractions', (req, res) => {
 	const yelp = require('yelp-fusion');
-	const client = yelp.client(API_KEY.API_KEY);
+	const client = yelp.client(YELP_API_KEY.YELP_API_KEY);
 
 	client
 		.search({
@@ -39,15 +46,19 @@ app.get('/attractions', (req, res) => {
 
 app.post('/login', (req, res) => {
 	console.log('REQ.BODY:', req.body);
-	let username = req.body.username;
+	console.log('req.cookies:', req.cookies);
+	let email = req.body.email;
+
 	let password = req.body.password;
 
 	db.checkUsernamePassword(username, password).then((isCorrectPassword) => {
 		if (isCorrectPassword) {
-			res.send({
-				token: 'test123',
-			});
+      console.log('Correct Password entered');
+      res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
+      res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
+      res.send('cookie set');
 		} else {
+      console.log('no matching email/password found in database')
 			res.status(400).end();
 		}
 	});
@@ -57,20 +68,60 @@ app.post('/login', (req, res) => {
 app.post('/newuser', (req, res) => {
 	console.log('hitting the new user endpoint!', req.query);
 
-	db.createNewUser(req.query).then((data) => {
-		res.send('user added');
+	db.createNewUser(req.query, (err, data) => {
+		if (err) {
+			console.log(err);
+		} else {
+			res.json('User has been added to the database!');
+		}
 	});
 });
 
-//using trips for now
+//for adding a new trip to the database
 app.post('/trips', (req, res) => {
-	console.log('hitting the newtrip endpoint!', req.query);
 
-	db.createNewTrip(req.query).then((data) => {
-		res.send('user added');
-	});
-});
+  console.log('hitting the new user endpoint!', req.query)
+
+  db.createNewTrip(req.query, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json('Trip has been added to the database!');
+    }
+  })
+
+})
+
+// get user trips
+app.get('/trips' , (req, res) => {
+  db.getTrip(req.query, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('results!', data)
+      res.json(data.rows[0]);
+    }
+  })
+
+})
+// get user favorites
+app.get('/favorites' , (req, res) => {
+  db.getFavorites(req.query, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('results!', data)
+      res.json(data.rows[0]);
+    }
+  })
+
+})
+
+
+// db.createNewTrip(req.query).then((data) => {
+// 	res.send('user added');
+// });
 
 app.listen(PORT, () =>
-	console.log(`API is running on http://localhost:${PORT}/login`)
+	console.log(`API is running on http://localhost:${PORT}/`)
 );
