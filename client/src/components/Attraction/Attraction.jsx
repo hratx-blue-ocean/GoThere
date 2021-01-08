@@ -28,14 +28,16 @@ export default function Attraction(props) {
 
 	const handleSaveClick = () => {
 		var tripInfoClone = { ...state.tripInfo };
+		console.log(props.attraction)
 		//depending on the attraction type, add the attraction to the correct category in the global state
-		if (props.attractionType === 'hotels') {
-			tripInfoClone.savedHotel = props.attraction
+		if (props.attractionType === 'hotel') {
+			// tripInfoClone.savedHotel = [];
+			tripInfoClone.savedHotel.push(props.attraction)
 		}
-		if (props.attractionType === 'bars') {
+		if (props.attractionType === 'bar') {
 			tripInfoClone.savedBar = props.attraction
 		}
-		if (props.attractionType === 'restaurants') {
+		if (props.attractionType === 'restaurant') {
 			tripInfoClone.savedRestaurant = props.attraction
 		}
 		if (props.attractionType === 'shopping') {
@@ -44,7 +46,7 @@ export default function Attraction(props) {
 
 		dispatch({ type: 'SET_SAVED_ATTRACTION', payload: tripInfoClone });
 		// console.log('tripinfoClone', tripInfoClone);
-		// console.log('Attractions in state:');
+		console.log('Saved attractions:', state.tripInfo.savedHotel);
 	};
 
 	// const handleFavoriteClick = () => {
@@ -59,7 +61,7 @@ export default function Attraction(props) {
 	const hoverContent = (
 		<>
 			<div>
-				Address: {props.address[0]}, {props.address[1]}{' '}
+				Address: {props.address[0]}, {props.address[1]}
 			</div>
 
 			<div>Price: {props.price}</div>

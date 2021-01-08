@@ -10,7 +10,7 @@ const TripInfoObject = {
 	startDate: undefined,
 	endDate: undefined,
 	type: undefined,
-	savedHotel: {},
+	savedHotel: [],
 	savedRestaurant: {},
 	savedShopping: {},
 	savedBar: {},
