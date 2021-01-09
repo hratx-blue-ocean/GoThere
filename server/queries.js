@@ -21,7 +21,7 @@ const checkUsernamePassword = (username, password) => {
 const createNewUser = (userData, callback) => {
   pool.query(
     `INSERT INTO users(name, email, phoneNumber, password)
-    VALUES ('${userData.name}', '${userData.cookie.email}', '${userData.phoneNumber}', '${userData.password}');` ,(error, results) => {
+    VALUES ('${userData.query.name}', '${userData.cookie.email}', '${userData.query.phoneNumber}', '${userData.query.password}');` ,(error, results) => {
     if (error) {
       callback(error)
     }
@@ -59,10 +59,23 @@ const createNewAttraction = (attractionData, tripId, callback) => {
   })
 }
 
+
+// this is used to post a favorite
+
+const createNewFavorite = (favoriteData, callback) => {
+  pool.query(
+    `INSERT INTO favorites(email, name, citystate, favoritesType)
+    VALUES ('${favoriteData.cookie.email}', '${favoriteData.query.name}', '${favoriteData.query.citystate}', '${favoriteData.query.attractionType}');` ,(error, results) => {
+    if (error) {
+      callback(error)
+    } callback(null, results)
+  })
+}
+
 //query database for user trips by userID
 const getTrip = (userId, callback) => {
   pool.query(
-    `SELECT * FROM usertrips WHERE email = '${userId.query.email}'` ,(error, results) => {
+    `SELECT * FROM usertrips WHERE email = '${userId.cookie.email}'` ,(error, results) => {
     if (error) {
       callback(error)
     }
@@ -86,6 +99,7 @@ module.exports = {
   checkUsernamePassword,
   createNewUser,
   createNewTrip,
+  createNewFavorite,
   getTrip,
   getFavorites,
 }

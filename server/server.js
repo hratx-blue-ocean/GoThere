@@ -87,7 +87,18 @@ app.post('/trips', (req, res) => {
 
     }
   })
+})
 
+app.post('/favorites', (req, res) => {
+
+  db.createNewFavorite(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
 })
 
 // get user trips
