@@ -11,7 +11,7 @@ import Preferences from './pages/Preferences/Preferences';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import LogOut from './components/SignOut/LogOut';
+import LogOut from './components/SignOut/Logout';
 import Store from './state-management/Store';
 
 function App() {
