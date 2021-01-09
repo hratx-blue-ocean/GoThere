@@ -49,7 +49,6 @@ const UpcomingTrips = () => {
             <Card
               // style={{ maxWidth: "50%" }}
               title={trip.location.city}
-              extra={<a href="/home">Update Trip</a>}
             >
               <List size="small">
                 <List.Item>
@@ -57,7 +56,7 @@ const UpcomingTrips = () => {
                 </List.Item>
                 <List.Item>Arrival Date: {trip.startDate}</List.Item>
                 <List.Item>Departure Date: {trip.endDate}</List.Item>
-                <List.Item>Hotel: </List.Item>
+                <List.Item>Hotel: Comfort Inn Bayside</List.Item>
               </List>
             </Card>
           );
