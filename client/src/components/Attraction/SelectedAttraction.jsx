@@ -22,24 +22,27 @@ export default function SelectedAttraction(props) {
 	if (props.attractionType === 'shopping' && state.tripInfo.savedShopping) {
 		displayAttraction = state.tripInfo.savedShopping[state.tripInfo.savedShopping.length-1]
 	}
+	if (displayAttraction) {
 
-
+		console.log('display attraction:', displayAttraction)
+	}
 	return (
-		<div type="button" className="Attraction" onClick={props.onPress}>
+		<div type="button"  onClick={props.onPress}>
 			{/* <Attraction /> */}
 			<div>
-				{props.attractionType}
 				{displayAttraction ?
 					<div
 								className="ImageContainer"
 								style={{
-									backgroundImage: `url(${displayAttraction.imageUrl})`,
+									backgroundImage: `url(${displayAttraction.image_url})`,
 									backgroundSize: '150px',
 						}}>
+						<>
+							{displayAttraction.name}
+							</>
 					</div>
-					// {displayAttraction.name}
 					:
-					<div>
+					<div className="Attraction">
 
 				Choose {props.attractionType}
 						</div>

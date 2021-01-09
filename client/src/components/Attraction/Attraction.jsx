@@ -72,11 +72,11 @@ export default function Attraction(props) {
 	const clickContent = <div>Save {props.name}?</div>;
 
 	return (
-		<div>
+		<div className="AttractionBubble">
 			<div
 				className="ImageContainer"
 				style={{
-					backgroundImage: `url(${props.imageUrl})`,
+					background: `url(${props.imageUrl}) no-repeat`,
 					backgroundSize: '150px',
 				}}
 			>
@@ -101,9 +101,12 @@ export default function Attraction(props) {
 						visible={isClicked}
 						onVisibleChange={handleClickChange}
 					>
+						<div className="AttractionBubbleText">
+
 						<button
 							// onClick={handleFavoriteClick}
 						>{props.name}</button>
+						</div>
 					</Popover>
 				</Popover>
 			</div>
