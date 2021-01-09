@@ -22,15 +22,15 @@ export default function UserPage() {
   };
   //find the next coming trip, where startDate is within 7 days of today
   function isNext(trips){
-      if (parseInt(state.trips.startDate.slice(8)) >= today.date() && parseInt(state.trips.startDate.slice(8)) <= today.date() + 7) {
+      if (parseInt(trips.startDate.slice(8)) >= today.date() && parseInt(trips.startDate.slice(8)) <= today.date() + 7) {
         return trips;
       }
     }
-    console.log('ussssssertrip', state.trips)
+    // console.log('ussssssertrip', state.trips)
   const nextTrip = state.trips.length !== 0 ? state.trips.find(isNext) : null;
   //weather info for message
   const endIndex = state.trips.length !== 0 ? nextTrip.location.indexOf(',') : 0;
-  const weatherCity = state.trips.length !== 0 ?nextTrip.location.slice(0, endIndex) : '';
+  const weatherCity = state.trips.length !== 0 ? nextTrip.location.slice(0, endIndex) : '';
 
   const options = {
     method: 'GET',
@@ -55,7 +55,8 @@ export default function UserPage() {
   const tripMessage = nextTrip ? (`You have a trip in the next few days to ${nextTrip.location} on ${nextTrip.startDate.slice(5)}, the weather will be ${weather} for the first few days`) : null;
 
   //welcome user profile headers
-  let username = 'Slarti Bartfast';
+  let username = state.userID;
+  // console.log('username', username, 'state', state.userID)
   const welcomeMessage = `Welcome ${username}!`;
   //user avatar
   const colorScheme = ['teal', 'red', 'purple', 'orange'];

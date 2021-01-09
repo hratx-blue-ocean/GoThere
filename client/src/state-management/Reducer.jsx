@@ -15,11 +15,24 @@ const Reducer = (state, action) => {
 				...state,
 				error: action.payload,
 			};
+
+		case 'SET_USER':
+			return {
+				...state,
+				userID: action.payload,
+			};
+		case 'SET_USER_EMAIL':
+			return {
+				...state,
+				email: action.payload,
+			};
+
 			case 'SET_SAVED_ATTRACTION':
 				return {
 					...state,
 					tripInfo: action.payload,
 				};
+
 		default:
 			return state;
 	}
