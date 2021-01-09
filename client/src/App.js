@@ -1,42 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Link, Redirect, Route, Switch } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 import Home from './pages/Home/Home';
 import UserPage from './pages/UserPage/UserPage';
 import Login from './pages/Login/Login';
 import Preferences from './pages/Preferences/Preferences';
-import useToken from './useToken';
 
 // import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import LogOut from './components/SignOut/LogOut';
 import Store from './state-management/Store';
 
 function App() {
-  let loggedIn = true;
-
-  const { token, setToken } = useToken();
-
-	// if (!token) {
-	// 	return <Login setToken={setToken} />;
-	// }
+  const loggedInWithCookies = Cookies.get('loggedIn') === 'true';
+  const [loggedIn, setLoggedIn] = useState(loggedInWithCookies);
 
   return (
     <Store>
       <div className="App">
         <Header className="App-header" />
         <BrowserRouter>
-          <nav>
-            <ul>
-              <li><Link to="/home">Home</Link></li>
-              <li><Link to="/userPage">User Page</Link></li>
-              <li><Link to="/login">Login</Link></li>
-            </ul>
-          </nav>
+          { loggedIn
+            ? <nav>
+                <ul>
+                  <li><Link to="/home">Home</Link></li>
+                  <li><Link to="/userPage">User Page</Link></li>
+                  <li><LogOut setLoggedIn={setLoggedIn}/></li>
+                </ul>
+              </nav>
+            : <nav>
+              <ul>
+                <li><Link to="/home">Home</Link></li>
+                <li><Link to="/login">Login</Link></li>
+              </ul>
+            </nav>
+          }
+
           <Switch>
             <Route exact path="/">
-              {loggedIn
+              { loggedIn
                 ? <Redirect to="/userPage" />
                 : <Home />
               }
@@ -45,10 +50,13 @@ function App() {
               <Home />
             </Route>
             <Route path="/login">
-              <Login setToken={setToken} />
+              <Login setLoggedIn={setLoggedIn} />
             </Route>
             <Route path="/userPage">
-              <UserPage />
+              { loggedIn
+                ? <UserPage />
+                : <Redirect to="/" />
+              }
             </Route>
             <Route path="/preferences">
               <Preferences />
