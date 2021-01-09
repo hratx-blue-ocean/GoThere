@@ -84,11 +84,7 @@ app.post('/trips', (req, res) => {
       console.log(err);
     } else {
 			res.json(data);
-      // db.createNewAttraction(req, data.tripid, (err2, result) => {
-			// 	if (err2) {
-			// 		console.log(err2)
-			// 	} res.json(data, result);
-			// })
+
     }
   })
 

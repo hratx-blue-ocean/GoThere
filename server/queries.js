@@ -30,11 +30,15 @@ const createNewUser = (userData, callback) => {
 }
 
 
-// for a new trip, needs changing !!!! DONT FORGET TO ADD IN userId.cookie.email after testing!!!!
+// adding a trip and accomodations !!!! DONT FORGET TO ADD IN userId.cookie.email after testing!!!!
 const createNewTrip = (tripData, callback) => {
   pool.query(
-    `INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
-    VALUES ('imsleepy@gmail.com', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}');` ,(error, results) => {
+    `WITH new_trip AS (
+      INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
+      VALUES ('imsleepy@gmail.com', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}')
+      RETURNING tripid
+  ) INSERT INTO attractions(tripid, name, citystate, attractionType)
+  VALUES ((SELECT tripid FROM new_trip), '${tripData.query.name}', '${tripData.query.citystate}', '${tripData.query.attractiontype}' );` ,(error, results) => {
     if (error) {
       callback(error)
     }
@@ -43,7 +47,7 @@ const createNewTrip = (tripData, callback) => {
   })
 }
 
-// creates new attraction - to be used with createNewTrip above ^
+// not being used ... may be used after asking team..
 const createNewAttraction = (attractionData, tripId, callback) => {
   console.log('HERE IS TRIP ID!', tripId)
   pool.query(
@@ -84,5 +88,4 @@ module.exports = {
   createNewTrip,
   getTrip,
   getFavorites,
-  createNewAttraction,
 }
