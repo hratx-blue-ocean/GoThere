@@ -51,13 +51,12 @@ app.post('/login', (req, res) => {
 
 	let password = req.body.password;
 
-	db.checkUsernamePassword(email, password).then((userInfoReponse) => {
-		if (userInfoReponse.isCorrectPassword) {
-			console.log('USER INFO RESPONSE', userInfoReponse)
-      console.log('Correct Password entered');
+	db.checkUsernamePassword(email, password).then((userInfoResponse) => {
+		if (userInfoResponse.isCorrectPassword) {
+			console.log('USER INFO RESPONSE', userInfoResponse)
       res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
       res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
-      res.send(userInfoReponse);
+      res.send(userInfoResponse);
 		} else {
       console.log('no matching email/password found in database')
 			res.status(400).end();
@@ -129,6 +128,33 @@ app.get('/favorites' , (req, res) => {
     }
   })
 })
+
+app.delete('/favorites', (req, res) => {
+
+  db.deleteFavorite(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
+})
+
+
+app.post('/trips', (req, res) => {
+
+  db.updateTrip(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
+})
+
+
 
 
 app.listen(PORT, () =>

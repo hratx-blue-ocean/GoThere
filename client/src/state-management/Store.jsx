@@ -11,6 +11,7 @@ var initialState = {
 	trips: [],
 	error: null,
 	userID: "",
+	email: ""
 };
 
 const Store = ({ children }) => {
@@ -20,5 +21,5 @@ const Store = ({ children }) => {
 	);
 };
 
-export const Context = createContext(initialState);
+export const Context = createContext();
 export default Store;

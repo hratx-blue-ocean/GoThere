@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import SignUp from '../SignUp/SignUp';
+import {Context} from '../../state-management/Store';
+
 
 const LoginForm = ({ setLoggedIn }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    var [state, dispatch] = useContext(Context);
 
+    // state.userID = 'Slarti Bartfast2'
     const login = () => {
         axios({
             method: 'post',
@@ -18,7 +22,11 @@ const LoginForm = ({ setLoggedIn }) => {
             },
             withCredentials: true,
         }).then((res) => {
-            console.log("Axios POST response:", res);
+            console.log("Axios POST response:", res ,res.config.data)
+            var emailArr = res.config.data.split('"')
+            dispatch({type: 'SET_USER_EMAIL', payload: emailArr[3]})
+            dispatch({type: 'SET_USER', payload: res.data.name})
+            console.log('login name change', state.email, 'res', res.data.name)
             setLoggedIn(true);
         }).catch((err) => {
             console.log("Error with post request:", err);
@@ -75,11 +83,6 @@ const LoginForm = ({ setLoggedIn }) => {
                     />
                 </Form.Item>
 
-                {/* Remember User Password */}
-                <Form.Item name="remember" valuePropName="checked" noStyle>
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
                 {/* Login Button */}
                 <Form.Item>
                     <Button
@@ -90,11 +93,6 @@ const LoginForm = ({ setLoggedIn }) => {
                     >
                         Log in
                     </Button>
-                    <br></br>
-                    <br></br>
-                    <p>New? Register for an account:</p>
-                    {/* Sign-up Button */}
-                    <SignUp />
                 </Form.Item>
             </Form>
         </div>
