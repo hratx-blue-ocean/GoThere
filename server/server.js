@@ -51,13 +51,13 @@ app.post('/login', (req, res) => {
 
 	let password = req.body.password;
 
-	db.checkUsernamePassword(email, password).then((userInfoReponse) => {
-		if (userInfoReponse.isCorrectPassword) {
-			console.log('USER INFO RESPONSE', userInfoReponse)
+	db.checkUsernamePassword(email, password).then((userInfoResponse) => {
+		if (userInfoResponse.isCorrectPassword) {
+			console.log('USER INFO RESPONSE', userInfoResponse)
       console.log('Correct Password entered');
       res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
       res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
-      res.send(userInfoReponse);
+      res.send(userInfoResponse);
 		} else {
       console.log('no matching email/password found in database')
 			res.status(400).end();
