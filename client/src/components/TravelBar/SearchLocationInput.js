@@ -55,7 +55,7 @@ function SearchLocationInput() {
 
 
   useEffect(() => {
-    if (!query) {setQuery("Austin, TX")}
+
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${API_KEY.GOOGLE_API_KEY}&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
