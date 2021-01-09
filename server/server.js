@@ -54,7 +54,6 @@ app.post('/login', (req, res) => {
 	db.checkUsernamePassword(email, password).then((userInfoResponse) => {
 		if (userInfoResponse.isCorrectPassword) {
 			console.log('USER INFO RESPONSE', userInfoResponse)
-      console.log('Correct Password entered');
       res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
       res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
       res.send(userInfoResponse);
@@ -129,6 +128,33 @@ app.get('/favorites' , (req, res) => {
     }
   })
 })
+
+app.delete('/favorites', (req, res) => {
+
+  db.deleteFavorite(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
+})
+
+
+app.post('/trips', (req, res) => {
+
+  db.updateTrip(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
+})
+
+
 
 
 app.listen(PORT, () =>

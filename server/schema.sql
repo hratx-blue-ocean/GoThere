@@ -49,7 +49,16 @@ INSERT INTO users(name, email, phoneNumber, password)
 VALUES ('Test User', 'gothere@fake.com', '2104145466', 'password123');
 
 INSERT INTO users(name, email, phoneNumber, password)
-VALUES ('Jesse Perez', 'imsleepy@gmail.com', '2104145466', 'password123');
+VALUES ('Terry Vacation', 'admin@gmail.com', '2104145466', 'password123');
 
 INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
-VALUES ('imsleepy@gmail.com', '11302020', '11302021', 'Tokyo', true);
+VALUES ('gothere@fake.com', '11302020', '11302021', 'Tokyo', true);
+
+INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
+VALUES('admin@gmail.com', '012021', '012521', 'Dallas, TX', 'false');
+
+INSERT INTO attractions(tripid, name, citystate, attractiontype)
+VALUES(1, 'Marriot Downtown', 'Dallas, TX', 'hotel');
+
+INSERT INTO favorites(email, name, citystate, favoritestype)
+VALUES('admin@gmail.com', 'McDonalds', 'Dallas, TX', 'Restaurant');
