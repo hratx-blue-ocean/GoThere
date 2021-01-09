@@ -1,0 +1,107 @@
+.userPage {
+  width: 100%;
+  display: flex;
+}
+
+.calendar {
+  width: 50%;
+  margin: 4em;
+}
+
+/* head of calendar color */
+.ant-picker-calendar-header {
+  background-color: #474d66;
+}
+
+/* calendar selection boxes
+.ant-select-selector {
+
+} */
+
+/* body of calendar */
+.ant-picker-calendar-full .ant-picker-panel {
+  background-color: #474d66;
+}
+
+/* date nums on each cal day */
+.ant-picker-calendar-date-value {
+  color: #edd3c4;
+}
+
+/* date num of today's date when not currently selected */
+.ant-picker-calendar-full
+  .ant-picker-panel
+  .ant-picker-calendar-date-today
+  .ant-picker-calendar-date-value {
+  color: #edd3c4;
+}
+
+/* date nums of today's date */
+.ant-picker-calendar-full
+  .ant-picker-panel
+  .ant-picker-cell-selected
+  .ant-picker-calendar-date
+  .ant-picker-calendar-date-value,
+.ant-picker-calendar-full
+  .ant-picker-panel
+  .ant-picker-cell-selected:hover
+  .ant-picker-calendar-date
+  .ant-picker-calendar-date-value {
+  color: #363b4e;
+}
+
+.ant-picker-calendar-full .ant-picker-panel .ant-picker-calendar-date-today {
+  border-color: #49d2cd;
+}
+
+/* card level */
+.ant-card {
+  background: #474d66;
+}
+
+/* card border */
+.ant-card-bordered {
+  border: 1px solid #363b4e;
+}
+
+.usertabs {
+  width: 50%;
+  margin: 4em;
+}
+
+.profileCard {
+  margin-bottom: 2em;
+}
+
+/* card header area */
+.ant-card-head {
+  color: #edd3c4;
+  border-bottom: 1px solid #363b4e;
+}
+
+/* !selected tab title color */
+.ant-tabs-tab-btn {
+  color: #edd3c4;
+}
+
+/* selected tab title text color */
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #49d2cd;
+}
+
+/* selected tab bottom border color */
+.ant-tabs-ink-bar {
+  background-color: #49d2cd;
+}
+
+/* !selected tab color of title when tab is clicked */
+.ant-tabs-tab-btn:focus,
+.ant-tabs-tab-btn:active {
+  color: #edd3c4;
+}
+
+/* card list item border */
+.ant-list-split .ant-list-item {
+  color: #edd3c4;
+  border-bottom: 1px solid #363b4e;
+}
