@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Form, Input } from 'antd';
 
-const SignUpModal = () => {
+const SignUpModal = ({ setLoggedIn }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -17,6 +17,7 @@ const SignUpModal = () => {
             password: password
         }).then((res) => {
             console.log("Axios POST response:", res);
+            setLoggedIn(true);
         }).catch((err) => {
             console.log("Error with post request:", err);
         })
