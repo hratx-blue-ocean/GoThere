@@ -10,7 +10,7 @@ import Login from './pages/Login/Login';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import LogOut from './components/SignOut/LogOut';
+import SignOut from './components/SignOut/SignOut';
 import Store from './state-management/Store';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
 									<Link to="/userPage">User Page</Link>
 								</li>
 								<li>
-									<LogOut setLoggedIn={setLoggedIn} />
+									<SignOut setLoggedIn={setLoggedIn} />
 								</li>
 							</ul>
 						</nav>
