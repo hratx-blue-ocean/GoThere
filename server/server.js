@@ -87,20 +87,33 @@ app.post('/trips', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.json('Trip has been added to the database!');
+			res.json(data);
+
     }
   })
+})
 
+app.post('/favorites', (req, res) => {
+
+  db.createNewFavorite(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
 })
 
 // get user trips
 app.get('/trips' , (req, res) => {
-  db.getTrip(req.query, (err, data) => {
+
+  db.getTrip(req, (err, data) => {
     if (err) {
       console.log(err);
     } else {
       console.log('results!', data)
-      res.json(data.rows[0]);
+      res.json(data.rows);
     }
   })
 
@@ -112,7 +125,7 @@ app.get('/favorites' , (req, res) => {
       console.log(err);
     } else {
       console.log('results!', data)
-      res.json(data.rows[0]);
+      res.json(data.rows);
     }
   })
 })
