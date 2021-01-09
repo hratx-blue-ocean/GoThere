@@ -92,7 +92,8 @@ app.post('/trips', (req, res) => {
 
 // get user trips
 app.get('/trips' , (req, res) => {
-  db.getTrip(req.query, (err, data) => {
+
+  db.getTrip(req, (err, data) => {
     if (err) {
       console.log(err);
     } else {

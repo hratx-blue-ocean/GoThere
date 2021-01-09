@@ -35,7 +35,7 @@ const createNewTrip = (tripData, callback) => {
   pool.query(
     `WITH new_trip AS (
       INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
-      VALUES ('imsleepy@gmail.com', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}')
+      VALUES ('${tripData.cookie.email}', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}')
       RETURNING tripid
   ) INSERT INTO attractions(tripid, name, citystate, attractionType)
   VALUES ((SELECT tripid FROM new_trip), '${tripData.query.name}', '${tripData.query.citystate}', '${tripData.query.attractiontype}' );` ,(error, results) => {
@@ -62,7 +62,7 @@ const createNewAttraction = (attractionData, tripId, callback) => {
 //query database for user trips by userID
 const getTrip = (userId, callback) => {
   pool.query(
-    `SELECT * FROM usertrips WHERE email = '${userId.cookie.email}'` ,(error, results) => {
+    `SELECT * FROM usertrips WHERE email = '${userId.query.email}'` ,(error, results) => {
     if (error) {
       callback(error)
     }
