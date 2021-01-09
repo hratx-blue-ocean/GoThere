@@ -13,7 +13,7 @@ const SignUpModal = () => {
         axios.post('http://localhost:8080/newuser', {
             name: name,
             email: email,
-            phone: phone,
+            phoneNumber: phone,
             password: password
         }).then((res) => {
             console.log("Axios POST response:", res);

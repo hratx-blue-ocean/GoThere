@@ -4,7 +4,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import SignUp from '../SignUp/SignUp';
 
-const LoginForm = () => {
+const LoginForm = ({ setLoggedIn }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,6 +19,7 @@ const LoginForm = () => {
             withCredentials: true,
         }).then((res) => {
             console.log("Axios POST response:", res);
+            setLoggedIn(true);
         }).catch((err) => {
             console.log("Error with post request:", err);
         })

@@ -1,14 +1,16 @@
 @import '~antd/dist/antd.css';
 
 #location {
+	top: 40px;
+  position: absolute;
   width: 20%,
-
 }
 .date {
-  width: 20%
+  width: 30%
 }
 
 .search-location-input{
+  color: black;
   display: flex;
   flex-direction: row;
 }
