@@ -15,7 +15,6 @@ const TravelBarOptions = () => {
   }
 
   const handleTripInfoChange = (event, name) => {
-    console.log('name', name)
     var tripInfoClone = {...state.tripInfo}
     if (name === 'rating') {
       tripInfoClone.filter.rating = event

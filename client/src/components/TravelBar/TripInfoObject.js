@@ -2,7 +2,7 @@ const TripInfoObject = {
 	id: null,
 	valid: false,
 	//default location
-	location: 'Austin, TX',
+	location: "Austin, TX",
 	city: undefined,
 	state: undefined,
 	address: undefined,
@@ -12,8 +12,8 @@ const TripInfoObject = {
 	endDate: undefined,
 	type: undefined,
 	savedHotel: [],
-	savedRestaurant: {},
-	savedShopping: {},
-	savedBar: {},
+	savedRestaurant: [],
+	savedShopping: [],
+	savedBar: [],
 };
 export default TripInfoObject;

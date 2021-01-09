@@ -118,30 +118,30 @@ export default class AttractionsBar extends Component {
 		console.log('attractions bar props:', this.props)
 		return (
 			<div>
-				{(this.state.bars.length & this.state.shopping.length)   > 0 ? (
+				{/* {(this.state.bars.length & this.state.shopping.length)   > 0 ? ( */}
 					<div className="BarContainer">
-						<Row>
+						<Row justify="center">
 							<Col span={6}>
 								<AttractionsFan attractions={this.state.hotels} attractionType={'hotel'}/>
-								Hotels
+								{/* Hotels */}
 							</Col>
 							<Col span={6}>
 								<AttractionsFan attractions={this.state.restaurants} attractionType={'restaurants'}/>
-								Restaurants
+								{/* Restaurants */}
 							</Col>
 							<Col span={6}>
 								<AttractionsFan attractions={this.state.bars} attractionType={'bars'}/>
-								Bars
+								{/* Bars */}
 							</Col>
 							<Col span={6}>
 								<AttractionsFan attractions={this.state.shopping} attractionType={'shopping'}/>
-								Shopping
+								{/* Shopping */}
 							</Col>
 						</Row>
 					</div>
-				) : (
+				{/* ) : (
 					<div></div>
-				)}
+				)} */}
 			</div>
 		);
 	}

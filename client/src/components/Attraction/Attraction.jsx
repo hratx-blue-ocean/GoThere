@@ -35,13 +35,13 @@ export default function Attraction(props) {
 			tripInfoClone.savedHotel.push(props.attraction)
 		}
 		if (props.attractionType === 'bar') {
-			tripInfoClone.savedBar = props.attraction
+			tripInfoClone.savedBar.push(props.attraction)
 		}
 		if (props.attractionType === 'restaurant') {
-			tripInfoClone.savedRestaurant = props.attraction
+			tripInfoClone.savedRestaurant.push(props.attraction)
 		}
 		if (props.attractionType === 'shopping') {
-			tripInfoClone.savedShopping = props.attraction
+			tripInfoClone.savedShopping.push(props.attraction)
 		}
 
 		dispatch({ type: 'SET_SAVED_ATTRACTION', payload: tripInfoClone });

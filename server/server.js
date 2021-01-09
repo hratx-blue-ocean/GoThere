@@ -51,7 +51,7 @@ app.post('/login', (req, res) => {
 
 	let password = req.body.password;
 
-	db.checkUsernamePassword(username, password).then((isCorrectPassword) => {
+	db.checkUsernamePassword(email, password).then((isCorrectPassword) => {
 		if (isCorrectPassword) {
       console.log('Correct Password entered');
       res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
@@ -66,11 +66,15 @@ app.post('/login', (req, res) => {
 
 // created new endpoint /newuser - creating new user
 app.post('/newuser', (req, res) => {
+	console.log('hitting the new user endpoint!', req.query);
+  let email = req.body.email;
 
 	db.createNewUser(req.query, (err, data) => {
 		if (err) {
 			console.log(err);
 		} else {
+      res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
+      res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
 			res.json('User has been added to the database!');
 		}
 	});
@@ -83,20 +87,33 @@ app.post('/trips', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.json('Trip has been added to the database!');
+			res.json(data);
+
     }
   })
+})
 
+app.post('/favorites', (req, res) => {
+
+  db.createNewFavorite(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
 })
 
 // get user trips
 app.get('/trips' , (req, res) => {
-  db.getTrip(req.query, (err, data) => {
+
+  db.getTrip(req, (err, data) => {
     if (err) {
       console.log(err);
     } else {
       console.log('results!', data)
-      res.json(data.rows[0]);
+      res.json(data.rows);
     }
   })
 
@@ -108,7 +125,7 @@ app.get('/favorites' , (req, res) => {
       console.log(err);
     } else {
       console.log('results!', data)
-      res.json(data.rows[0]);
+      res.json(data.rows);
     }
   })
 })
