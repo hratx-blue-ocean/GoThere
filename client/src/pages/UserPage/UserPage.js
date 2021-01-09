@@ -13,7 +13,7 @@ import PastTrips from "../../components/ProfileLists/PastTrips";
 
 
 export default function UserPage() {
-  var state = useContext(Context);
+  var [state, dispatch] = useContext(Context);
   //alert data for upcoming trip and weather
   const today = moment();
   const [visible, setVisible] = useState(true);
@@ -26,9 +26,11 @@ export default function UserPage() {
         return trips;
       }
     }
-  const nextTrip = state.trips.find(isNext);
+    console.log('ussssssertrip', state.trips)
+  const nextTrip = state.trips.length !== 0 ? state.trips.find(isNext) : null;
   //weather info for message
-  const weatherCity = nextTrip.location.slice(0, nextTrip.location.indexOf(','));
+  const endIndex = state.trips.length !== 0 ? nextTrip.location.indexOf(',') : 0;
+  const weatherCity = state.trips.length !== 0 ?nextTrip.location.slice(0, endIndex) : '';
 
   const options = {
     method: 'GET',

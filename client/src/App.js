@@ -16,7 +16,7 @@ import Store from './state-management/Store';
 
 function App() {
   const loggedInWithCookies = Cookies.get('loggedIn') === 'true';
-  const [loggedIn, setLoggedIn] = useState(loggedInWithCookies);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <Store>
