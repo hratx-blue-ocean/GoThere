@@ -11,12 +11,12 @@ import Preferences from './pages/Preferences/Preferences';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import LogOut from './components/SignOut/LogOut';
+import LogOut from './components/SignOut/Logout';
 import Store from './state-management/Store';
 
 function App() {
   const loggedInWithCookies = Cookies.get('loggedIn') === 'true';
-  const [loggedIn, setLoggedIn] = useState(loggedInWithCookies);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <Store>
