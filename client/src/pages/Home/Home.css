@@ -1,4 +1,4 @@
-.backgroundAndTravelBar {
+.background {
 	background: url('../../assets/BackgroundTDNColor2.png') no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -25,13 +25,16 @@
 	z-index: 1; */
 }
 
-.TravelBar {
+.travel-bar {
 	position: absolute;
 	top: 40px;
+	margin: auto;
+	width: 80%;
 }
 
 .center {
 	position: relative;
+	z-index: 10;
 	/* top: 20%; */
 	opacity: 100%;
 	margin: auto;
