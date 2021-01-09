@@ -40,7 +40,6 @@ const TravelBar = () => {
 
  useEffect(() => {
    updateGlobalState()
-   console.log('TravelBat re-render')
   },[tripInfo]);
 
    return (

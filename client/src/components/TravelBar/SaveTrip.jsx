@@ -8,8 +8,7 @@ const handleClick = () => {
   var tripsClone = [...state.trips];
   tripsClone.push(state.tripInfo);
   dispatch({type: 'ADD_TRIP', payload: tripsClone})
-  console.log('current Trips:', state.trips)
-}
+  }
 
   return (
   <Button onClick={handleClick}>Save Trip</Button>

@@ -46,9 +46,7 @@ function SearchLocationInput() {
     const addressObject = autoComplete.getPlace();
     const query = addressObject.formatted_address;
     updateQuery(query);
-    console.log('state', state.tripInfo)
     var tripInfoClone = {...state.tripInfo}
-    console.log('tripInfoClone', tripInfoClone)
     tripInfoClone.location = query;
     dispatch({type: 'SET_TRIP_INFO', payload: tripInfoClone});
   }

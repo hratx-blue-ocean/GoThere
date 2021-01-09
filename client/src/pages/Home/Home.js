@@ -8,13 +8,12 @@ import './Home.css';
 export default function Home() {
 	return (
 		<div>
-			<div className="backgroundAndTravelBar">
-				<div className="center">
-					<div className="TravelBar">
-						<TravelBar />
-					</div>
-				</div>
+     <div className="center">
+			<div className="travel-bar">
+		  	<TravelBar/>
 			</div>
+		 </div>
+			<div className="background"/>
 			<div className="AttractionsInfo">
 				<AttractionsInfo />
 			</div>
