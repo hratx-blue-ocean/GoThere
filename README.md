@@ -1,5 +1,5 @@
 # GoThere
-A streamlined travel planing web application
+A streamlined travel planning web application
 
 
 ## onboarding
