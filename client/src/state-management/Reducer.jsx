@@ -20,6 +20,11 @@ const Reducer = (state, action) => {
 				...state,
 				userID: action.payload,
 			};
+		case 'SET_USER_EMAIL':
+			return {
+				...state,
+				email: action.payload,
+			};
 		default:
 			return state;
 			case 'SET_TRIP_INFO':

@@ -14,6 +14,6 @@ const TripInfoObject = {
 	savedHotel: [],
 	savedRestaurant: [],
 	savedShopping: [],
-	savedBar: [],
+	savedBar: []
 };
 export default TripInfoObject;

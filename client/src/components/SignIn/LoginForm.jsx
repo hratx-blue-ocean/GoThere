@@ -22,9 +22,12 @@ const LoginForm = ({ setLoggedIn }) => {
             },
             withCredentials: true,
         }).then((res) => {
-            console.log("Axios POST response:", res);
+            console.log("Axios POST response:", res ,res.config.data)
+            var emailArr = res.config.data.split('"')
+            dispatch({type: 'SET_USER_EMAIL', payload: emailArr[3]})
             dispatch({type: 'SET_USER', payload: res.data.name})
-            console.log('login name change', state.userID, 'res', res.data.name)
+            console.log('login name change', state.email, 'res', res.data.name)
+            setLoggedIn(true);
         }).catch((err) => {
             console.log("Error with post request:", err);
         })

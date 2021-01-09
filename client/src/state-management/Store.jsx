@@ -11,6 +11,7 @@ var initialState = {
 	trips: [],
 	error: null,
 	userID: "",
+	email: ""
 };
 
 const Store = ({ children }) => {
