@@ -30,14 +30,14 @@ export default function Attraction(props) {
 		var tripInfoClone = { ...state.tripInfo };
 		console.log(props.attraction)
 		//depending on the attraction type, add the attraction to the correct category in the global state
-		if (props.attractionType === 'hotel') {
+		if (props.attractionType === 'hotels') {
 			// tripInfoClone.savedHotel = [];
 			tripInfoClone.savedHotel.push(props.attraction)
 		}
-		if (props.attractionType === 'bar') {
+		if (props.attractionType === 'bars') {
 			tripInfoClone.savedBar.push(props.attraction)
 		}
-		if (props.attractionType === 'restaurant') {
+		if (props.attractionType === 'restaurants') {
 			tripInfoClone.savedRestaurant.push(props.attraction)
 		}
 		if (props.attractionType === 'shopping') {
@@ -72,11 +72,11 @@ export default function Attraction(props) {
 	const clickContent = <div>Save {props.name}?</div>;
 
 	return (
-		<div>
+		<div className="AttractionBubble">
 			<div
 				className="ImageContainer"
 				style={{
-					backgroundImage: `url(${props.imageUrl})`,
+					background: `url(${props.imageUrl}) no-repeat`,
 					backgroundSize: '150px',
 				}}
 			>
@@ -101,9 +101,12 @@ export default function Attraction(props) {
 						visible={isClicked}
 						onVisibleChange={handleClickChange}
 					>
+						<div className="AttractionBubbleText">
+
 						<button
 							// onClick={handleFavoriteClick}
 						>{props.name}</button>
+						</div>
 					</Popover>
 				</Popover>
 			</div>

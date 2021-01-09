@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import { Button, Modal } from 'antd';
 import SignUpModal from './SignUpModal';
 
-const SignUp = () => {
+const SignUp = ({ setLoggedIn }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
@@ -19,6 +19,7 @@ const SignUp = () => {
 
     return (
         <div className="signup-component">
+            <p>New? Register for an account:</p>
             <Button
                 className="signup-button"
                 type="primary"
@@ -33,7 +34,7 @@ const SignUp = () => {
                 // onOk={handleOk}
                 onCancel={handleCancel}
             >
-                <SignUpModal />
+                <SignUpModal setLoggedIn={setLoggedIn}/>
             </Modal>
         </div>
     );
