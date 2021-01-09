@@ -15,6 +15,11 @@ const Reducer = (state, action) => {
 				...state,
 				error: action.payload,
 			};
+		case 'SET_USER':
+			return {
+				...state,
+				userID: action.payload,
+			};
 		default:
 			return state;
 			case 'SET_TRIP_INFO':

@@ -55,7 +55,8 @@ export default function UserPage() {
   const tripMessage = nextTrip ? (`You have a trip in the next few days to ${nextTrip.location} on ${nextTrip.startDate.slice(5)}, the weather will be ${weather} for the first few days`) : null;
 
   //welcome user profile headers
-  let username = 'Slarti Bartfast';
+  let username = state.userID;
+  console.log('username', username, 'state', state.userID)
   const welcomeMessage = `Welcome ${username}!`;
   //user avatar
   const colorScheme = ['teal', 'red', 'purple', 'orange'];

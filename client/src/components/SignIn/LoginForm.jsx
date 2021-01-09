@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import SignUp from '../SignUp/SignUp';
+import {Context} from '../../state-management/Store';
+
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    var [state, dispatch] = useContext(Context);
 
+    // state.userID = 'Slarti Bartfast2'
     const login = () => {
         axios({
             method: 'post',
@@ -19,6 +23,8 @@ const LoginForm = () => {
             withCredentials: true,
         }).then((res) => {
             console.log("Axios POST response:", res);
+            dispatch({type: 'SET_USER', payload: res.data.name})
+            console.log('login name change', state.userID, 'res', res.data.name)
         }).catch((err) => {
             console.log("Error with post request:", err);
         })

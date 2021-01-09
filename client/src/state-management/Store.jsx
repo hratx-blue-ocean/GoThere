@@ -20,5 +20,5 @@ const Store = ({ children }) => {
 	);
 };
 
-export const Context = createContext(initialState);
+export const Context = createContext();
 export default Store;
