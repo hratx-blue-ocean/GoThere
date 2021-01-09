@@ -46,14 +46,16 @@ function SearchLocationInput() {
     const addressObject = autoComplete.getPlace();
     const query = addressObject.formatted_address;
     updateQuery(query);
+    console.log('state', state.tripInfo)
     var tripInfoClone = {...state.tripInfo}
+    console.log('tripInfoClone', tripInfoClone)
     tripInfoClone.location = query;
     dispatch({type: 'SET_TRIP_INFO', payload: tripInfoClone});
   }
 
 
   useEffect(() => {
-
+    if (!query) {setQuery("Austin, TX")}
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${API_KEY.GOOGLE_API_KEY}&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
