@@ -1,12 +1,20 @@
 import React from 'react';
+import Cookies from 'js-cookie';
 
-const Logout = () => {
+const LogOut = ({ setLoggedIn }) => {
+
+    const logout = () => {
+        // console.log('User is logged-out!');
+        Cookies.remove('loggedIn');
+        Cookies.remove('email');
+        setLoggedIn(false);
+    }
+
     return (
         <div className="logout-component">
-            <p>Log Out Component</p>
-            <button className="logout-button">Log Out</button>
+            <button className="logout-button" onClick={() => logout()}>Log Out</button>
         </div>
     );
 };
 
-export default Logout;
+export default LogOut;

@@ -1,10 +1,16 @@
 import React, { createContext, useReducer } from 'react';
 import Reducer from './Reducer';
+import tripInfoObject from '../components/TravelBar/TripInfoObject.js';
 
 var initialState = {
-	tripInfo: {},
-	test2: [],
+	tripInfo: tripInfoObject,
+	favoriteHotels: [],
+	favoriteRestaurants: [],
+	favoriteBars: [],
+	favoriteShopping: [],
+	trips: [],
 	error: null,
+	userID: "",
 };
 
 const Store = ({ children }) => {

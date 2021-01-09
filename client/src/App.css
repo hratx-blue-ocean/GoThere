@@ -1,61 +1,61 @@
-@import "~antd/dist/antd.css";
+@import '~antd/dist/antd.css';
 
 /* Dark theme styles */
 
 .ant-page-header-heading-title {
-  color: white;
+	color: white;
 }
 
 h1,
 h2,
 h3 {
-  color: white;
+	color: white;
 }
 
 .App {
-  background-color: #363b4e;
-  color: white;
+	background-color: #5c6384;
+	color: white;
 }
 
 .App a {
-  color: white;
+	color: white;
 }
 
 .App a:hover {
-  color: #49d2cd;
+	color: #49d2cd;
 }
 
 .App button {
-  color: #474d66;
+	color: #474d66;
 }
 .App button:hover {
-  color: #49d2cd;
-  border-color: #49d2cd;
+	color: #49d2cd;
+	border-color: #49d2cd;
 }
 
 /* table headers */
 .ant-picker-content th {
-  color: #edd3c4;
-  font-weight: bold;
+	color: #edd3c4;
+	font-weight: bold;
 }
 
 /* --- end theme styles --- */
 
 .wrapper {
-  padding: 20px;
+	padding: 20px;
 }
 
 /* NAVIGATION BAR */
 nav {
-  border-bottom: 1px solid black;
+	border-bottom: 1px solid black;
 }
 
 li {
-  display: inline-block;
-  padding: 0 5px;
+	display: inline-block;
+	padding: 0 5px;
 }
 
 ul {
-  list-style-type: none;
-  text-align: right;
+	list-style-type: none;
+	text-align: right;
 }
