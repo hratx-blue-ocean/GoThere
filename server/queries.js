@@ -21,7 +21,7 @@ const checkUsernamePassword = (username, password) => {
 const createNewUser = (userData, callback) => {
   pool.query(
     `INSERT INTO users(name, email, phoneNumber, password)
-    VALUES ('${userData.name}', '${userData.email}', '${userData.phoneNumber}', '${userData.password}');` ,(error, results) => {
+    VALUES ('${userData.name}', '${userData.cookie.email}', '${userData.phoneNumber}', '${userData.password}');` ,(error, results) => {
     if (error) {
       callback(error)
     }
