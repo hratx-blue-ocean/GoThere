@@ -8,13 +8,25 @@ const pool = new Pool({
 })
 
 const checkUsernamePassword = (username, password) => {
-  return pool.query(`SELECT email, password FROM users WHERE email = '${username}'`).then((results) => {
+  return pool.query(`SELECT email, name, password FROM users WHERE email = '${username}'`).then((results) => {
     if (password === results.rows[0].password) {
       console.log('CORRECT PASSWORD!')
-      return true;
+      return {
+        name: results.rows[0].name,
+        isCorrectPassword: true
+      };
     } else {
-      return false;
+      return {
+        isCorrectPassword: false
+      }
     }
+  })
+  .catch((error) => {
+    console.log(error);
+    return {
+      error: error,
+      isCorrectPassword: false
+    };
   })
 }
 
