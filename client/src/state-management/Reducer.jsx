@@ -15,13 +15,13 @@ const Reducer = (state, action) => {
 				...state,
 				error: action.payload,
 			};
+			case 'SET_SAVED_ATTRACTION':
+				return {
+					...state,
+					tripInfo: action.payload,
+				};
 		default:
 			return state;
-			case 'SET_TRIP_INFO':
-			return {
-				...state,
-				tripInfo: action.payload,
-			};
 	}
 };
 
