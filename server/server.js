@@ -51,12 +51,13 @@ app.post('/login', (req, res) => {
 
 	let password = req.body.password;
 
-	db.checkUsernamePassword(email, password).then((isCorrectPassword) => {
-		if (isCorrectPassword) {
+	db.checkUsernamePassword(email, password).then((userInfoReponse) => {
+		if (userInfoReponse.isCorrectPassword) {
+			console.log('USER INFO RESPONSE', userInfoReponse)
       console.log('Correct Password entered');
       res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
       res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
-      res.send('cookie set');
+      res.send(userInfoReponse);
 		} else {
       console.log('no matching email/password found in database')
 			res.status(400).end();
@@ -87,20 +88,33 @@ app.post('/trips', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.json('Trip has been added to the database!');
+			res.json(data);
+
     }
   })
+})
 
+app.post('/favorites', (req, res) => {
+
+  db.createNewFavorite(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
 })
 
 // get user trips
 app.get('/trips' , (req, res) => {
-  db.getTrip(req.query, (err, data) => {
+
+  db.getTrip(req, (err, data) => {
     if (err) {
       console.log(err);
     } else {
       console.log('results!', data)
-      res.json(data.rows[0]);
+      res.json(data.rows);
     }
   })
 
@@ -112,7 +126,7 @@ app.get('/favorites' , (req, res) => {
       console.log(err);
     } else {
       console.log('results!', data)
-      res.json(data.rows[0]);
+      res.json(data.rows);
     }
   })
 })

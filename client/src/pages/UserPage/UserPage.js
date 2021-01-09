@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Alert, PageHeader } from 'antd';
 import { SmileTwoTone } from '@ant-design/icons';
+import {Context} from '../../state-management/Store';
 import moment from 'moment';
 import axios from 'axios';
 import "./userPage.css";
-import dummyTrips from "../../dummy-data/dummyTripsArray";
+import { WEATHER_API_KEY } from '../../API.js';
 import UserCalendar from "../../components/Calendar/calendar.js";
 import UpcomingTrips from "../../components/ProfileLists/UpcomingTrips.js";
 import Favorites from "../../components/ProfileLists/Favorites.js";
@@ -12,6 +13,7 @@ import PastTrips from "../../components/ProfileLists/PastTrips";
 
 
 export default function UserPage() {
+  var [state, dispatch] = useContext(Context);
   //alert data for upcoming trip and weather
   const today = moment();
   const [visible, setVisible] = useState(true);
@@ -20,18 +22,20 @@ export default function UserPage() {
   };
   //find the next coming trip, where startDate is within 7 days of today
   function isNext(trips){
-      if (parseInt(trips.startDate.slice(8)) >= today.date() && parseInt(trips.startDate.slice(8)) <= today.date() + 7) {
+      if (parseInt(state.trips.startDate.slice(8)) >= today.date() && parseInt(state.trips.startDate.slice(8)) <= today.date() + 7) {
         return trips;
       }
     }
-  const nextTrip = dummyTrips.find(isNext);
+    console.log('ussssssertrip', state.trips)
+  const nextTrip = state.trips.length !== 0 ? state.trips.find(isNext) : null;
   //weather info for message
-  const weatherCity = nextTrip.location.slice(0, nextTrip.location.indexOf(','));
+  const endIndex = state.trips.length !== 0 ? nextTrip.location.indexOf(',') : 0;
+  const weatherCity = state.trips.length !== 0 ?nextTrip.location.slice(0, endIndex) : '';
 
   const options = {
     method: 'GET',
     url: 'https://community-open-weather-map.p.rapidapi.com/forecast',
-    params: {q: 'austin, us', units: 'imperial'},
+    params: {q: `${weatherCity}, us`, units: 'imperial'},
     headers: {
       // 'x-rapidapi-key': {APIKEY},
       'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com'
@@ -54,7 +58,7 @@ export default function UserPage() {
   let username = 'Slarti Bartfast';
   const welcomeMessage = `Welcome ${username}!`;
   //user avatar
-  const colorScheme = ['teal', 'olive', 'purple', 'orange'];
+  const colorScheme = ['teal', 'red', 'purple', 'orange'];
   const avatarColor = colorScheme[Math.floor(Math.random() * colorScheme.length)];
 
   return (
