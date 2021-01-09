@@ -4,7 +4,6 @@ import { Context } from "../../state-management/Store";
 import { Card, List } from "antd";
 
 const today = moment().format("YYYY-MM-DD").toString();
-console.log(today);
 
 const TripInfoObject = {
   id: null,
