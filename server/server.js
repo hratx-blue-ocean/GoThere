@@ -67,10 +67,9 @@ app.post('/login', (req, res) => {
 
 // created new endpoint /newuser - creating new user
 app.post('/newuser', (req, res) => {
-	console.log('hitting the new user endpoint!', req.query);
   let email = req.body.email;
 
-	db.createNewUser(req.query, (err, data) => {
+	db.createNewUser(req.body, (err, data) => {
 		if (err) {
 			console.log(err);
 		} else {
