@@ -5,13 +5,12 @@ import Cookies from 'js-cookie';
 import Home from './pages/Home/Home';
 import UserPage from './pages/UserPage/UserPage';
 import Login from './pages/Login/Login';
-import Preferences from './pages/Preferences/Preferences';
 
 // import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import LogOut from './components/SignOut/Logout';
+import LogOut from './components/SignOut/LogOut';
 import Store from './state-management/Store';
 
 function App() {
@@ -50,16 +49,16 @@ function App() {
               <Home />
             </Route>
             <Route path="/login">
-              <Login setLoggedIn={setLoggedIn} />
+              { loggedIn
+                ? <Redirect to='/userPage' />
+                : <Login setLoggedIn={setLoggedIn} />
+              }
             </Route>
             <Route path="/userPage">
               { loggedIn
                 ? <UserPage />
                 : <Redirect to="/" />
               }
-            </Route>
-            <Route path="/preferences">
-              <Preferences />
             </Route>
           </Switch>
         </BrowserRouter>

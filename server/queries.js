@@ -8,20 +8,31 @@ const pool = new Pool({
 })
 
 const checkUsernamePassword = (username, password) => {
-  return pool.query(`SELECT email, password FROM users WHERE email = '${username}'`).then((results) => {
+  return pool.query(`SELECT email, name, password FROM users WHERE email = '${username}'`).then((results) => {
     if (password === results.rows[0].password) {
-      console.log('CORRECT PASSWORD!')
-      return true;
+      return {
+        name: results.rows[0].name,
+        isCorrectPassword: true
+      };
     } else {
-      return false;
+      return {
+        isCorrectPassword: false
+      }
     }
+  })
+  .catch((error) => {
+    console.log(error);
+    return {
+      error: error,
+      isCorrectPassword: false
+    };
   })
 }
 
 const createNewUser = (userData, callback) => {
   pool.query(
     `INSERT INTO users(name, email, phoneNumber, password)
-    VALUES ('${userData.query.name}', '${userData.cookie.email}', '${userData.query.phoneNumber}', '${userData.query.password}');` ,(error, results) => {
+    VALUES ('${userData.name}', '${userData.email}', '${userData.phoneNumber}', '${userData.password}');` ,(error, results) => {
     if (error) {
       callback(error)
     }
@@ -35,10 +46,10 @@ const createNewTrip = (tripData, callback) => {
   pool.query(
     `WITH new_trip AS (
       INSERT INTO usertrips(email, startdate, enddate, destination, businesstrip)
-      VALUES ('${tripData.cookie.email}', '${tripData.query.startdate}', '${tripData.query.enddate}', '${tripData.query.destination}', '${tripData.query.businesstrip}')
+      VALUES ('${tripData.cookie.email}', '${tripData.body.startdate}', '${tripData.body.enddate}', '${tripData.body.destination}', '${tripData.body.businesstrip}')
       RETURNING tripid
   ) INSERT INTO attractions(tripid, name, citystate, attractionType)
-  VALUES ((SELECT tripid FROM new_trip), '${tripData.query.name}', '${tripData.query.citystate}', '${tripData.query.attractiontype}' );` ,(error, results) => {
+  VALUES ((SELECT tripid FROM new_trip), '${tripData.body.name}', '${tripData.body.citystate}', '${tripData.body.attractiontype}' );` ,(error, results) => {
     if (error) {
       callback(error)
     }
@@ -52,7 +63,7 @@ const createNewAttraction = (attractionData, tripId, callback) => {
   console.log('HERE IS TRIP ID!', tripId)
   pool.query(
     `INSERT INTO attractions(tripid, name, citystate, attractionType)
-    VALUES ('${tripId}', '${attractionData.query.name}', '${attractionData.query.citystate}', '${attractionData.query.attractionType}');` ,(error, results) => {
+    VALUES ('${tripId}', '${attractionData.body.name}', '${attractionData.body.citystate}', '${attractionData.body.attractionType}');` ,(error, results) => {
     if (error) {
       callback(error)
     } callback(null, results)
@@ -65,7 +76,7 @@ const createNewAttraction = (attractionData, tripId, callback) => {
 const createNewFavorite = (favoriteData, callback) => {
   pool.query(
     `INSERT INTO favorites(email, name, citystate, favoritesType)
-    VALUES ('${favoriteData.cookie.email}', '${favoriteData.query.name}', '${favoriteData.query.citystate}', '${favoriteData.query.attractionType}');` ,(error, results) => {
+    VALUES ('${favoriteData.cookie.email}', '${favoriteData.body.name}', '${favoriteData.body.citystate}', '${favoriteData.body.attractionType}');` ,(error, results) => {
     if (error) {
       callback(error)
     } callback(null, results)
@@ -93,6 +104,36 @@ const getFavorites = (userId, callback) => {
   })
 }
 
+// this is to DELETE a favorite by favoriteId
+
+const deleteFavorite = (favoriteData, callback) => {
+  pool.query(
+    `DELETE FROM favorites WHERE favoritesid = ${favoriteData.body.favoritesid};` ,(error, results) => {
+    if (error) {
+      callback(error)
+    } callback(null, results)
+  })
+}
+
+
+// this is to update a previously created trip by tripID
+
+const updateTrip = (tripData, callback) => {
+  pool.query(
+    `WITH new_trip AS (
+      UPDATE usertrips
+      SET email = '${tripData.cookie.email}', startdate = '${tripData.body.startdate}', enddate = '${tripData.body.enddate}', destination = '${tripData.body.destination}', businesstrip = '${tripData.body.businesstrip}' WHERE tripid = ${tripdData.body.tripid}
+      RETURNING tripid
+  )
+      UPDATE attractions tripid = ${tripData.body.tripid}, name = '${tripData.body.name}', citystate = '${tripData.body.citystate}', attractionType = '${tripData.body.attractiontype}';` ,(error, results) => {
+    if (error) {
+      callback(error)
+    }
+    console.log('RESULTS!!', results)
+    callback(null, results)
+  })
+}
+
 
 
 module.exports = {
@@ -102,4 +143,6 @@ module.exports = {
   createNewFavorite,
   getTrip,
   getFavorites,
+  deleteFavorite,
+  updateTrip,
 }

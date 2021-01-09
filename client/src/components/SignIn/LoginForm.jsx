@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import SignUp from '../SignUp/SignUp';
 
-const LoginForm = () => {
+const LoginForm = ({ setLoggedIn }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -19,6 +18,7 @@ const LoginForm = () => {
             withCredentials: true,
         }).then((res) => {
             console.log("Axios POST response:", res);
+            setLoggedIn(true);
         }).catch((err) => {
             console.log("Error with post request:", err);
         })
@@ -74,11 +74,6 @@ const LoginForm = () => {
                     />
                 </Form.Item>
 
-                {/* Remember User Password */}
-                <Form.Item name="remember" valuePropName="checked" noStyle>
-                    <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-
                 {/* Login Button */}
                 <Form.Item>
                     <Button
@@ -89,11 +84,6 @@ const LoginForm = () => {
                     >
                         Log in
                     </Button>
-                    <br></br>
-                    <br></br>
-                    <p>New? Register for an account:</p>
-                    {/* Sign-up Button */}
-                    <SignUp />
                 </Form.Item>
             </Form>
         </div>

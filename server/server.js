@@ -51,12 +51,12 @@ app.post('/login', (req, res) => {
 
 	let password = req.body.password;
 
-	db.checkUsernamePassword(email, password).then((isCorrectPassword) => {
-		if (isCorrectPassword) {
-      console.log('Correct Password entered');
+	db.checkUsernamePassword(email, password).then((userInfoResponse) => {
+		if (userInfoResponse.isCorrectPassword) {
+			console.log('USER INFO RESPONSE', userInfoResponse)
       res.cookie('loggedIn', 'true', {maxAge: 1000*60*60*24*7, secure: false});
       res.cookie('email', email, {maxAge: 1000*60*60*24*7, secure: false});
-      res.send('cookie set');
+      res.send(userInfoResponse);
 		} else {
       console.log('no matching email/password found in database')
 			res.status(400).end();
@@ -66,10 +66,9 @@ app.post('/login', (req, res) => {
 
 // created new endpoint /newuser - creating new user
 app.post('/newuser', (req, res) => {
-	console.log('hitting the new user endpoint!', req.query);
   let email = req.body.email;
 
-	db.createNewUser(req.query, (err, data) => {
+	db.createNewUser(req.body, (err, data) => {
 		if (err) {
 			console.log(err);
 		} else {
@@ -129,6 +128,33 @@ app.get('/favorites' , (req, res) => {
     }
   })
 })
+
+app.delete('/favorites', (req, res) => {
+
+  db.deleteFavorite(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
+})
+
+
+app.post('/trips', (req, res) => {
+
+  db.updateTrip(req, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+			res.json(data);
+
+    }
+  })
+})
+
+
 
 
 app.listen(PORT, () =>
