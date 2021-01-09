@@ -17,7 +17,7 @@ const Reducer = (state, action) => {
 			};
 		default:
 			return state;
-			case 'SET_TRIP_INFO':
+		case 'SET_SAVED_ATTRACTION':
 			return {
 				...state,
 				tripInfo: action.payload,
