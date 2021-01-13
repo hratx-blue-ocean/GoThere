@@ -34,7 +34,6 @@ app.get('/attractions', (req, res) => {
 			location: req.query.location,
 		})
 		.then((response) => {
-			console.log('RQUEST', req);
 			res.send(response.jsonBody.businesses);
 		})
 		.catch((e) => {
