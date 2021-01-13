@@ -1,18 +1,11 @@
-FROM node:12.4.0
-EXPOSE 3000
 
+FROM node:alpine as build
 WORKDIR /app
-
-COPY package*.json /app
-
-RUN npm ci
-
-COPY . /app
-
+COPY package*.json ./
 RUN npm install
+COPY . .
+RUN npm run build
 
-ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
-RUN chmod +x /wait
-
-## Launch the wait tool and then your application
-CMD /wait && npm install && npm run start
+FROM nginx
+EXPOSE 80
+COPY --from=build /app/build /usr/share/nginx/html
