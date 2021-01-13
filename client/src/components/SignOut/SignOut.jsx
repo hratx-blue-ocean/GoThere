@@ -14,7 +14,7 @@ const SignOut = ({ setLoggedIn }) => {
         <div className="logout-component">
             <Button
                 className="logout-button"
-                type="primary"
+                type="secondary"
                 onClick={() => logout()}
             >
                 Log Out
