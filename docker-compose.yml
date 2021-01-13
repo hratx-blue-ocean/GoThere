@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '80:80'
+  postgres:
+    image: postgres
+    restart: always
+    container_name: 'postgres'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./pg/db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  server:
+    container_name: server
+    restart: always
+    build:
+      #name of the Dockerfile this build will be based on
+      dockerfile: Dockerfile
+      #where that Dockerfile can be found
+      context: ./server
+    # ports:
+    #   - '8080:8080'
+    depends_on:
+      - postgres
+    volumes:
+      - ./
+  client:
+    container_name: client
+    restart: always
+    build:
+      #name of the Dockerfile this build will be based on
+      dockerfile: Dockerfile
+      #where that Dockerfile can be found
+      context: ./client
+    # ports:
+    #   - '3000:3000'
+    # depends_on:
+    #   - postgres
+
+volumes:
+  db_data: {}
