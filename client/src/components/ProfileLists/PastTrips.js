@@ -29,8 +29,8 @@ const newTrip = [
       adress: undefined,
       zip: undefined,
     },
-    startDate: "2021-01-01",
-    endDate: "2021-01-03",
+    startDate: "2021-12-01",
+    endDate: "2021-12-03",
     type: "personal",
   },
 ];
