@@ -2,7 +2,31 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Form, Input } from 'antd';
 
-const SignUpModal = () => {
+const formItemLayout = {
+    labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 },
+    },
+    wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 },
+    },
+};
+
+const tailFormItemLayout = {
+    wrapperCol: {
+        xs: {
+            span: 24,
+            offset: 8
+        },
+        sm: {
+            span: 16,
+            offset: 8
+        },
+    },
+};
+
+const SignUpModal = ({ setLoggedIn }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -17,6 +41,7 @@ const SignUpModal = () => {
             password: password
         }).then((res) => {
             console.log("Axios POST response:", res);
+            setLoggedIn(true);
         }).catch((err) => {
             console.log("Error with post request:", err);
         })
@@ -28,6 +53,7 @@ const SignUpModal = () => {
 
     return (
         <Form
+            {...formItemLayout}
             form={form}
             name="register"
             onFinish={onFinish}
@@ -70,7 +96,12 @@ const SignUpModal = () => {
             <Form.Item
                 name="phone"
                 label="Phone Number"
-                rules={[{ required: true, message: 'Phone number required' }]}
+                rules={[
+                    {
+                        required: true,
+                        message: 'Phone number required'
+                    }
+                ]}
             >
                 <Input onChange={e => setPhone(e.target.value)} />
             </Form.Item>
@@ -80,17 +111,17 @@ const SignUpModal = () => {
                 name="password"
                 label="Password"
                 rules={[
-                {
-                    required: true,
-                    message: 'Password required',
-                },
+                    {
+                        required: true,
+                        message: 'Password required',
+                    },
                 ]}
             >
                 <Input.Password onChange={e => setPassword(e.target.value)} />
             </Form.Item>
 
             {/* Button to register for an account */}
-            <Form.Item>
+            <Form.Item {...tailFormItemLayout}>
                 <Button
                     type="primary"
                     htmlType="submit"
