@@ -8,7 +8,7 @@ export default function SelectedAttraction(props) {
 	var displayAttraction;
 
 
-	console.log('saved hotel', state)
+	// console.log('saved hotel', state)
 	if (props.attractionType === 'hotels' && state.tripInfo.savedHotel) {
 		// tripInfoClone.savedHotel = [];
 		displayAttraction = state.tripInfo.savedHotel[state.tripInfo.savedHotel.length-1]
