@@ -122,7 +122,7 @@ export default class AttractionsBar extends Component {
 					<div className="BarContainer">
 						<Row justify="center">
 							<Col span={6}>
-								<AttractionsFan attractions={this.state.hotels} attractionType={'hotel'}/>
+								<AttractionsFan attractions={this.state.hotels} attractionType={'hotels'}/>
 								{/* Hotels */}
 							</Col>
 							<Col span={6}>

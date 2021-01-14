@@ -27,10 +27,10 @@ export default function UserPage() {
       }
     }
     // console.log('ussssssertrip', state.trips)
-  const nextTrip = state.trips.length !== 0 ? state.trips.find(isNext) : null;
+  const nextTrip = state.trips ? state.trips.find(isNext) : null;
   //weather info for message
-  const endIndex = state.trips.length !== 0 ? nextTrip.location.indexOf(',') : 0;
-  const weatherCity = state.trips.length !== 0 ? nextTrip.location.slice(0, endIndex) : '';
+  const endIndex = state.trips && nextTrip ? nextTrip.location.indexOf(',') : 0;
+  const weatherCity = nextTrip ? nextTrip.location.slice(0, endIndex) : '';
 
   const options = {
     method: 'GET',

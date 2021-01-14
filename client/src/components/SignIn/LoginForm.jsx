@@ -2,8 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import SignUp from '../SignUp/SignUp';
-import {Context} from '../../state-management/Store';
+import { Context } from '../../state-management/Store';
 
 
 const LoginForm = ({ setLoggedIn }) => {
@@ -39,7 +38,7 @@ const LoginForm = ({ setLoggedIn }) => {
 
     return (
         <div>
-            <h2>Account Login</h2>
+            <h2 className="login-title">Account Login</h2>
             <Form
                 name="normal_login"
                 className="login-form"
@@ -91,7 +90,7 @@ const LoginForm = ({ setLoggedIn }) => {
                         className="login-form-button"
                         onClick={login}
                     >
-                        Log in
+                        Log In
                     </Button>
                 </Form.Item>
             </Form>

@@ -8,13 +8,13 @@ export default function SelectedAttraction(props) {
 	var displayAttraction;
 
 
-	console.log('saved hotel', state)
+	// console.log('saved hotel', state)
 	if (props.attractionType === 'hotels' && state.tripInfo.savedHotel) {
 		// tripInfoClone.savedHotel = [];
 		displayAttraction = state.tripInfo.savedHotel[state.tripInfo.savedHotel.length-1]
 	}
 	if (props.attractionType === 'bars' && state.tripInfo.savedBar) {
-		displayAttraction = state.tripInfo.savedBar[state.tripInfo.savedHotel.length-1]
+		displayAttraction = state.tripInfo.savedBar[state.tripInfo.savedBar.length-1]
 	}
 	if (props.attractionType === 'restaurants' && state.tripInfo.savedRestaurant) {
 		displayAttraction = state.tripInfo.savedRestaurant[state.tripInfo.savedRestaurant.length-1]
