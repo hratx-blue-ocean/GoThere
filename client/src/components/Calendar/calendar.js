@@ -1,112 +1,56 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 // import {Context} from '../state-management/Store';
-import { Calendar, Alert } from 'antd';
-import moment from 'moment';
-import dummyTrips from "../../dummy-data/dummyTripsArray";
+import { Calendar } from 'antd';
+import { Context } from "../../state-management/Store";
 import './calendar.css'
 
-class UserCalendar extends React.Component {
-  // const [state, dispatch] = useContext(Context);
-  // constructor (props) {
-  //   super (props);
-  //   this.state = {
-  //     value: moment(),
-  //     selectedValue: moment(),
-  //   };
-    //binding
-    // this.onSelect = this.onSelect.bind(this);
-    // this.onPanelChange = this.onPanelChange.bind(this);
-  //   this.dateCellRender = this.dateCellRender.bind(this);
-  // }
+const UserCalendar = () => {
+  var [state, dispatch] = useContext(Context);
 
-  // //selecting a date on calendar
-  // onSelect = (value) => {
-  //   this.setState({
-  //     value,
-  //     selectedValue: value,
-  //   });
-  // };
+//render into each day on calendar
+  const dateCellRender = (value) => {
 
-  // onPanelChange = (value) => {
-  //   this.setState({ value });
-  // };
-
-  //render into each day on calendar
-  dateCellRender = (value) => {
-    const dummyData = [{
-        tripId: 2,
-        startDate: '2020-12-04',
-        endDate: '2020-12-08',
-        location: 'Homer, Alaska',
-        type: 'Business'
-      },
-      {
-        tripId: 3,
-        startDate: '2020-12-14',
-        endDate: '2020-12-17',
-        location: 'Springfield, Nebraska',
-        type: 'Business'
-      },
-      {
-        tripId: 4,
-        startDate: '2020-12-24',
-        endDate: '2020-12-31',
-        location: 'Marfa, Texas',
-        type: 'Personal'
-      },
-      {
-        tripId: 5,
-        startDate: '2021-01-01',
-        endDate: '2020-01-02',
-        location: 'Austin, Texas',
-        type: 'Business'
-      }
-    ]
-    // console.log('value', value.month())
+// console.log('value', state.trips)
     return (
       <>
-      {dummyTrips.map((trip) => {
+      {state.trips.map((trip) => {
         let startDate = parseInt(trip.startDate.slice(8));
         let endDate = parseInt(trip.endDate.slice(8));
         let month = parseInt(trip.startDate.slice(5,7));
-        // console.log(value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month)
         // render trips based off of trip data, data.type: Business or Personal
-        if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Personal') {
+        let dateBool = value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month;
+        // console.log('meeeee', dateBool === true && trip.type === 'Buisness')
+        if (dateBool === true && trip.type === 'Buisness') {
+          console.log('me')
           return <div
-            key={trip.tripId}
-            className='tripBox'
-            style={{
-              background: 'violet'
-            }}
-            >{trip.location}</div>
+          key={trip.tripId}
+          className='tripBox'
+          style={{
+            background: 'violet'
+          }}
+          >{trip.location} and me</div>
         }
 
-        if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Business') {
+        if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Personal') {
           return <div
-            key={trip.tripId}
-            className='tripBox'
-            style={{
-              background: 'teal'
-            }}
-            >{trip.location}</div>
+          key={trip.tripId}
+          className='tripBox'
+          style={{
+            background: 'teal'
+          }}
+          >{trip.location}</div>
         }
       })}
       </>
     )
   }
 
-  render() {
     // const { value, selectedValue } = this.state;
     return (
       <>
-        {/* <Alert
-        // TODO: add trip info or redirect to trip planning?
-          message={`Upcoming trips on this date: ${selectedValue && selectedValue.format('YYYY-MM-DD')}`}
-        /> */}
-        <Calendar dateCellRender={this.dateCellRender}/>
+        <Calendar dateCellRender={dateCellRender}/>
       </>
     );
-  }
 }
 
 export default UserCalendar;
