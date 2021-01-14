@@ -5,7 +5,7 @@ import { Context } from "../../state-management/Store";
 import './calendar.css'
 
 const UserCalendar = () => {
-  var [state] = useContext(Context);
+  var [state, dispatch] = useContext(Context);
 
 //render into each day on calendar
   const dateCellRender = (value) => {
@@ -17,19 +17,21 @@ const UserCalendar = () => {
         let startDate = parseInt(trip.startDate.slice(8));
         let endDate = parseInt(trip.endDate.slice(8));
         let month = parseInt(trip.startDate.slice(5,7));
-        // console.log(value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month)
         // render trips based off of trip data, data.type: Business or Personal
-        if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Personal') {
+        let dateBool = value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month;
+        // console.log('meeeee', dateBool === true && trip.type === 'Buisness')
+        if (dateBool === true && trip.type === 'Buisness') {
+          console.log('me')
           return <div
           key={trip.tripId}
           className='tripBox'
           style={{
             background: 'violet'
           }}
-          >{trip.location}</div>
+          >{trip.location} and me</div>
         }
 
-        if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Business') {
+        if (value.date() >= startDate && value.date() <= endDate && (value.month() + 1) === month && trip.type === 'Personal') {
           return <div
           key={trip.tripId}
           className='tripBox'
