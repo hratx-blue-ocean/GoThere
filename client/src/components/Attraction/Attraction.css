@@ -25,6 +25,7 @@
 	object-fit: cover;
 	position: relative;
 	border-width: 2px;
+	margin-top: 2em;
 }
 
 /* .Text {

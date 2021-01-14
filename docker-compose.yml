@@ -10,7 +10,7 @@ services:
       - /app/node_modules
       - ./client:/app
     ports:
-      - '3000:3000'
+      - '3001:3001'
     restart: on-failure
     container_name: web-app
   server-api:
@@ -18,7 +18,7 @@ services:
       context: ./server
       dockerfile: Dockerfile.dev
     ports:
-      - '8080:8080'
+      - '80:80'
     restart: on-failure
     container_name: server-api
     volumes:
