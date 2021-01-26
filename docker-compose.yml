@@ -1,0 +1,73 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+  web-app:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    ports:
+      - '3001:3001'
+    restart: on-failure
+    container_name: web-app
+  server-api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    ports:
+      - '80:80'
+    restart: on-failure
+    container_name: server-api
+    volumes:
+      - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
+      - ./server:/app # Look at the server directory and copy everything into the app folder in the container
+    environment:
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres
+      - PGPORT=5432
+# version: '3.3'
+# services:
+#   postgres:
+#     image: postgres
+#     hostname: postgres
+#     environment:
+#       POSTGRES_PASSWORD: postgres
+#     ports:
+#       - 5432:5432
+#     volumes:
+#       - ./postgres.conf:/etc/postgresql/postgresql.conf
+#       - ./data:/var/lib/postgresql/data
+#       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+#     command: postgres -c config_file=/etc/postgresql/postgresql.conf
+#     restart: always
+
+#   app:
+#     build: ./server
+#     hostname: app
+#     env_file: ./server/.env
+#     depends_on:
+#       - postgres
+#     links:
+#       - postgres
+#     ports:
+#       - 3000:3000
+#     environment:
+#       WAIT_HOSTS: postgres:5432
+
+#   client:
+#     build: ./client
+#     hostname: client
+#     env_file: ./client/.env
+#     ports:
+#       - 3001:3001
+#     depends_on:
+#       - postgres
+#     links:
+#       - postgres
+#     environment:
+#       WAIT_HOSTS: postgres:5432

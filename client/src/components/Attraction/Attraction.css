@@ -1,0 +1,63 @@
+.Attraction {
+	height: 150px;
+	width: 150px;
+	background-color: rgb(141, 166, 168);
+	opacity: 0.8;
+	border-radius: 50%;
+	display: flex;
+	margin: 15px;
+	align-items: bottom;
+	flex-direction: column-reverse;
+	position: relative;
+}
+
+.AttractionImage {
+	border-radius: 50%;
+	/* height: 30%; */
+	width: 40%;
+}
+.ImageContainer {
+	/* padding-top: 100%;
+	width: 150px; */
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+	object-fit: cover;
+	position: relative;
+	border-width: 2px;
+	margin-top: 2em;
+}
+
+/* .Text {
+	z-index: 10;
+	position: absolute;
+	align-items: center;
+
+} */
+
+.Attraction:hover {
+	transform: scale(1.1);
+	transition: all ease 100ms;
+}
+
+.ant-popover-content p {
+	margin: 0;
+}
+
+.Photo {
+	height: 150px;
+	width: 150px;
+}
+
+.AttractionBubble {
+	display: flex;
+}
+
+.AttractionBubbleText {
+	align-self: flex-end;
+	/* position: absolute; */
+	/*
+	bottom: 20px;
+	left: 38px; */
+	margin: auto;
+}

@@ -1,0 +1,26 @@
+.background {
+	background: url('../../assets/BackgroundTDNColor2.png') no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	min-height: 700px;
+	min-width: 100%;
+	position: absolute;
+	opacity: 70%;
+}
+
+.travel-bar {
+	position: absolute;
+	top: 40px;
+	margin: auto;
+}
+
+.center {
+	position: relative;
+	z-index: 10;
+	/* top: 20%; */
+	opacity: 100%;
+	margin: auto;
+	width: 50%;
+}
